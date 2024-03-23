@@ -3,7 +3,7 @@ import paramiko
 
 
 class PasswordParamikoSSHClient(ParamikoSSHClient):
-    def __init__(self, password: str, ip: str, user: str, port: int = 22):
+    def __init__(self, ip: str, user: str, password: str, port: int = 22):
         super().__init__(ip, user, port)
         self.password = password
 

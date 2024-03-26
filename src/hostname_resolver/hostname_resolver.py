@@ -3,5 +3,5 @@ from abc import ABC, abstractmethod
 
 class IHostnameResolver(ABC):
     @abstractmethod
-    def resolve(self, ip: str) -> str:
+    def resolve_ip(self, hostname: str) -> str:
         pass

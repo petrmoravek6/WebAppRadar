@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Iterable
 
 
-class IWebServerDiscoverer(ABC):
+class IWebServerScanner(ABC):
     """
     Interface used for searching for active web servers
     """

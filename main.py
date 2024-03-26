@@ -1,12 +1,9 @@
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
+from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
+from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyParamikoSSHClient
 
-sc = NMapOpenPortScanner()
-# res = sc.get_open_ports(('192.168.74.56', '192.168.74.60', '192.168.74.66'), (80, 443))
-res = sc.get_open_ports(('192.168.74.101',), (80, 443))
+sc = PrivateKeyParamikoSSHClient('192.168.68.130', 'moravekp', '/home/petr/.ssh/id_rsa_notiflight', PrivateKeyCipher.RSA)
+sc.connect()
+res = sc.exec_command('ls /')
+sc.close()
 print(res)
-
-import paramiko
-
-connection = paramiko.SSHClient()
-connection.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-connection.connect()

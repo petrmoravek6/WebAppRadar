@@ -1,10 +1,10 @@
-from paramiko_ssh_client import ParamikoSSHClient
+from src.ssh_client.paramiko_ssh_client import ParamikoSSHClient
 import paramiko
 from enum import Enum
 
 
 class PrivateKeyCipher(Enum):
-    RSA = 2
+    RSA = 1
     ED25519 = 2
     ECDSA = 3
     DSS = 4

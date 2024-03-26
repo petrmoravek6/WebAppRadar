@@ -1,16 +1,16 @@
 import unittest
-import ipaddress
-from src.subnet_validator.ip_subnet_validator import IPSubnetValidator
+from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
 
 
 class TestIPSubnetValidator(unittest.TestCase):
 
     def setUp(self):
-        self.validator = IPSubnetValidator()
+        self.validator = PytIPSubnetValidator()
 
     def test_ip_in_subnet(self):
         # Standard case within subnet
         self.assertTrue(self.validator.is_ip_in_subnet("192.168.1.10", "192.168.1.0/24"))
+        self.assertTrue(self.validator.is_ip_in_subnet("192.168.1.10", "192.168.1.10"))
         self.assertTrue(self.validator.is_ip_in_subnet("10.0.0.1", "10.0.0.0/8"))
         # Edge case: First IP in the range
         self.assertTrue(self.validator.is_ip_in_subnet("192.168.1.1", "192.168.1.0/24"))
@@ -20,6 +20,7 @@ class TestIPSubnetValidator(unittest.TestCase):
     def test_ip_not_in_subnet(self):
         # IP outside of subnet range
         self.assertFalse(self.validator.is_ip_in_subnet("192.168.2.10", "192.168.1.0/24"))
+        self.assertFalse(self.validator.is_ip_in_subnet("192.168.1.10", "192.168.1.111"))
         # Completely different subnet
         self.assertFalse(self.validator.is_ip_in_subnet("10.0.0.1", "192.168.1.0/24"))
         # Border case: IP just outside the subnet

@@ -1,7 +1,7 @@
-from vhosts_cmd import VhostsCmd
+from vhosts_cmd import IVhostsCmd
 
 
-class NginxVhostsCmd(VhostsCmd):
+class NginxVhostsCmd(IVhostsCmd):
     def is_web_server_running(self) -> str:
         return ("systemctl -q is-active nginx || (service nginx status > /dev/null 2>&1 && service nginx status | grep "
                 "-q 'active (running)')")

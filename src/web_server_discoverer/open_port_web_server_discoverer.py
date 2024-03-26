@@ -1,13 +1,13 @@
 from typing import Iterable
 
-from src.web_server_discoverer.web_server_discoverer import WebServerDiscoverer
-from src.open_port_scanner.open_port_scanner import OpenPortScanner
+from src.web_server_discoverer.web_server_discoverer import IWebServerDiscoverer
+from src.open_port_scanner.open_port_scanner import IOpenPortScanner
 
 
-class OpenPortWebServerDiscoverer(WebServerDiscoverer):
+class OpenPortWebServerDiscoverer(IWebServerDiscoverer):
     web_server_ports = (80, 443)
 
-    def __init__(self, open_port_scanner: OpenPortScanner):
+    def __init__(self, open_port_scanner: IOpenPortScanner):
         self.open_port_scanner = open_port_scanner
 
     def discover(self, hosts: Iterable[str]) -> Iterable[str]:

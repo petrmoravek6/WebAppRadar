@@ -1,10 +1,10 @@
 from abc import ABC
 from typing import Tuple
 
-from ssh_client import SSHClient
+from ssh_client import ISSHClient
 
 
-class ParamikoSSHClient(SSHClient, ABC):
+class ParamikoSSHClient(ISSHClient, ABC):
     def __init__(self, ip: str, user: str, port: int = 22):
         """
         Initialize SSHClient with server details and authentication information.

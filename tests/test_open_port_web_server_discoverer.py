@@ -1,12 +1,12 @@
 import unittest
 from unittest.mock import MagicMock
 from src.web_server_discoverer.open_port_web_server_discoverer import OpenPortWebServerDiscoverer
-from src.open_port_scanner.open_port_scanner import OpenPortScanner
+from src.open_port_scanner.open_port_scanner import IOpenPortScanner
 
 
 class TestOpenPortWebServerDiscoverer(unittest.TestCase):
     def setUp(self):
-        self.mock_scanner = MagicMock(spec=OpenPortScanner)
+        self.mock_scanner = MagicMock(spec=IOpenPortScanner)
         self.discoverer = OpenPortWebServerDiscoverer(open_port_scanner=self.mock_scanner)
 
     def test_discover_with_open_web_servers(self):

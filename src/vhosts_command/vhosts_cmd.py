@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class VhostsCmd(ABC):
+class IVhostsCmd(ABC):
     """
     Interface representing string commands used for querying on Linux based machines.
     These queries are used for searching virtual hosts.

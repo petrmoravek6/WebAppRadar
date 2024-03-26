@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Tuple
 
 
-class SSHClient(ABC):
+class ISSHClient(ABC):
     @abstractmethod
     def connect(self) -> None:
         pass

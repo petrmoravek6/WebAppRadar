@@ -15,7 +15,7 @@ ws_sc = OpenPortWebServerScanner(nm)
 
 sc = PrivateKeyParamikoSSHClient('XXX', PrivateKeyCipher.RSA)
 nginx_cmd = NginxVhostsCmd()
-vhosts_dis = SshAgentVhostDiscoverer(sc, (nginx_cmd,), 'XXX')
+vhosts_dis = SshAgentVhostDiscoverer(sc, (nginx_cmd,), 'XXXX')
 
 hnr = SocketHostnameResolver()
 x = hnr.resolve_ip('192.168.68.119')

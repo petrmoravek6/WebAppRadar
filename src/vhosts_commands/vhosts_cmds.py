@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class IVhostsCmd(ABC):
+class IVhostsCmds(ABC):
     """
     Interface representing string commands used for querying on Linux based machines.
     These queries are used for searching virtual hosts.
@@ -24,6 +24,7 @@ class IVhostsCmd(ABC):
     @abstractmethod
     def get_all_vhosts_from_content(self, content: str) -> set[str]:
         """
-        Process output from (ideally from '' method) and return all unique virtual hosts
+        Process output from (ideally from 'get_content_from_server' method) and return all unique virtual hosts
+        :param content: content to be processed
         """
         pass

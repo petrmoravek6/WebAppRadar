@@ -11,7 +11,7 @@ class ShellOutput:
 
 class ISSHClient(ABC):
     @abstractmethod
-    def connect(self) -> None:
+    def connect(self, ip: str, user: str) -> None:
         pass
 
     @abstractmethod

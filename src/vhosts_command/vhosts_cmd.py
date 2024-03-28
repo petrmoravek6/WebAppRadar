@@ -15,8 +15,15 @@ class IVhostsCmd(ABC):
         pass
 
     @abstractmethod
-    def get_all_vhosts(self) -> str:
+    def get_content_from_server(self) -> str:
         """
-        Query used for getting all virtual hosts of the web server
+        Query used for getting necessary information for getting all virtual hosts on a server
+        """
+        pass
+
+    @abstractmethod
+    def get_all_vhosts_from_content(self, content: str) -> set[str]:
+        """
+        Process output from (ideally from '' method) and return all unique virtual hosts
         """
         pass

@@ -3,17 +3,13 @@ from src.ssh_client.ssh_client import ISSHClient, ShellOutput
 
 
 class ParamikoSSHClient(ISSHClient, ABC):
-    def __init__(self, ip: str, user: str, port: int = 22):
+    def __init__(self, port: int = 22):
         """
         Initialize SSHClient with server details and authentication information.
 
-        :param ip: IP address of the server
-        :param user: Username for authentication
         :param port: SSH port of the server
         """
-        self.ip = ip
         self.port = port
-        self.user = user
         self.connection = None
 
     def exec_command(self, command: str) -> ShellOutput:

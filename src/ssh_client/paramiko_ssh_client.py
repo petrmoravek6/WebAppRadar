@@ -1,6 +1,6 @@
 from abc import ABC
 from src.ssh_client.ssh_client import ISSHClient, ShellOutput
-
+from src.exceptions import FatalError
 
 class ParamikoSSHClient(ISSHClient, ABC):
     def __init__(self, port: int = 22):
@@ -15,7 +15,8 @@ class ParamikoSSHClient(ISSHClient, ABC):
     def exec_command(self, command: str) -> ShellOutput:
         """Executes a command on the remote server."""
         if self.connection is None:
-            raise Exception("Connection not established. Call connect() first.")
+            raise FatalError("Fatal error in implementation logic",
+                             "Connection not established. Call connect() first.")
 
         try:
             stdin, stdout, stderr = self.connection.exec_command(command)
@@ -23,7 +24,7 @@ class ParamikoSSHClient(ISSHClient, ABC):
                                stderr.read().decode('utf-8'),
                                stdout.channel.recv_exit_status())
         except Exception as e:
-            raise Exception(f"Failed to execute command. Error message: {e}")
+            raise Exception(f"Failed to execute command: {command}. Error message: {e}")
 
     def close(self) -> None:
         """Closes the SSH connection."""

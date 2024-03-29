@@ -1,6 +1,9 @@
 from src.subnet_validator.hostname_subnet_validator import IHostnameSubnetValidator
 from src.subnet_validator.ip_subnet_validator import IIPSubnetValidator
 from src.hostname_resolver.hostname_resolver import IHostnameResolver
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class PytHostnameSubnetValidator(IHostnameSubnetValidator):
@@ -12,5 +15,6 @@ class PytHostnameSubnetValidator(IHostnameSubnetValidator):
         try:
             ip = self.hostname_resolver.get_ip(hostname)
             return self.ip_validator.is_ip_in_subnet(ip, subnet)
-        except Exception:
+        except Exception as e:
+            logger.warning(f"Error during checking if hostname {hostname} was in subnet {subnet}. {e}")
             return False

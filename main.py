@@ -8,6 +8,13 @@ from src.vhosts_commands.nginx_vhosts_cmds import NginxVhostsCmds
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
 from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
 from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+import logging
+
+
+logging.basicConfig(level=logging.DEBUG,
+                    filename='app.log',  # Output file
+                    filemode='a',  # Append mode
+                    format='%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 
 print("HELLO")
 exit(0)

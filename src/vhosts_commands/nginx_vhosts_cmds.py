@@ -20,8 +20,8 @@ class NginxVhostsCmds(IVhostsCmds):
             if clean_line and not clean_line.startswith('#'):
                 processed_lines.append(re.sub(r'\s*#.*$', '', clean_line))  # Inline comment removal
 
-        # Step 2: Concatenate lines properly (not fully replicated due to complexity)
-        concatenated = ' '.join(processed_lines)  # Simplified approach
+        # Step 2: Concatenate lines properly
+        concatenated = ' '.join(processed_lines)
 
         # Step 3: Extract server names
         server_names_raw = re.findall(r'server_name\s+([^;$]+)', concatenated)
@@ -29,9 +29,14 @@ class NginxVhostsCmds(IVhostsCmds):
         # Step 4: Clean up and extract unique server names
         server_names = set()
         for name in server_names_raw:
-            for part in re.split(r'\s+', name.strip()):
-                clean_part = part.replace(';', '').strip()
-                if '.' in clean_part and not '$' in clean_part:  # Ensure it looks like a domain and doesn't have variables
-                    server_names.add(clean_part)
+            try:
+                for part in re.split(r'\s+', name.strip()):
+                    clean_part = part.replace(';', '').strip()
+                    # Ensure it looks like a domain and doesn't have variables
+                    if '.' in clean_part and not '$' in clean_part:
+                        server_names.add(clean_part)
+            # unexpected error
+            except Exception:
+                continue
 
         return server_names

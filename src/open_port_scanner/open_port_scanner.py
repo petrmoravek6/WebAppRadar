@@ -12,8 +12,6 @@ class IOpenPortScanner(ABC):
         Scans given hosts and checks their open ports. It only checks ports from the parameter.
         :param hosts: An iterable object of hosts (hostnames or IP addresses) to scan
         :param ports: An iterable object of ports to search for when looking for open ports
-        :return: A dictionary where keys are IP addresses (which correspond to host input) and values are open ports.
-        The key is only present if the host is up. Open ports are in format of a dictionary where keys are the given
-        ports from method parameter and values are booleans signalizing whether the port is open.
+        :return: A dictionary where keys are IP addresses (which correspond to host input) and values are open ports. The key is only present if the host is up. Open ports are in format of a dictionary where keys are the given ports from method parameter and values are booleans signalizing whether the port is open.
         """
         pass

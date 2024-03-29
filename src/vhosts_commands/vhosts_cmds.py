@@ -24,7 +24,9 @@ class IVhostsCmds(ABC):
     @abstractmethod
     def get_all_vhosts_from_content(self, content: str) -> set[str]:
         """
-        Process output from (ideally from 'get_content_from_server' method) and return all unique virtual hosts
+        Process output from content parameter (ideally from 'get_content_from_server' method) and return all unique
+        virtual hosts
         :param content: content to be processed
+        :return: set of virtual hosts server names parsed from the input
         """
         pass

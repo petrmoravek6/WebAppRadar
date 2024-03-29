@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:stable-alpine3.17-slim
+  redis:
+    image: redis:7.2.4-alpine
+  scanner:
+    build:
+      context: ../../../.
+      dockerfile: ./Dockerfile
+    depends_on:
+      - nginx
+      - redis
+networks:
+  default:
+    name: simulation
+    driver: bridge

@@ -1,7 +1,9 @@
+from nmap import PortScannerError
 from src.open_port_scanner.open_port_scanner import IOpenPortScanner
 from typing import Iterable, Dict
 import nmap
 import ipaddress
+from src.exceptions import FatalError
 
 
 class NMapOpenPortScanner(IOpenPortScanner):
@@ -35,8 +37,12 @@ class NMapOpenPortScanner(IOpenPortScanner):
         nmap_hosts = NMapOpenPortScanner._process_host_input_for_nmap(hosts)
         nmap_ports = NMapOpenPortScanner._process_port_input_for_nmap(ports)
         scan_results = {}
-        # Launch the scan on the defined subnets and ports
-        self.nmap.scan(hosts=nmap_hosts, arguments=f'-p {nmap_ports}')
+        try:
+            # Launch the scan on the defined subnets and ports
+            self.nmap.scan(hosts=nmap_hosts, arguments=f'-p {nmap_ports}')
+        except PortScannerError:
+            raise FatalError(f"Error during scanning {nmap_hosts} hosts. Unable to parse the scan output.",
+                             "Nmap scan output was not XML. Exception thrown during using nmap's 'scan' method")
 
         # Loop through all the hosts found
         for host in self.nmap.all_hosts():

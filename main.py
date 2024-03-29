@@ -9,7 +9,8 @@ from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolv
 from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
 from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
 
-
+print("HELLO")
+exit(0)
 nm = NMapOpenPortScanner()
 ws_sc = OpenPortWebServerScanner(nm)
 

@@ -21,7 +21,7 @@ class TestNMapOpenPortScanner(unittest.TestCase):
         self.assertEqual(result3, expected_output3)
 
     def test_process_host_input_invalid(self):
-        input_hosts = ['192.168.1.1', 'invalid_ip']
+        input_hosts = ['192.168.1.1', 123.45]
         with self.assertRaises(ValueError):
             NMapOpenPortScanner._process_host_input_for_nmap(input_hosts)
 
@@ -41,8 +41,13 @@ class TestNMapOpenPortScanner(unittest.TestCase):
         self.assertEqual(result2, expected_output2)
         self.assertEqual(result3, expected_output3)
 
-    def test_process_port_input_invalid(self):
+    def test_process_port_input_invalid1(self):
         input_ports = [80, 7000000]  # 7000000 is out of the valid range
+        with self.assertRaises(ValueError):
+            NMapOpenPortScanner._process_port_input_for_nmap(input_ports)
+
+    def test_process_port_input_invalid2(self):
+        input_ports = [80, "asdasd"]
         with self.assertRaises(ValueError):
             NMapOpenPortScanner._process_port_input_for_nmap(input_ports)
 

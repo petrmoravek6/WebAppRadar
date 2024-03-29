@@ -15,18 +15,18 @@ class NMapOpenPortScanner(IOpenPortScanner):
     def _process_host_input_for_nmap(hosts: Iterable[str]) -> str:
         validated_hosts = []
         for host in hosts:
-            try:
-                # This validation works for both IP addresses and subnets
-                ipaddress.ip_network(host, strict=False)
+            if isinstance(host, str):
                 validated_hosts.append(host)
-            except ValueError:
-                raise ValueError(f"Invalid IP address or subnet: {host}")
+            else:
+                raise ValueError(f"Host {host} is not a string")
         return ' '.join(validated_hosts)
 
     @staticmethod
     def _process_port_input_for_nmap(ports: Iterable[int]) -> str:
         validated_ports = []
         for port in ports:
+            if not isinstance(port, int):
+                raise ValueError(f"Port {port} is not an int")
             if 0 <= port <= 65535:
                 validated_ports.append(str(port))
             else:

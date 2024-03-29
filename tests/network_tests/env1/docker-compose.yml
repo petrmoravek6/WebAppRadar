@@ -2,16 +2,31 @@ version: '3.8'
 services:
   nginx:
     image: nginx:stable-alpine3.17-slim
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.2
   redis:
     image: redis:7.2.4-alpine
-  scanner:
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.3
+  app:
     build:
       context: ../../../.
       dockerfile: ./Dockerfile
+    # run all tests in the specific directory
+    entrypoint: ["python3", "-m", "unittest", "discover", "tests/network_tests/env1"]
     depends_on:
       - nginx
       - redis
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.4
+
 networks:
-  default:
-    name: simulation
+  custom_network:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.0.0.0/8

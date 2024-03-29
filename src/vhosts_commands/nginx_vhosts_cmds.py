@@ -33,7 +33,7 @@ class NginxVhostsCmds(IVhostsCmds):
                 for part in re.split(r'\s+', name.strip()):
                     clean_part = part.replace(';', '').strip()
                     # Ensure it looks like a domain and doesn't have variables
-                    if '.' in clean_part and not '$' in clean_part:
+                    if ('.' in clean_part and not '$' in clean_part) or "localhost" in clean_part:
                         server_names.add(clean_part)
             # unexpected error
             except Exception:

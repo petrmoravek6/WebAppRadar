@@ -3,9 +3,8 @@ import socket
 
 
 class SocketHostnameResolver(IHostnameResolver):
-    def resolve_ip(self, hostname: str) -> str:
+    def get_ip(self, hostname: str) -> str:
         try:
             return socket.gethostbyname(hostname)
-        except socket.gaierror as e:  # todo
-            print(f"Could not resolve hostname: {hostname}")
-            raise e
+        except socket.gaierror as e:
+            raise ValueError(f"Invalid hostname. Could not get IP for: {hostname}")

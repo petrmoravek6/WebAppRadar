@@ -10,7 +10,7 @@ class PytHostnameSubnetValidator(IHostnameSubnetValidator):
 
     def is_hostname_in_subnet(self, hostname: str, subnet: str) -> bool:
         try:
-            ip = self.hostname_resolver.resolve_ip(hostname)
+            ip = self.hostname_resolver.get_ip(hostname)
             return self.ip_validator.is_ip_in_subnet(ip, subnet)
         except Exception:
             return False

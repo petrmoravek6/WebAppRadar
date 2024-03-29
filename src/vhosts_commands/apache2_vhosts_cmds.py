@@ -11,13 +11,19 @@ class Apache2VhostsCmds(IVhostsCmds):
         return "cat /etc/apache2/sites-enabled/*"
 
     def get_all_vhosts_from_content(self, content: str) -> set[str]:
-        virtualhost_blocks = re.findall(r'<VirtualHost.*?>(.*?)</VirtualHost>', content, re.DOTALL)
+        lines = content.splitlines()
+        lines_without_comments = []
+        for line in lines:
+            clean_line = line.strip()
+            # Remove comments, skip empty lines
+            if clean_line and not clean_line.startswith('#'):
+                lines_without_comments.append(re.sub(r'\s*#.*$', '', clean_line))
 
         # Using a set to store server names to ensure uniqueness
         server_names = set()
-        for block in virtualhost_blocks:
-            # For each block, search for the ServerName directive
-            match = re.search(r'ServerName\s+(\S+)', block)
+        for line in lines_without_comments:
+            # For each line, search for the ServerName directive
+            match = re.search(r'ServerName\s+(\S+)', line)
             if match:
                 server_names.add(match.group(1))
         return server_names

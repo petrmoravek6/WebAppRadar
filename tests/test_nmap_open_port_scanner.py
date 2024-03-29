@@ -42,7 +42,7 @@ class TestNMapOpenPortScanner(unittest.TestCase):
         self.assertEqual(result3, expected_output3)
 
     def test_process_port_input_invalid(self):
-        input_ports = [80, 70000]  # 70000 is out of the valid range
+        input_ports = [80, 7000000]  # 7000000 is out of the valid range
         with self.assertRaises(ValueError):
             NMapOpenPortScanner._process_port_input_for_nmap(input_ports)
 

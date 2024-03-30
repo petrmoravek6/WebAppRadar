@@ -16,11 +16,11 @@ class WebServerVhostNetScanner(IVhostNetScanner):
     def get_all_vhosts(self, hosts: Iterable[str]) -> Iterable[str]:
         res = set()
         ip_addresses = self.web_server_scanner.discover(hosts)
-        if len(ip_addresses) < 1:
+        if not ip_addresses:
             logger.warning(f"No IP addresses found during web server scan of '{hosts}'")
         for ip in ip_addresses:
             vhosts = self.vhost_discoverer.get_virtual_hosts(ip)
-            if len(vhosts) < 1:
+            if not vhosts:
                 logger.warning(f"No virtual hosts found for server '{ip}' although the web server is probably running")
             res = res.union(set(vhosts))
         return res

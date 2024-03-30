@@ -1,0 +1,33 @@
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx.Dockerfile
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.10
+  apache2:
+    image: httpd:2.4.58-alpine
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.11
+  app:
+    build:
+      context: ../../../.
+      dockerfile: ./Dockerfile
+    # run all tests in the specific directory
+    entrypoint: ["python3", "-m", "unittest", "discover", "tests/network_tests/env2"]
+    depends_on:
+      - nginx
+      - apache2
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.12
+
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.0.0.8/29

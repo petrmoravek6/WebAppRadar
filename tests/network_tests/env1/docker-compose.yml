@@ -1,11 +1,11 @@
 services:
   nginx:
-    image: nginx:stable-alpine3.17-slim
+    image: nginx:1.24-bullseye
     networks:
       custom_network:
         ipv4_address: 192.0.0.2
   redis:
-    image: redis:7.2.4-alpine
+    image: redis:7.2.4-bookworm
     networks:
       custom_network:
         ipv4_address: 192.0.0.3

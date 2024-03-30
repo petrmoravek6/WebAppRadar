@@ -1,15 +1,14 @@
 from abc import ABC, abstractmethod
-from typing import Tuple
+from typing import NamedTuple
 
 
-class ShellOutput:
+class ShellOutput(NamedTuple):
     """
-    Basic class representing an output received after executing a shell command.
+    Basic immutable structure representing an output received after executing a shell command.
     """
-    def __init__(self, stdout: str, stderr: str, exit_code: int):
-        self.stdout = stdout
-        self.stderr = stderr
-        self.exit_code = exit_code
+    stdout: str
+    stderr: str
+    exit_code: int
 
 
 class ISSHClient(ABC):

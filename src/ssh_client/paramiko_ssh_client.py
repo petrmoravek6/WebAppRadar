@@ -2,6 +2,7 @@ from abc import ABC
 from src.ssh_client.ssh_client import ISSHClient, ShellOutput
 from src.exceptions import FatalError
 
+
 class ParamikoSSHClient(ISSHClient, ABC):
     def __init__(self, port: int = 22):
         """

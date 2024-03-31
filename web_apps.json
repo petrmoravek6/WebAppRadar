@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Atlassian Jira",
+    "identifier": "<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\"",
+    "version": "<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\" data-version=\"(\\d+\\.\\d+\\.\\d+)\""
+  }
+]

@@ -1,11 +1,6 @@
-from typing import Optional, NamedTuple, Iterable
-
+from typing import Optional, Iterable
+from src.web_app_determiner.web_app_info import WebAppInfo
 from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMethod
-
-
-class WebAppInfo(NamedTuple):
-    name: str
-    version: Optional[str]
 
 
 class WebAppDeterminer:
@@ -18,7 +13,6 @@ class WebAppDeterminer:
         :param host: Hostname or IP address in string format
         :return: Information about the web app running on the host. If no known web app is running on the given host, return None
         """
-        res = None
         for detection_method in self.detection_methods:
             info = detection_method.inspect_host(host)
             if info is not None:

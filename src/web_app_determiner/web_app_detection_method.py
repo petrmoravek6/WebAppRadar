@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from src.web_app_determiner.web_app_determiner import WebAppInfo
+from src.web_app_determiner.web_app_info import WebAppInfo
 
 
 class IWebAppDetectionMethod(ABC):

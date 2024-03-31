@@ -1,0 +1,492 @@
+<html lang="en"><head><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><style type="text/css">.toasted{padding:0 20px}.toasted.rounded{border-radius:24px}.toasted .primary,.toasted.toasted-primary{border-radius:2px;min-height:38px;line-height:1.1em;background-color:#353535;padding:6px 20px;font-size:15px;font-weight:300;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}.toasted .primary.success,.toasted.toasted-primary.success{background:#4caf50}.toasted .primary.error,.toasted.toasted-primary.error{background:#f44336}.toasted .primary.info,.toasted.toasted-primary.info{background:#3f51b5}.toasted .primary .action,.toasted.toasted-primary .action{color:#a1c2fa}.toasted.bubble{border-radius:30px;min-height:38px;line-height:1.1em;background-color:#ff7043;padding:0 20px;font-size:15px;font-weight:300;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24)}.toasted.bubble.success{background:#4caf50}.toasted.bubble.error{background:#f44336}.toasted.bubble.info{background:#3f51b5}.toasted.bubble .action{color:#8e2b0c}.toasted.outline{border-radius:30px;min-height:38px;line-height:1.1em;background-color:#fff;border:1px solid #676767;padding:0 20px;font-size:15px;color:#676767;box-shadow:0 1px 3px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);font-weight:700}.toasted.outline.success{color:#4caf50;border-color:#4caf50}.toasted.outline.error{color:#f44336;border-color:#f44336}.toasted.outline.info{color:#3f51b5;border-color:#3f51b5}.toasted.outline .action{color:#607d8b}.toasted-container{position:fixed;z-index:10000}.toasted-container,.toasted-container.full-width{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.toasted-container.full-width{max-width:86%;width:100%}.toasted-container.full-width.fit-to-screen{min-width:100%}.toasted-container.full-width.fit-to-screen .toasted:first-child{margin-top:0}.toasted-container.full-width.fit-to-screen.top-right{top:0;right:0}.toasted-container.full-width.fit-to-screen.top-left{top:0;left:0}.toasted-container.full-width.fit-to-screen.top-center{top:0;left:0;-webkit-transform:translateX(0);transform:translateX(0)}.toasted-container.full-width.fit-to-screen.bottom-right{right:0;bottom:0}.toasted-container.full-width.fit-to-screen.bottom-left{left:0;bottom:0}.toasted-container.full-width.fit-to-screen.bottom-center{left:0;bottom:0;-webkit-transform:translateX(0);transform:translateX(0)}.toasted-container.top-right{top:10%;right:7%}.toasted-container.top-left{top:10%;left:7%}.toasted-container.top-center{top:10%;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.toasted-container.bottom-right{right:5%;bottom:7%}.toasted-container.bottom-left{left:5%;bottom:7%}.toasted-container.bottom-center{left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);bottom:7%}.toasted-container.bottom-left .toasted,.toasted-container.top-left .toasted{float:left}.toasted-container.bottom-right .toasted,.toasted-container.top-right .toasted{float:right}.toasted-container .toasted{top:35px;width:auto;clear:both;margin-top:10px;position:relative;max-width:100%;height:auto;word-break:normal;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:justify;justify-content:space-between;box-sizing:inherit}.toasted-container .toasted .fa,.toasted-container .toasted .fab,.toasted-container .toasted .far,.toasted-container .toasted .fas,.toasted-container .toasted .material-icons,.toasted-container .toasted .mdi{margin-right:.5rem;margin-left:-.4rem}.toasted-container .toasted .fa.after,.toasted-container .toasted .fab.after,.toasted-container .toasted .far.after,.toasted-container .toasted .fas.after,.toasted-container .toasted .material-icons.after,.toasted-container .toasted .mdi.after{margin-left:.5rem;margin-right:-.4rem}.toasted-container .toasted .action{text-decoration:none;font-size:.8rem;padding:8px;margin:5px -7px 5px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.03em;font-weight:600;cursor:pointer}.toasted-container .toasted .action.icon{padding:4px;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}.toasted-container .toasted .action.icon .fa,.toasted-container .toasted .action.icon .material-icons,.toasted-container .toasted .action.icon .mdi{margin-right:0;margin-left:4px}.toasted-container .toasted .action.icon:hover{text-decoration:none}.toasted-container .toasted .action:hover{text-decoration:underline}@media only screen and (max-width:600px){.toasted-container{min-width:100%}.toasted-container .toasted:first-child{margin-top:0}.toasted-container.top-right{top:0;right:0}.toasted-container.top-left{top:0;left:0}.toasted-container.top-center{top:0;left:0;-webkit-transform:translateX(0);transform:translateX(0)}.toasted-container.bottom-right{right:0;bottom:0}.toasted-container.bottom-left{left:0;bottom:0}.toasted-container.bottom-center{left:0;bottom:0;-webkit-transform:translateX(0);transform:translateX(0)}.toasted-container.bottom-center,.toasted-container.top-center{-ms-flex-align:stretch!important;align-items:stretch!important}.toasted-container.bottom-left .toasted,.toasted-container.bottom-right .toasted,.toasted-container.top-left .toasted,.toasted-container.top-right .toasted{float:none}.toasted-container .toasted{border-radius:0}}</style><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png"><link rel="mask-icon" href="./safari-pinned-tab.svg" color="#f5f5f2"><link rel="shortcut icon" href="./favicon.ico"><title>Packages - JFrog</title><base href="/ui/"><style>@keyframes heartbeatOut{from{opacity:1}50%{opacity:0;transform:scale(.8)}to{opacity:0;transform:scale(.8)}}@keyframes heartbeat{from{transform:scale3d(1,1,1)}50%{transform:scale3d(1.15,1.15,1.15)}to{transform:scale3d(1,1,1)}}.pounding-heart-container{display:none;align-items:center;justify-content:center;position:absolute;left:0;right:0;top:0;bottom:0;z-index:9999999999;background:linear-gradient(132.49deg,#414857 14.17%,#252831 83.36%)}.pounding-heart-container.show-splash{display:flex}.logo{width:130px;-webkit-backface-visibility:hidden;-ms-transform:translateZ(0);-webkit-transform:translateZ(0);transform:translateZ(0)}.logo.pulse{animation:heartbeat 1.7s infinite}.logo.zoom-out{animation:heartbeatOut 1s forwards}</style><link href="/ui/css/chunk-0295f9da.f0eda711.css" rel="prefetch"><link href="/ui/css/chunk-02d43444.ad21b664.css" rel="prefetch"><link href="/ui/css/chunk-04442fd2.46426182.css" rel="prefetch"><link href="/ui/css/chunk-0583e0fb.330e0ad9.css" rel="prefetch"><link href="/ui/css/chunk-09be15e1.6013e6c6.css" rel="prefetch"><link href="/ui/css/chunk-0d3063d0.73be5579.css" rel="prefetch"><link href="/ui/css/chunk-1c148af5.d3789fbd.css" rel="prefetch"><link href="/ui/css/chunk-1c67cdbe.f79f272b.css" rel="prefetch"><link href="/ui/css/chunk-1d75eb60.2e7176ca.css" rel="prefetch"><link href="/ui/css/chunk-206e6e1a.e3cadc89.css" rel="prefetch"><link href="/ui/css/chunk-218211f8.84289129.css" rel="prefetch"><link href="/ui/css/chunk-221e4267.dff945e0.css" rel="prefetch"><link href="/ui/css/chunk-22f6db76.7ba5b8aa.css" rel="prefetch"><link href="/ui/css/chunk-23ac232c.73293878.css" rel="prefetch"><link href="/ui/css/chunk-26a23bca.3b863e8c.css" rel="prefetch"><link href="/ui/css/chunk-2864e7a7.18601a15.css" rel="prefetch"><link href="/ui/css/chunk-28d9787a.7395c0c5.css" rel="prefetch"><link href="/ui/css/chunk-28da9389.08f96aea.css" rel="prefetch"><link href="/ui/css/chunk-2a0b2c5f.26815a00.css" rel="prefetch"><link href="/ui/css/chunk-2b0dc0fb.261165e1.css" rel="prefetch"><link href="/ui/css/chunk-2b1aa62a.e1523491.css" rel="prefetch"><link href="/ui/css/chunk-2b7f6028.206f42e9.css" rel="prefetch"><link href="/ui/css/chunk-2baf1212.77c47c7a.css" rel="prefetch"><link href="/ui/css/chunk-2e58f22e.54c959f3.css" rel="prefetch"><link href="/ui/css/chunk-306aa776.d79d83d2.css" rel="prefetch"><link href="/ui/css/chunk-3524707c.892127d5.css" rel="prefetch"><link href="/ui/css/chunk-35981908.de3a1368.css" rel="prefetch"><link href="/ui/css/chunk-364032fc.1ee66d7f.css" rel="prefetch"><link href="/ui/css/chunk-38348502.8888178e.css" rel="prefetch"><link href="/ui/css/chunk-39eef245.4ed233a8.css" rel="prefetch"><link href="/ui/css/chunk-3a1e0aac.618bf477.css" rel="prefetch"><link href="/ui/css/chunk-3b67704a.743fa576.css" rel="prefetch"><link href="/ui/css/chunk-3c1a2990.79de993b.css" rel="prefetch"><link href="/ui/css/chunk-3d7d6967.0aac1edf.css" rel="prefetch"><link href="/ui/css/chunk-3dc0f74c.e82451b1.css" rel="prefetch"><link href="/ui/css/chunk-4015b81f.a1315a05.css" rel="prefetch"><link href="/ui/css/chunk-41dd207c.73293878.css" rel="prefetch"><link href="/ui/css/chunk-468fa30b.862652fa.css" rel="prefetch"><link href="/ui/css/chunk-47684ddf.0ff76e88.css" rel="prefetch"><link href="/ui/css/chunk-47b019d1.05696894.css" rel="prefetch"><link href="/ui/css/chunk-4e6d1456.1a45baa9.css" rel="prefetch"><link href="/ui/css/chunk-51c2c992.5af1aaa2.css" rel="prefetch"><link href="/ui/css/chunk-5aac82e6.94ddcca8.css" rel="prefetch"><link href="/ui/css/chunk-5be8e150.73be5579.css" rel="prefetch"><link href="/ui/css/chunk-6033ea27.7e9f9012.css" rel="prefetch"><link href="/ui/css/chunk-623080f1.ace6f45b.css" rel="prefetch"><link href="/ui/css/chunk-628cd7a9.73be5579.css" rel="prefetch"><link href="/ui/css/chunk-64c99cff.4846d51c.css" rel="prefetch"><link href="/ui/css/chunk-64f3c582.abf2ece7.css" rel="prefetch"><link href="/ui/css/chunk-6632b724.c4ac8192.css" rel="prefetch"><link href="/ui/css/chunk-679399e1.3011fbc4.css" rel="prefetch"><link href="/ui/css/chunk-6a4da8ca.ca79d657.css" rel="prefetch"><link href="/ui/css/chunk-6d4ec97c.a125e88f.css" rel="prefetch"><link href="/ui/css/chunk-6e1f9ef2.de1c41fe.css" rel="prefetch"><link href="/ui/css/chunk-6f9eac82.6086ffe1.css" rel="prefetch"><link href="/ui/css/chunk-718afd56.c232e83b.css" rel="prefetch"><link href="/ui/css/chunk-71c0d159.5a633109.css" rel="prefetch"><link href="/ui/css/chunk-73633a19.1933a656.css" rel="prefetch"><link href="/ui/css/chunk-756d659d.16de2995.css" rel="prefetch"><link href="/ui/css/chunk-7591c0de.acad69e9.css" rel="prefetch"><link href="/ui/css/chunk-76e93d5a.e470f73a.css" rel="prefetch"><link href="/ui/css/chunk-7804df76.145976b9.css" rel="prefetch"><link href="/ui/css/chunk-79998f7e.d6a81183.css" rel="prefetch"><link href="/ui/css/chunk-79a568b4.8c85712d.css" rel="prefetch"><link href="/ui/css/chunk-7a1786e7.0c057894.css" rel="prefetch"><link href="/ui/css/chunk-7a9e81f6.1d540e2d.css" rel="prefetch"><link href="/ui/css/chunk-7b4e3606.d16a1841.css" rel="prefetch"><link href="/ui/css/chunk-7bd99c98.086828f6.css" rel="prefetch"><link href="/ui/css/chunk-7e87822a.54bcebd0.css" rel="prefetch"><link href="/ui/css/chunk-85525424.8ecdc57e.css" rel="prefetch"><link href="/ui/css/chunk-86d2ee1c.365ead82.css" rel="prefetch"><link href="/ui/css/chunk-8ab1d8f2.ae59a5e6.css" rel="prefetch"><link href="/ui/css/chunk-8c2b84ea.664b69b7.css" rel="prefetch"><link href="/ui/css/chunk-91e14568.44c6e628.css" rel="prefetch"><link href="/ui/css/chunk-9965626c.487bfe2a.css" rel="prefetch"><link href="/ui/css/chunk-9d231eac.261165e1.css" rel="prefetch"><link href="/ui/css/chunk-a464de62.89d82682.css" rel="prefetch"><link href="/ui/css/chunk-a4bf6b02.ee3d452c.css" rel="prefetch"><link href="/ui/css/chunk-a814a32c.b6a928bd.css" rel="prefetch"><link href="/ui/css/chunk-b72c2e00.41741c8a.css" rel="prefetch"><link href="/ui/css/chunk-b89b2806.33622bc8.css" rel="prefetch"><link href="/ui/css/chunk-c204c5ee.d3f88023.css" rel="prefetch"><link href="/ui/css/chunk-cb3c7320.49f5e206.css" rel="prefetch"><link href="/ui/css/chunk-d55ef7dc.b3b457bb.css" rel="prefetch"><link href="/ui/css/chunk-da1685ac.1c3dd8dc.css" rel="prefetch"><link href="/ui/css/chunk-da67192c.726d0235.css" rel="prefetch"><link href="/ui/css/chunk-e28ac380.65e2740e.css" rel="prefetch"><link href="/ui/css/chunk-e54c278a.e2eec9cc.css" rel="prefetch"><link href="/ui/css/chunk-e95ae2ee.c15e7d67.css" rel="prefetch"><link href="/ui/css/chunk-f1918ad8.1ecc25a9.css" rel="prefetch"><link href="/ui/css/chunk-f424fd62.11f20b20.css" rel="prefetch"><link href="/ui/css/chunk-f85a62a0.818f40ab.css" rel="prefetch"><link href="/ui/css/chunk-fc45ea8e.1f5bafca.css" rel="prefetch"><link href="/ui/js/chunk-0295f9da.61fbd1e9.js" rel="prefetch"><link href="/ui/js/chunk-02d43444.f80d4728.js" rel="prefetch"><link href="/ui/js/chunk-04442fd2.138748c7.js" rel="prefetch"><link href="/ui/js/chunk-0583e0fb.ec0418dd.js" rel="prefetch"><link href="/ui/js/chunk-09be15e1.28742139.js" rel="prefetch"><link href="/ui/js/chunk-0d3063d0.fbfaa6a9.js" rel="prefetch"><link href="/ui/js/chunk-1c148af5.4577ffc5.js" rel="prefetch"><link href="/ui/js/chunk-1c67cdbe.78f3a970.js" rel="prefetch"><link href="/ui/js/chunk-1d75eb60.7394e643.js" rel="prefetch"><link href="/ui/js/chunk-206e6e1a.4a019100.js" rel="prefetch"><link href="/ui/js/chunk-218211f8.a82ccb6c.js" rel="prefetch"><link href="/ui/js/chunk-221e4267.689670c1.js" rel="prefetch"><link href="/ui/js/chunk-22f6db76.3702d962.js" rel="prefetch"><link href="/ui/js/chunk-23ac232c.ecfb0dd1.js" rel="prefetch"><link href="/ui/js/chunk-26a23bca.5ff54a08.js" rel="prefetch"><link href="/ui/js/chunk-2864e7a7.1ddcc6a8.js" rel="prefetch"><link href="/ui/js/chunk-28d9787a.52be47cb.js" rel="prefetch"><link href="/ui/js/chunk-28da9389.50b4a8b0.js" rel="prefetch"><link href="/ui/js/chunk-2a0b2c5f.d0f09eb3.js" rel="prefetch"><link href="/ui/js/chunk-2b0dc0fb.1d9cf450.js" rel="prefetch"><link href="/ui/js/chunk-2b1aa62a.a243e103.js" rel="prefetch"><link href="/ui/js/chunk-2b7f6028.2fda04b1.js" rel="prefetch"><link href="/ui/js/chunk-2baf1212.8dc77b80.js" rel="prefetch"><link href="/ui/js/chunk-2d0abdce.18e79783.js" rel="prefetch"><link href="/ui/js/chunk-2d0b9252.4bc1a453.js" rel="prefetch"><link href="/ui/js/chunk-2d0be118.9f4dc859.js" rel="prefetch"><link href="/ui/js/chunk-2d0c266d.59f3be79.js" rel="prefetch"><link href="/ui/js/chunk-2d0c2670.a75af499.js" rel="prefetch"><link href="/ui/js/chunk-2d0c4e04.4e972be6.js" rel="prefetch"><link href="/ui/js/chunk-2d0ce777.e2f3fd58.js" rel="prefetch"><link href="/ui/js/chunk-2d0d0814.2ea4bfd3.js" rel="prefetch"><link href="/ui/js/chunk-2d0d335e.b16a038c.js" rel="prefetch"><link href="/ui/js/chunk-2d0d74e3.420e6a70.js" rel="prefetch"><link href="/ui/js/chunk-2d0e5414.3a8fb1a6.js" rel="prefetch"><link href="/ui/js/chunk-2d213a40.ce430a79.js" rel="prefetch"><link href="/ui/js/chunk-2d2172bd.26108e96.js" rel="prefetch"><link href="/ui/js/chunk-2d238273.92feffea.js" rel="prefetch"><link href="/ui/js/chunk-2e58f22e.34ccdaa7.js" rel="prefetch"><link href="/ui/js/chunk-306aa776.fa6845ea.js" rel="prefetch"><link href="/ui/js/chunk-3524707c.be95d410.js" rel="prefetch"><link href="/ui/js/chunk-35981908.1ab3193e.js" rel="prefetch"><link href="/ui/js/chunk-364032fc.564c482d.js" rel="prefetch"><link href="/ui/js/chunk-38348502.df476a08.js" rel="prefetch"><link href="/ui/js/chunk-39eef245.15f28873.js" rel="prefetch"><link href="/ui/js/chunk-3a1e0aac.e2bc79e5.js" rel="prefetch"><link href="/ui/js/chunk-3b67704a.f731592c.js" rel="prefetch"><link href="/ui/js/chunk-3c1a2990.f618cceb.js" rel="prefetch"><link href="/ui/js/chunk-3d7d6967.30b0bf92.js" rel="prefetch"><link href="/ui/js/chunk-3dc0f74c.816a4349.js" rel="prefetch"><link href="/ui/js/chunk-4015b81f.d1fa1994.js" rel="prefetch"><link href="/ui/js/chunk-41dd207c.88103c77.js" rel="prefetch"><link href="/ui/js/chunk-468fa30b.532169f1.js" rel="prefetch"><link href="/ui/js/chunk-47684ddf.38ba0717.js" rel="prefetch"><link href="/ui/js/chunk-47b019d1.62714297.js" rel="prefetch"><link href="/ui/js/chunk-4e6d1456.a1157a43.js" rel="prefetch"><link href="/ui/js/chunk-51c2c992.60e86282.js" rel="prefetch"><link href="/ui/js/chunk-5aac82e6.67a9be00.js" rel="prefetch"><link href="/ui/js/chunk-5be8e150.2d2c61c9.js" rel="prefetch"><link href="/ui/js/chunk-5f157cb3.2b307123.js" rel="prefetch"><link href="/ui/js/chunk-6033ea27.f34c6fd7.js" rel="prefetch"><link href="/ui/js/chunk-623080f1.5c8db057.js" rel="prefetch"><link href="/ui/js/chunk-628cd7a9.d33abc6d.js" rel="prefetch"><link href="/ui/js/chunk-64c99cff.03adf05b.js" rel="prefetch"><link href="/ui/js/chunk-64f3c582.e2b74773.js" rel="prefetch"><link href="/ui/js/chunk-6632b724.19d9de0e.js" rel="prefetch"><link href="/ui/js/chunk-679399e1.8e772bd7.js" rel="prefetch"><link href="/ui/js/chunk-6a4da8ca.cb38eccd.js" rel="prefetch"><link href="/ui/js/chunk-6d4ec97c.ab6e7663.js" rel="prefetch"><link href="/ui/js/chunk-6e1f9ef2.241834d4.js" rel="prefetch"><link href="/ui/js/chunk-6f9eac82.b1f06297.js" rel="prefetch"><link href="/ui/js/chunk-718afd56.11b09d53.js" rel="prefetch"><link href="/ui/js/chunk-71c0d159.b967b99c.js" rel="prefetch"><link href="/ui/js/chunk-73633a19.ee03c3ef.js" rel="prefetch"><link href="/ui/js/chunk-756d659d.037ce21e.js" rel="prefetch"><link href="/ui/js/chunk-7591c0de.31638fec.js" rel="prefetch"><link href="/ui/js/chunk-76e93d5a.b9c57caf.js" rel="prefetch"><link href="/ui/js/chunk-7804df76.d9314d90.js" rel="prefetch"><link href="/ui/js/chunk-79998f7e.ce78e74c.js" rel="prefetch"><link href="/ui/js/chunk-79a568b4.6ca83fc7.js" rel="prefetch"><link href="/ui/js/chunk-7a1786e7.a67f3c0b.js" rel="prefetch"><link href="/ui/js/chunk-7a9e81f6.99dd77a7.js" rel="prefetch"><link href="/ui/js/chunk-7b4e3606.9c6244bb.js" rel="prefetch"><link href="/ui/js/chunk-7bd99c98.48b37277.js" rel="prefetch"><link href="/ui/js/chunk-7e41450b.6f877ef4.js" rel="prefetch"><link href="/ui/js/chunk-7e87822a.fe23e752.js" rel="prefetch"><link href="/ui/js/chunk-85525424.09d494c8.js" rel="prefetch"><link href="/ui/js/chunk-86d2ee1c.8af42387.js" rel="prefetch"><link href="/ui/js/chunk-8ab1d8f2.46f994cd.js" rel="prefetch"><link href="/ui/js/chunk-8c2b84ea.7a2621a2.js" rel="prefetch"><link href="/ui/js/chunk-91e14568.790d13d9.js" rel="prefetch"><link href="/ui/js/chunk-99482adc.5a5dd7ff.js" rel="prefetch"><link href="/ui/js/chunk-9965626c.b3f0b599.js" rel="prefetch"><link href="/ui/js/chunk-9d231eac.82576627.js" rel="prefetch"><link href="/ui/js/chunk-a464de62.cd4fccb6.js" rel="prefetch"><link href="/ui/js/chunk-a4bf6b02.e5fb5be1.js" rel="prefetch"><link href="/ui/js/chunk-a814a32c.db3f8092.js" rel="prefetch"><link href="/ui/js/chunk-b72c2e00.a8403245.js" rel="prefetch"><link href="/ui/js/chunk-b89b2806.7528b320.js" rel="prefetch"><link href="/ui/js/chunk-c204c5ee.b0ee3e3b.js" rel="prefetch"><link href="/ui/js/chunk-cb3c7320.519392a6.js" rel="prefetch"><link href="/ui/js/chunk-d55ef7dc.fa593005.js" rel="prefetch"><link href="/ui/js/chunk-da1685ac.6b5b347b.js" rel="prefetch"><link href="/ui/js/chunk-da67192c.727248d4.js" rel="prefetch"><link href="/ui/js/chunk-e28ac380.83b40715.js" rel="prefetch"><link href="/ui/js/chunk-e54c278a.25c6337e.js" rel="prefetch"><link href="/ui/js/chunk-e95ae2ee.6860870d.js" rel="prefetch"><link href="/ui/js/chunk-f1918ad8.b04b7083.js" rel="prefetch"><link href="/ui/js/chunk-f424fd62.c3c240e3.js" rel="prefetch"><link href="/ui/js/chunk-f85a62a0.30e0407a.js" rel="prefetch"><link href="/ui/js/chunk-fc45ea8e.f001bbdc.js" rel="prefetch"><link href="/ui/css/app.c2d4f448.css" rel="preload" as="style"><link href="/ui/css/chunk-vendors.434a3edd.css" rel="preload" as="style"><link href="/ui/js/app.c87a5a64.js" rel="preload" as="script"><link href="/ui/js/chunk-vendors.1141dc99.js" rel="preload" as="script"><link href="/ui/css/chunk-vendors.434a3edd.css" rel="stylesheet"><link href="/ui/css/app.c2d4f448.css" rel="stylesheet"><link rel="stylesheet" type="text/css" href="/ui/css/chunk-8ab1d8f2.ae59a5e6.css"><script charset="utf-8" src="/ui/js/chunk-8ab1d8f2.46f994cd.js"></script><script charset="utf-8" src="/ui/js/chunk-7e41450b.6f877ef4.js"></script><link rel="stylesheet" type="text/css" href="/ui/css/chunk-679399e1.3011fbc4.css"><script charset="utf-8" src="/ui/js/chunk-679399e1.8e772bd7.js"></script><link rel="stylesheet" type="text/css" href="/ui/css/chunk-2b7f6028.206f42e9.css"><script charset="utf-8" src="/ui/js/chunk-2b7f6028.2fda04b1.js"></script></head><body><div class="pounding-heart-container"><img class="logo zoom-out" src="/ui/img/jfrog.8f770bff.svg"></div><script nonce="">(function () {
+
+            const splashScreen = document.querySelector('.pounding-heart-container');
+            const logo = document.querySelector('.logo');
+
+            window.showSplashPulse = function () {
+                splashScreen.classList.add('show-splash');
+            };
+
+            window.hideSplashPulse = function () {
+	            window.setTimeout(function () {
+		            splashScreen.classList.remove('show-splash');
+	            }, 1100);
+
+	            logo.classList.add('zoom-out');
+	            logo.classList.remove('pulse');
+
+            };
+        })();</script><noscript><strong>We're sorry but jfrog webapp doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><link rel="stylesheet" type="text/css" href="/ui/webapp/css/vendorStyles.css"><link rel="stylesheet" type="text/css" href="/ui/webapp/css/application.css"><div id="app" class="h-100"><div slot="content" class="app-inner-wrapper h-100"><div data-v-623c5e0a="" class="app-layout-wrapper d-flex"><div data-v-158e88aa="" data-v-623c5e0a="" class="row header"><div data-v-158e88aa="" data-cy="navbarWrapper" class="navbar-wrapper"><div data-v-158e88aa="" element-loading-background="rgba(0,0,0,0)" class="user-logo"><span data-v-158e88aa="" class="title"><a data-v-aa941d74="" data-v-158e88aa="" href="/ui/" class="app-logo router-link-active"><img data-v-aa941d74="" src="/ui/img/jfrog-platform.d5d5c2a5.svg" alt=""></a></span></div><!----><div data-v-158e88aa="" class="navbar-search-wrapper dropdown-z-index"><div data-v-158e88aa="" data-cy="searchContainer" class="row advanced-search-container"><div class="col-md-auto pl-0 pr-0 search-type-select"><div data-v-6018565d="" tabindex="0" class="multiselect" slot="prepend" data-cy="searchTypeSelect"><div data-v-6018565d="" class="multiselect__select_caret"><i data-v-6018565d="" class="icon icon-sidebar-menu-item-arrow"></i></div>  <div class="multiselect__tags"><div class="multiselect__tags-wrap" style="display: none;"></div> <!----> <div class="multiselect__spinner" style="display: none;"></div> <!----> <span class="multiselect__single"><i data-v-6018565d="" class="option__image mr-3 icon  icon-sidebar-packages"></i><span data-v-6018565d="" class="option__desc"><span data-v-6018565d="" class="option__title">Packages</span></span></span> <!----></div> <div tabindex="-1" class="multiselect__content-wrapper" style="max-height: 300px; display: none;"><ul class="multiselect__content" style="display: inline-block;"> <!----> <li class="multiselect__element"><span data-select="" data-selected="" data-deselect="" class="multiselect__option multiselect__option--highlight multiselect__option--selected"><i data-v-6018565d="" class="option__image mr-2 icon  icon-sidebar-packages"></i><span data-v-6018565d="" class="option__desc"><span data-v-6018565d="" class="option__title">Packages</span></span></span> <!----></li><li class="multiselect__element"><span data-select="" data-selected="" data-deselect="" class="multiselect__option"><i data-v-6018565d="" class="option__image mr-2 icon  icon-sidebar-create-repositories"></i><span data-v-6018565d="" class="option__desc"><span data-v-6018565d="" class="option__title">Artifacts</span></span></span> <!----></li><li class="multiselect__element"><span data-select="" data-selected="" data-deselect="" class="multiselect__option"><i data-v-6018565d="" class="option__image mr-2 icon  icon-sidebar-builds"></i><span data-v-6018565d="" class="option__desc"><span data-v-6018565d="" class="option__title">Builds</span></span></span> <!----></li> <li style="display: none;"><span class="multiselect__option">No elements found. Consider changing the search query.</span></li> <li style="display: none;"><span class="multiselect__option">List is empty.</span></li> </ul></div></div></div><div class="col pl-0 pr-0"><form data-v-2e2b9e3f="" autocomplete="off" class=""><div data-v-2e2b9e3f="" role="group" class="input-group"><!----><!----><input data-v-2e2b9e3f="" type="text" placeholder="Search packages with wildcards. E.g.: To find acme, search ac*, *me, acm?" class="border-0 form-control" data-cy="searchInput" id="__BVID__25"><div data-v-2e2b9e3f="" class="input-group-append"><button data-v-2e2b9e3f="" data-cy="clearIconButton" type="button" class="btn border-0 btn-light btn-clear btn-secondary" style="display: none;"><i data-v-2e2b9e3f="" class="icon icon-jfui-close"></i></button><button data-v-2e2b9e3f="" data-cy="searchIconButton" type="button" disabled="disabled" class="btn btn-search btn-secondary disabled"><i data-v-2e2b9e3f="" class="icon icon-jfui-search"></i></button><button data-v-2e2b9e3f="" data-cy="filterIconButton" type="button" class="btn border-0 btn-advanced btn-secondary"><i data-v-2e2b9e3f="" class="icon icon-jfui-filter pull-right "></i></button></div><!----><!----></div><div data-v-f4710a42="" data-v-2e2b9e3f="" id="recent-searches-collapse" class="mt-2 recent-search-dropdown collapse" style="display: none;"><div data-v-f4710a42="" class="card recent-search-card"><!----><!----><div data-v-f4710a42=""><p data-v-f4710a42="" class="text-muted font-weight-bold m-3">No recent searches yet</p></div><!----><!----></div></div></form><div data-v-5babdaec="" id="search-advanced-collapse" class="mt-2 search-advanced-dropdown collapse" data-cy="advancedSearchDropdown" style="display: none;"><div data-v-5babdaec="" class="card advanced-search-card"><!----><!----><div data-v-5babdaec="" class="card-body"><!----><!----><div data-v-3a59027f="" class="advanced-packages-container"><form data-v-3a59027f="" class="el-form"><section data-v-3a59027f="" class="el-container is-vertical"><header data-v-3a59027f="" class="el-header gray-card" style="height: auto;"><div data-v-3a59027f="" class="search-header-row el-row"><div data-v-3a59027f="" class="el-col el-col-16"><span data-v-3a59027f="" class="search-header-style">SEARCH PACKAGES</span></div></div><!----></header><main data-v-3a59027f="" class="el-main"><div data-v-3a59027f="" class="el-row" style="margin-left: -10px; margin-right: -10px;"><div data-v-3a59027f="" class="el-col el-col-16" style="padding-left: 10px; padding-right: 10px;"><div data-v-3a59027f="" class="el-form-item"><label class="el-form-item__label">Name</label><div class="el-form-item__content"><div data-v-3a59027f="" class="el-input"><!----><input type="text" autocomplete="off" id="search-package-name" data-cy="nameInput" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div></div></div><div data-v-3a59027f="" class="el-row" style="margin-left: -10px; margin-right: -10px;"><div data-v-3a59027f="" class="el-col el-col-8" style="padding-left: 10px; padding-right: 10px;"><div data-v-3a59027f="" class="el-form-item"><label class="el-form-item__label">Description</label><div class="el-form-item__content"><div data-v-3a59027f="" class="el-input"><!----><input type="text" autocomplete="off" id="search-description" data-cy="descInput" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div></div><div data-v-3a59027f="" class="el-col el-col-8" style="padding-left: 10px; padding-right: 10px;"><div data-v-3a59027f="" class="el-form-item"><label class="el-form-item__label">Tags</label><div class="el-form-item__content"><div data-v-3a59027f="" class="el-input"><!----><input type="text" autocomplete="off" id="search-tags" data-cy="tagsInput" class="el-input__inner"><!----><!----><!----><!----></div><!----></div></div></div></div></main></section></form></div></div><div data-v-5babdaec="" class="card-footer"><div data-v-5babdaec="" class="flex flex--justify-end"><button data-v-5babdaec="" type="button" class="el-button el-button--transparent" data-cy="cancelButton"><!----><!----><span>Cancel</span></button><button data-v-5babdaec="" disabled="disabled" type="button" class="el-button el-button--primary is-disabled" data-cy="searchButton"><!----><!----><span>Search</span></button></div></div><!----></div></div><!----></div></div><div data-v-788e939d="" data-v-158e88aa="" style="display: none;"><div data-v-788e939d="" aria-haspopup="listbox" role="combobox" aria-owns="el-autocomplete-8632" class="el-autocomplete inline-input"><div class="el-input el-input--prefix"><!----><input type="text" autocomplete="off" valuekey="value" popperclass="admin-search-popper" placeholder="Search admin resources" fetchsuggestions="function () { [native code] }" triggeronfocus="true" debounce="0" placement="bottom-start" popperappendtobody="true" class="el-input__inner" role="textbox" aria-autocomplete="list" aria-controls="id" aria-activedescendant="el-autocomplete-8632-item--1"><span class="el-input__prefix"><i data-v-788e939d="" class="icon icon-search"></i><!----></span><!----><!----><!----></div><div role="region" class="el-autocomplete-suggestion el-popper admin-search-popper" style="display: none;"><div class="el-scrollbar"><div class="el-autocomplete-suggestion__wrap el-scrollbar__wrap" style="margin-bottom: -9px; margin-right: -9px;"><ul class="el-scrollbar__view el-autocomplete-suggestion__list" role="listbox" id="el-autocomplete-8632"></ul></div><div class="el-scrollbar__bar is-horizontal"><div class="el-scrollbar__thumb" style="transform: translateX(0%);"></div></div><div class="el-scrollbar__bar is-vertical"><div class="el-scrollbar__thumb" style="transform: translateY(0%);"></div></div></div></div></div></div></div><div data-v-158e88aa="" class="navbar-controls"><div data-v-158e88aa="" class="navbar-controls-container"><!----><div data-v-158e88aa="" class="help-container"><a data-v-158e88aa="" href="https://www.jfrog.com/confluence/site/documentation" target="_blank" onclick="store.dispatch('WIKI_LINK_TRACKING', event)" class="help-link"><button data-v-158e88aa="" type="button" class="el-button help el-button--standalone"><!----><!----><span><i data-v-158e88aa="" class="icon-jfui-help-filled help-icon"></i></span></button></a></div><div data-v-158e88aa="" class="login-container"><a data-v-158e88aa="" href="/ui/login/" class="login-link"><i data-v-158e88aa="" class="icon icon-jfui-login"></i>Log in
+					</a></div></div></div></div></div><!----><!----><!----><div data-v-623c5e0a="" class="app-layout-content "><div data-v-623c5e0a="" class="side-bar-wrapper expanded regular-user"><div data-v-623c5e0a="" data-cy="vSidebarMenu" class="v-sidebar-menu vsm_expanded" style="max-width: 300px;"><div data-v-623c5e0a=""><div data-v-f8a2dfc2="" data-v-623c5e0a=""><div data-v-f8a2dfc2="" class="toggle-btn"><button data-v-f8a2dfc2="" class="icon-sidebar-arrow"></button></div><!----></div></div><div class="vsm--list"><!----><div class="el-tooltip vsm--item vsm--item_open has-children" aria-describedby="el-tooltip-8016" tabindex="0"><span class="vsm--link vsm--link_level-1 vsm--link_active router-link-active"><i class="vsm--icon icon icon-sidebar-artifactory"></i><!----><span class="vsm--title">Artifactory</span><div class="vsm--arrow vsm--arrow_open vsm--arrow_slot"><span data-v-623c5e0a=""><i data-v-623c5e0a="" class="icon-sidebar-menu-item-arrow"></i></span></div></span><div class="vsm--dropdown" style="height: auto;"><div class="vsm--list"><!----><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-7351" tabindex="0"><a href="/ui/packages" aria-current="page" class="router-link-exact-active router-link-active vsm--link vsm--link_level-2 vsm--link_active vsm--link_exact-active router-link-active"><i class="vsm--icon icon icon-sidebar-packages"></i><!----><span class="vsm--title">Packages</span><!----></a><!----></div><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-1429" tabindex="0"><a href="/ui/builds" class="vsm--link vsm--link_level-2 vsm--link_disabled" disabled="disabled" tabindex="-1"><i class="vsm--icon icon icon-sidebar-builds"></i><!----><span class="vsm--title">Builds</span><!----></a><!----></div><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-4006" tabindex="0"><a href="/ui/repos/tree" class="vsm--link vsm--link_level-2"><i class="vsm--icon icon icon-sidebar-create-repositories"></i><!----><span class="vsm--title">Artifacts</span><!----></a><!----></div></div></div></div><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-4083" tabindex="0"><a href="/ui/bundles" class="vsm--link vsm--link_level-1"><i class="vsm--icon icon icon-sidebar-distribution"></i><!----><span class="vsm--title">Distribution</span><!----></a><!----></div><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-1650" tabindex="0"><a href="/ui/pipelines-teaser" class="vsm--link vsm--link_level-1"><i class="vsm--icon icon icon-sidebar-pipelines"></i><!----><span class="vsm--title">Pipelines</span><!----></a><!----></div><div class="el-tooltip vsm--item no-children" aria-describedby="el-tooltip-8177" tabindex="0"><a href="/ui/security-and-compliance-teaser" class="vsm--link vsm--link_level-1"><i class="vsm--icon icon icon-sidebar-xray"></i><!----><span class="vsm--title">Security &amp; Compliance</span><!----></a><!----></div></div><!----><div data-v-623c5e0a=""><div data-v-0c04f222="" data-v-623c5e0a="" class="getting-started-wrapper" style="display: none;"><span data-v-0c04f222=""><div role="tooltip" id="el-popover-6396" aria-hidden="true" class="el-popover el-popper getting-started-popover" tabindex="0" style="width: 400px; display: none;"><!----><!----><!----></div><span class="el-popover__reference-wrapper"><div data-v-0c04f222="" class="el-popover__reference" aria-describedby="el-popover-6396" tabindex="0"><div data-v-0c04f222="" class="menu-item"><img data-v-0c04f222="" src="/ui/img/getting-started-badge.63b15933.svg" alt="" class="getting-started-badge"><span data-v-0c04f222="" class="menu-item-text">Getting Started</span></div></div></span></span></div><div data-v-3edf4400="" data-v-623c5e0a="" class="sidebar-jfui-footer"><div data-v-3edf4400="" class="side-bar-footer "><img data-v-3edf4400="" src="/ui/img/jfrog.8f770bff.svg" class="footer-logo"><span data-v-3edf4400="">Commercial license 7.24.3 rev 72403900 Licensed to YYYYY s.r.o.<span data-v-3edf4400=""><a data-v-3edf4400="" href="http://www.jfrog.com" target="_blank">© Copyright 2024 JFrog Ltd</a></span></span></div></div></div><!----></div></div><!----><!----><!----><div data-v-7cb29742="" data-v-213b5013="" data-v-623c5e0a="" class="el-dialog__wrapper walk-me-popup" shadow="never" style="display: none;"><div role="dialog" aria-modal="true" aria-label="dialog" class="el-dialog" style="margin-top: 15vh; width: 420px;"><div class="el-dialog__header"><span class="el-dialog__title"></span><button type="button" aria-label="Close" class="el-dialog__headerbtn"><i class="el-dialog__close el-icon el-icon-close"></i></button></div><!----><!----></div></div><div data-v-623c5e0a="" class="main-routes-wrapper"><div data-v-623c5e0a="" id="systemMessagesContainer"><!----><div data-v-623c5e0a=""></div></div><div data-v-623c5e0a="" style="height: calc(100% + 0px);"><div data-v-623c5e0a="" id="ng-micro-app-root" style="display: none;"><div id="ng-micro-app-html" class="ng-micro-app ng-scope"><base href="/ui//"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+
+
+    <!--<base href="/ui">-->
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Expires" content="0">
+    <!-- Stylesheets -->
+    
+    
+
+    <title></title>
+
+
+
+<jf-spinner domain="body" class="ng-isolate-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!-- ngIf: jfSpinner.show -->
+</jf-spinner>
+<div id="toast-container" ng-class="[config.position, config.animation]" toaster-options="{'position-class': 'toast-top-center', 'newest-on-top': true}" class="toast-top-center"><!-- ngRepeat: toaster in toasters --></div>
+
+<!-- uiView: --><ui-view class="ng-scope" style=""><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!-- ngIf: Base.footerData --><div id="jf-full-page" ng-if="Base.footerData" ng-click="jfSidebar.clickOffMenu()" class="ng-scope">
+    <div class="jf-layout-row">
+        <jf-header class="jf-layout-cell ng-isolate-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<nav id="jf-header">
+    <div class="navbar-header">
+        <!-- ngIf: !jfHeader.isSSOMode() --><a ng-if="!jfHeader.isSSOMode()" class="navbar-brand ng-scope" ui-sref="home" href="/ui/home">
+            <img class="logo-picture" alt="Artifactory" ng-src="ui/images/artifactory_logo.svg" src="ui/images/artifactory_logo.svg">
+        </a><!-- end ngIf: !jfHeader.isSSOMode() -->
+        <!-- ngIf: jfHeader.isSSOMode() && jfHeader.isRedirecting() -->
+        <!-- ngIf: jfHeader.isSSOMode() && !jfHeader.isRedirecting() -->
+    </div>
+
+    <div class="navbar-right">
+        <!-- ngIf: jfHeader.$state.current.name !== 'login' --><div class="pull-right header-section ng-scope" ng-class="{'quick-actions': jfHeader.isQuickActionsAvailable()}" ng-if="jfHeader.$state.current.name !== 'login'">
+            <!-- ngIf: !jfHeader.currentUser.isGuest() -->
+            <!-- ngIf: jfHeader.currentUser.isGuest() --><div ng-if="jfHeader.currentUser.isGuest()" class="ng-scope">
+                <a href="" id="login-link" ng-click="jfHeader.login()">Log In</a>
+            </div><!-- end ngIf: jfHeader.currentUser.isGuest() -->
+        </div><!-- end ngIf: jfHeader.$state.current.name !== 'login' -->
+        <!-- ngIf: jfHeader.helpLinksEnabled && !jfHeader.isRedirecting() --><div class="pull-right header-section header-help dropdown ng-scope" dropdown="" ng-disabled="jfHeader.helpLinks.length == 0" ng-if="jfHeader.helpLinksEnabled &amp;&amp; !jfHeader.isRedirecting()" style="">
+            <a class="dropdown-toggle help-menu" dropdown-toggle="" ng-disabled="jfHeader.helpLinks.length == 0" aria-haspopup="true" aria-expanded="false">Help <i class="action-icon icon icon-small-arrow-down"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right text-left">
+	            <li class="triangle"></li>
+                <!-- ngRepeat: helpLink in jfHeader.helpLinks | orderBy:'priority' --><li ng-repeat="helpLink in jfHeader.helpLinks | orderBy:'priority'" class="ng-scope">
+                    <a href="https://www.jfrog.com/confluence/display/RTF/Artifactory+User+Guide" target="_blank" class="jf-link ng-binding user-guide" ng-class="helpLink.title.replace(' ','-').toLowerCase()">
+                        User Guide
+                    </a>
+                </li><!-- end ngRepeat: helpLink in jfHeader.helpLinks | orderBy:'priority' --><li ng-repeat="helpLink in jfHeader.helpLinks | orderBy:'priority'" class="ng-scope">
+                    <a href="https://www.jfrog.com/confluence/display/RTF/Artifactory+REST+API" target="_blank" class="jf-link ng-binding rest-api" ng-class="helpLink.title.replace(' ','-').toLowerCase()">
+                        REST API
+                    </a>
+                </li><!-- end ngRepeat: helpLink in jfHeader.helpLinks | orderBy:'priority' --><li ng-repeat="helpLink in jfHeader.helpLinks | orderBy:'priority'" class="ng-scope">
+                    <a href="https://www.jfrog.com/confluence/display/RTF/General+Information" target="_blank" class="jf-link ng-binding general-information" ng-class="helpLink.title.replace(' ','-').toLowerCase()">
+                        General Information
+                    </a>
+                </li><!-- end ngRepeat: helpLink in jfHeader.helpLinks | orderBy:'priority' -->
+            </ul>
+        </div><!-- end ngIf: jfHeader.helpLinksEnabled && !jfHeader.isRedirecting() -->
+        <!-- ngIf: !jfHeader.hideSearch --><jf-header-search ng-if="!jfHeader.hideSearch" class="ng-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<form ng-submit="jfHeaderSearch.search()" class="pull-left header-separator ng-pristine ng-valid">
+    <div class="search-wrapper">
+        <div class="icon-search-container" data-ic-class="search-trigger">
+            <span class="header-search-btn icon icon-search" ng-click="jfHeaderSearch.search()"></span>
+            <input type="text" class="search-input ng-pristine ng-untouched ng-valid ng-empty" data-ic-class="search-input" placeholder="Search" ng-model="jfHeaderSearch.query.query">
+        </div>
+    </div>
+</form></jf-header-search><!-- end ngIf: !jfHeader.hideSearch -->
+        <span class="pull-left navbar-separator"></span>
+    </div>
+</nav></jf-header>
+    </div>
+    <div class="jf-layout-row">
+        <div class="jf-layout-cell">
+            <jf-messages><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!-- ngIf: jfMessages.getConstantMessages().length || jfMessages.getSystemMessage() --></jf-messages>
+            <distribution-messages><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!-- ngIf: jfMessages.getConstantMessages().length || jfMessages.getSystemMessage() --></distribution-messages>
+        </div>
+    </div>
+
+    <div class="jf-layout-row">
+        <div id="jf-viewport" class="jf-layout-cell">
+            <div id="jf-relative-viewport">
+                <jf-sidebar driver="Base.sidebarDriver" footer-template="layouts/footer.html" class="ng-isolate-scope"><div id="jf-main-nav" ng-style="jfSidebar.menu" ng-mouseleave="jfSidebar.mouseLeaveMenu($event)" ng-mouseover="jfSidebar.mouseOverMenu()" style="transition-duration: 0.3s; width: 55px; transition-delay: 0.3s;">
+
+    <span class="pin-menu" ng-click="jfSidebar.pinMenu()"><i class="icon-menu-arrow" ng-class="{'menu-arrow-close' : jfSidebar.pinMenuStatus}"></i></span>
+    <ul class="sidebar-wrapper-inner" ng-click="jfSidebar.closeSubMenu(0,true,true)">
+        <!-- ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope active">
+
+            <!-- ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template --><a class="menu-item ng-scope" id="" ng-class="" ng-mouseover="jfSidebar.onMouseOverSimpleItem(item)" ng-if="!item.isDisabled &amp;&amp; !item.children &amp;&amp; !item.template"><i class="icon icon-home-new"></i><span class="ng-binding">Home</span></a><!-- end ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope">
+
+            <!-- ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template --><a class="menu-item ng-scope" id="" ng-class="" ng-mouseover="jfSidebar.onMouseOverSimpleItem(item)" ng-if="!item.isDisabled &amp;&amp; !item.children &amp;&amp; !item.template"><i class="icon icon-artifacts-new"></i><span class="ng-binding">Artifacts</span></a><!-- end ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="native-ui" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope">
+
+            <!-- ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template --><a class="menu-item ng-scope" id="" ng-class="" ng-mouseover="jfSidebar.onMouseOverSimpleItem(item)" ng-if="!item.isDisabled &amp;&amp; !item.children &amp;&amp; !item.template"><i class="icon icon-navigation-products"></i><span class="ng-binding">Packages</span></a><!-- end ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope">
+
+            <!-- ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template --><a class="menu-item ng-scope" id="search" ng-class="" ng-mouseover="jfSidebar.onMouseOverSimpleItem(item)" ng-if="!item.isDisabled &amp;&amp; !item.children &amp;&amp; !item.template"><i class="icon icon-menu-search"></i><span class="ng-binding">Search</span></a><!-- end ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id=""><i class="icon icon-navigation-bundle"></i><span class="ng-binding">Release Bundles</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id=""><i class="icon icon-xray"></i><span class="ng-binding">Xray</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id=""><i class="icon icon-xray-menu-watches"></i><span class="ng-binding">Watches</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id=""><i class="icon icon-xray-policies"></i><span class="ng-binding">Policies</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id=""><i class="icon icon-builds-new"></i><span class="ng-binding">Builds</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems --><!-- ngIf: !item.isHidden --><li ng-repeat="item in jfSidebar.menuItems" jf-disable-feature="" ng-if="!item.isHidden" ng-click="$event.stopPropagation(); jfSidebar.itemClick(item)" ng-class="{disabled: item.isDisabled, active: (item.stateParent | includedByState) || jfSidebar.isCurrentItem(item) || jfSidebar.highLightOnState(item.stateRelated), 'icon-arrow-left':item.children }" class="ng-scope disabled icon-arrow-left">
+
+            <!-- ngIf: item.isDisabled --><a ng-if="item.isDisabled" class="menu-item disabled ng-scope" ng-class="" id="admin"><i class="icon icon-admin-new"></i><span class="ng-binding">Admin</span></a><!-- end ngIf: item.isDisabled -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && !item.template -->
+
+            <!-- ngIf: !item.isDisabled && !item.children && item.template -->
+
+            <!-- ngIf: !item.isDisabled && item.children -->
+
+
+            <!-- ngIf: item.children && !item.isDisabled -->
+
+        </li><!-- end ngIf: !item.isHidden --><!-- end ngRepeat: item in jfSidebar.menuItems -->
+    </ul>
+
+    <!-- ngIf: jfSidebar.footerTemplate --><!-- ngInclude: --><ng-include ng-if="jfSidebar.footerTemplate" src="jfSidebar.footerTemplate" class="ng-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<div class="sidebar-footer ng-scope">
+    <div class="icon"><i class="icon-jfrog-logo"></i></div>
+    <div class="wrapper-footer-data ng-binding">
+        Artifactory Professional<br>
+            7.24.3 rev 72403900<!-- ngIf: jfSidebar.footerData.buildNumber --><br ng-if="jfSidebar.footerData.buildNumber" class="ng-scope" style=""><!-- end ngIf: jfSidebar.footerData.buildNumber -->
+        <!-- ngIf: !jfSidebar.footerData.isAol --><div ng-if="!jfSidebar.footerData.isAol" class="ng-binding ng-scope">
+            Licensed to YYYYY s.r.o.<!-- ngIf: jfSidebar.footerData.licenseInfo --><br ng-if="jfSidebar.footerData.licenseInfo" class="ng-scope" style=""><!-- end ngIf: jfSidebar.footerData.licenseInfo -->
+        </div><!-- end ngIf: !jfSidebar.footerData.isAol -->
+        <span class="ng-binding">© Copyright 2024 JFrog Ltd</span>
+    </div>
+</div>
+</ng-include><!-- end ngIf: jfSidebar.footerTemplate -->
+    <!-- ngIf: jfSidebar.footerTemplateHtml -->
+
+</div></jf-sidebar>
+                <!-- Main Content Area-->
+                <div id="jf-content" ng-class="{'jf-content-pinned-menu': jfSidebar.pinMenuStatus}">
+                    <jf-spinner domain="content" class="ng-isolate-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!-- ngIf: jfSpinner.show -->
+</jf-spinner>
+                    <!-- uiView: --><ui-view class="ng-scope"><!--
+  ~ Artifactory is a binaries repository manager.
+  ~ Copyright (C) 2018 JFrog Ltd.
+  ~
+  ~ Artifactory is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU Affero General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Artifactory is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU Affero General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU Affero General Public License
+  ~ along with Artifactory.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<!--
+<div class="content-layout-container home-page">
+    <div class="home-header-container">
+        <h1 class="home-header-happily" ng-if="Home.homepageData.artifactCount !== undefined">
+            Artifactory is happily serving
+            {{Home.homepageData.artifactCount | number}}
+            {{Home.homepageData.artifactCount === 1 ? "artifact" : "artifacts"}}</h1>
+
+        <jf-news ng-if="Home.jfNewsIsOn && Home.isAol()"></jf-news>
+
+        <div jf-hide-for-aol class="artifactory-details">
+            <span class="artifactory-version" ng-if="Home.homepageData.version">Artifactory Version {{Home.homepageData.version}}</span>
+            <span class="artifactory-up-time" ng-if="Home.homepageData.upTime">(Uptime is {{Home.homepageData.upTime}})</span>
+        </div>
+        <div jf-hide-for-aol class="artifactory-details artifactory-latest-version" ng-if="Home.homepageData.latestRelease">Latest Release: <a class="jf-link" target="_blank" ng-href="{{Home.homepageData.latestReleaseLink}}">{{Home.homepageData.latestRelease}}</a></div>
+
+
+
+        <p ng-if="Home.homepageData.displayAccountManagementLink" class="artifactory-details">
+            <a class="jf-link" target="_blank" ng-href="{{Home.homepageData.accountManagementLink}}">
+                <i class="icon icon-padlock"></i>Log in to account management
+            </a>
+        </p>
+    </div>
+
+    <div class="content-wrapper">
+        <jf-widgets-layout widgets="Home.widgets"
+                           layout="Home.widgetsLayout"
+                           options="Home.widgetsOptions"
+                           footer-text="Home.footerText"></jf-widgets-layout>
+
+    </div>
+</div>
+-->
+</ui-view>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- end ngIf: Base.footerData -->
+</ui-view>
+
+<!-- Javascript -->
+<script type="text/javascript" src="vendorScripts.js"></script>
+<script type="text/javascript" src="templates.js"></script>
+
+<!-- Application code -->
+<script src="artifactory_register.js"></script>
+<script src="artifactory_core.js"></script>
+<script src="artifactory_services.js"></script>
+<script src="artifactory_dao.js"></script>
+
+<script src="artifactory_ui.js"></script>
+<script src="artifactory_ui_components.js"></script>
+<script src="artifactory_directives.js"></script>
+<script src="artifactory_filters.js"></script>
+
+<script src="artifactory_views.js"></script>
+<script src="artifactory_states.js"></script>
+<script src="artifactory_distribution.js"></script>
+<script src="artifactory_main.js"></script>
+
+
+
+
+<div class="cfp-hotkeys-container fade ng-scope" ng-class="{in: helpVisible}" style="display: none;"><div class="cfp-hotkeys"><h4 class="cfp-hotkeys-title ng-binding">Keyboard Shortcuts:</h4><table><tbody><!-- ngRepeat: hotkey in hotkeys | filter:{ description: '!$$undefined$$' } --><tr ng-repeat="hotkey in hotkeys | filter:{ description: '!$$undefined$$' }" class="ng-scope"><td class="cfp-hotkeys-keys"><!-- ngRepeat: key in hotkey.format() track by $index --><span ng-repeat="key in hotkey.format() track by $index" class="cfp-hotkeys-key ng-binding ng-scope">?</span><!-- end ngRepeat: key in hotkey.format() track by $index --></td><td class="cfp-hotkeys-text ng-binding">Show / hide this help menu</td></tr><!-- end ngRepeat: hotkey in hotkeys | filter:{ description: '!$$undefined$$' } --></tbody></table><div class="cfp-hotkeys-close" ng-click="toggleCheatSheet()">×</div></div></div></div><div id="ng-micro-app-body"><script src="/ui/webapp/vendorScripts.js"></script><script src="/ui/webapp/templates.js"></script><script src="/ui/webapp/artifactory_register.js"></script><script src="/ui/webapp/artifactory_core.js"></script><script src="/ui/webapp/artifactory_services.js"></script><script src="/ui/webapp/artifactory_dao.js"></script><script src="/ui/webapp/artifactory_ui.js"></script><script src="/ui/webapp/artifactory_ui_components.js"></script><script src="/ui/webapp/artifactory_directives.js"></script><script src="/ui/webapp/artifactory_filters.js"></script><script src="/ui/webapp/artifactory_views.js"></script><script src="/ui/webapp/artifactory_states.js"></script><script src="/ui/webapp/artifactory_distribution.js"></script><script src="/ui/webapp/artifactory_main.js"></script></div></div><div data-v-623c5e0a="" class="vue-app"><div data-v-041e2600="" data-v-623c5e0a="" class="h-100 w-100 packages-wrapper"><div data-v-2aa4de67="" data-v-041e2600="" class="h-100 w-100 packages-wrapper"><!----><div data-v-2aa4de67="" class="packages-list-container"><!----><div data-v-2aa4de67="" class="no-packages-msg"><div data-v-755c3e72="" data-v-2aa4de67="" class="empty-state-page bottom-image"><img data-v-755c3e72="" src="/ui/img/packages_search.75552d28.png" alt="" class="empty-state-page-image large"><div data-v-755c3e72="" class="empty-state-page-content-container bottom-image"><div data-v-755c3e72="" class="empty-state-page-header"></div><div data-v-755c3e72="" class="empty-state-page-sub-header">Find your packages using the Search Bar</div><p data-v-755c3e72="" class="empty-state-page-content-lines"></p><div data-v-755c3e72="" class="empty-state-page-actions"></div></div></div></div></div></div><!----><!----></div></div></div><div class="el-loading-mask" style="display: none;"><div class="el-loading-spinner"><svg viewBox="25 25 50 50" class="circular"><circle cx="50" cy="50" r="20" fill="none" class="path"></circle></svg><!----></div></div></div><div data-v-231e7ad0="" data-v-623c5e0a=""></div></div></div></div></div><script src="/ui/js/chunk-vendors.1141dc99.js"></script><script src="/ui/js/app.c87a5a64.js"></script><div id="gV3d9N5i9" role="status" aria-live="polite" aria-atomic="false"></div></body></html>

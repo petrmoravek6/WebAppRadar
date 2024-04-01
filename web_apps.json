@@ -17,36 +17,27 @@
   {
     "name": "Bareos",
     "identifier": "<title>Bareos\\s*-\\s*Login</title>",
-    "version": "<p class=\"text-muted\">Bareos\\s*WebUI\\s*Version\\s*(\\d+\\.\\d+\\.\\d+)"
+    "version": "<p class=\"text-muted\">Bareos\\s+WebUI\\s+Version\\s+(\\d+\\.\\d+\\.\\d+)"
   },
   {
-    "name": "",
-    "identifier": "",
-    "version": ""
+    "name": "Prometheus",
+    "identifier": "<title>Prometheus Time Series Collection and Processing Server</title>",
+    "version_path": "/status",
+    "version": "<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>"
   },
   {
-    "name": "",
-    "identifier": "",
-    "version": ""
+    "name": "Grafana",
+    "identifier": "<title>Grafana</title>",
+    "version": "a href=\"\\S+\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"version\">v(\\d+\\.\\d+\\.\\d+)"
   },
   {
-    "name": "",
-    "identifier": "",
-    "version": ""
+    "name": "TestRail",
+    "identifier": "<title>Login - TestRail</title>",
+    "version": "<span class=\"loginpage-version\">v(\\d+\\.\\d+\\.\\d+)"
   },
   {
-    "name": "",
-    "identifier": "",
-    "version": ""
-  },
-  {
-    "name": "",
-    "identifier": "",
-    "version": ""
-  },
-  {
-    "name": "",
-    "identifier": "",
-    "version": ""
+    "name": "TeamCity",
+    "identifier": "<meta name=\"application-name\"\\s+content=\"TeamCity",
+    "version": "<span class=\"greyNote version\"><span class=\"vWord\">Version</span>\\s*(\\d+\\.\\d+\\.\\d+)"
   }
 ]

@@ -236,10 +236,10 @@ class TestNginxVhostsCmds(unittest.TestCase):
           server {
             listen 80;
             server_name www.example4.com;
-            error_log   /var/log/nginx/www.quanti-web-testing-new.quanti.cz_error.log;
-            access_log  /var/log/nginx/www.quanti-web-testing-new.quanti.cz_access.log apm;
+            error_log   /var/log/nginx/www.XYZ-web-testing-new.XYZ.cz_error.log;
+            access_log  /var/log/nginx/www.XYZ-web-testing-new.XYZ.cz_access.log apm;
         
-            return 301 https://www.quanti-web-testing-new.quanti.cz$request_uri;
+            return 301 https://www.XYZ-web-testing-new.XYZ.cz$request_uri;
           }
         
         server {

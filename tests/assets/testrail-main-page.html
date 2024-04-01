@@ -1,0 +1,699 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.testrail-staging.com https://static.testrail.com https://static.testrail.io https://cdn.pendo.io https://data.pendo.io https://app.pendo.io https://pendo-static-5699730914541568.storage.googleapis.com https://cdn.embedly.com ; style-src 'self' 'unsafe-inline' https://static.testrail-staging.com https://static.testrail.com https://static.testrail.io https://pendo-static-5699730914541568.storage.googleapis.com ; style-src-elem 'self' 'unsafe-inline' https://static.testrail-staging.com https://static.testrail.com https://static.testrail.io https://pendo-static-5699730914541568.storage.googleapis.com ; style-src-attr 'self' 'unsafe-inline'  ; font-src 'self' https://fonts.gstatic.com https://static.testrail-staging.com https://static.testrail.com https://static.testrail.io ; connect-src 'self' https://app.pendo.io https://data.pendo.io https://pendo-static-5699730914541568.storage.googleapis.com ; media-src *  ; object-src 'none'  ; prefetch-src 'self'  ; worker-src 'none'  ; base-uri 'self'  ; frame-src  https://app.pendo.io https://*.testrail-staging.com https://*.testrail.com https://*.testrail.io http://*.eu-central-1.compute.amazonaws.com https://*.testrail.net ; child-src  https://app.pendo.io ;">
+	<title>Login - TestRail</title>
+							<link type="text/css" rel="stylesheet" href="css/auth-modern-combined.css?1029" media="all">
+				<link type="text/css" rel="stylesheet" href="css/font.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/drilldown.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/brand/style.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/brand/brand-modern.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/assembla.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/banner-enterprise-modern.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/application.autocomplete.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/input-autocomplete.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/jquery.data-tables.min.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/fixed-columns.data-tables.min.css" media="all">
+	<link type="text/css" rel="stylesheet" href="css/application.datasets.css" media="all">
+    	<link type="text/css" rel="stylesheet" href="css/autocomplete.css" media="all">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<script type="text/javascript" src="js/jquery.js"></script><script src="chrome-extension://nngceckbapebfimnlniiiahkandclblb/content/fido2/page-script.js" id="bw-fido2-page-script"></script>
+			<script type="text/javascript" src="js/fusioncharts.js"></script>
+	<script type="text/javascript" src="js/fusioncharts.theme.fusion.js"></script><style type="text/css">@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7lujVj9w.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro SemiBold';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'), url(https://fonts.gstatic.com/s/sourcesanspro/v11/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu3cOWxw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ft calendar customization */
+.fc-cal-date-normal-fusion {
+  color: #5F5F5F;
+  font-family: 'Source Sans Pro';
+  font-size: 11px;
+}
+
+.fc-cal-date-selected-fusion {
+  color: #FEFEFE;
+  font-family: 'Source Sans Pro SemiBold';
+  font-size: 11px;
+}</style>
+			<script type="text/javascript">
+			var _0x172b=['915521FAOgwP','1WUUTor','85768HrInlH','1VBoajH','701113SlGqlh','596675VFZSmj','430136IMhboy','iyE4qlbA7A3C4A2F1D1I1B1A2A3B1B3fqyH2B7C-16xvhyA2E1lduC7E2B4E2F2G2C1B10B2D1E6C1E1E3E1G2c1D-16yC2A3E2yD1J2B3lozD1B1G4da1wB9B6C6dG-10A-8D3J2A9B1A8C7E1E5A2A1A1sB-22uE2D6G1F1H-8H-7lB8A5C7epG4d1I3B8lnE-13F4E2D3F1H4A10D9C1B5E6B1F4E3E1g==','9197lCfGYC','713897AESQnW','1QhbbSq','license','33GAfgRX'];var _0x3f57b9=_0x10c9;function _0x10c9(_0x3cfbbf,_0x10e5b7){_0x3cfbbf=_0x3cfbbf-0x73;var _0x172b34=_0x172b[_0x3cfbbf];return _0x172b34;}(function(_0x22f311,_0x1ab4f2){var _0x50a77f=_0x10c9;while(!![]){try{var _0x461480=parseInt(_0x50a77f(0x7b))+-parseInt(_0x50a77f(0x75))*-parseInt(_0x50a77f(0x7e))+parseInt(_0x50a77f(0x7c))+parseInt(_0x50a77f(0x78))+parseInt(_0x50a77f(0x7f))*parseInt(_0x50a77f(0x79))+parseInt(_0x50a77f(0x7a))*-parseInt(_0x50a77f(0x77))+-parseInt(_0x50a77f(0x76))*parseInt(_0x50a77f(0x73));if(_0x461480===_0x1ab4f2)break;else _0x22f311['push'](_0x22f311['shift']());}catch(_0x19bcfb){_0x22f311['push'](_0x22f311['shift']());}}}(_0x172b,0x7d53f),FusionCharts['options'][_0x3f57b9(0x74)]({'key':_0x3f57b9(0x7d),'creditLabel':![]}));		</script>
+	<script type="text/javascript" src="js/jspdf.min.js"></script>
+	<script type="text/javascript" src="js/html2canvas.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+<style type="text/css">@font-face {
+  font-family: "Fira Sans Light";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Fira Sans Light"), local("FiraSans-Light"),
+    url(https://fonts.gstatic.com/s/firasans/v8/va9B4kDNxMZdWfMOD5VnPKreRhf6Xl7Glw.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fira Sans Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Fira Sans Regular"), local("FiraSans-Regular"),
+    url(https://fonts.gstatic.com/s/firasans/v8/va9E4kDNxMZdWfMOD5Vvl4jLazX3dA.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ft calendar customiztion */
+.fc-cal-day-candy {
+  background-color: rgb(52, 52, 52);
+  color: rgb(204, 204, 204);
+  font-family: "Fira Sans Light";
+  border: none;
+}
+
+.fc-cal-date-normal-candy {
+  background-color: rgb(52, 52, 52);
+  color: rgb(204, 204, 204);
+  font-family: "Fira Sans Light";
+  border: none;
+}
+
+.fc-cal-date-normal-candy:hover {
+  background-color: rgb(110, 110, 110);
+  color: rgb(255, 255, 255);
+  font-family: "Fira Sans Light";
+  border: none;
+}
+
+.fc-cal-date-disabled-candy {
+  background-color: rgb(52, 52, 52);
+  color: rgba(153, 156, 165, 0.75);
+  font-family: "Fira Sans Light";
+  border: none;
+}
+
+.fc-cal-month-header-candy {
+  background-color: rgb(54, 134, 156);
+  font-family: "Fira Sans Light";
+}
+
+.fc-cal-weekend-candy {
+  background-color: rgb(53, 85, 93);
+}
+
+.fc-cal-container-candy {
+  border: 0.5px solid rgb(75, 75, 75);
+}
+
+.fc-cal-nav-next-candy,
+.fc-cal-nav-prev-candy {
+  font-family: "Fira Sans Light";
+  font-size: 12px;
+}
+
+.fc-cal-date-selected-candy {
+  background-color: rgb(54, 134, 156);
+  color: rgb(255, 255, 255);
+  font-family: "Fira Sans Regular";
+}</style><style type="text/css">@font-face {
+  font-family: "Titillium Web Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Titillium Web Regular"), local("TitilliumWeb-Regular"),
+    url(https://fonts.gstatic.com/s/titilliumweb/v7/NaPecZTIAOhVxoMyOr9n_E7fdMPmDaZRbrw.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Titillium Web SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Titillium Web SemiBold"), local("TitilliumWeb-SemiBold"),
+    url(https://fonts.gstatic.com/s/titilliumweb/v7/NaPDcZTIAOhVxoMyOr9n_E7ffBzCGItzY5abuWI.woff2)
+      format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+/* ft calendar customiztion */
+.fc-cal-day-umber {
+  background-color: #fff1e5;
+  color: #33302e;
+  font-family: "Titillium Web Regular";
+  border: none;
+}
+
+.fc-cal-date-normal-umber {
+  background-color: #fff1e5;
+  color: #33302e;
+  font-family: "Titillium Web Regular";
+  border: none;
+}
+
+.fc-cal-date-normal-umber:hover {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Titillium Web Regular";
+  border: none;
+}
+
+.fc-cal-date-disabled-umber {
+  background-color: #fff1e5;
+  color: rgba(51, 48, 46, 0.5);
+  font-family: "Titillium Web Regular";
+  border: none;
+}
+
+.fc-cal-month-header-umber {
+  background-color: #000000;
+  font-family: "Titillium Web Regular";
+}
+
+.fc-cal-weekend-umber {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.fc-cal-container-umber {
+  border: none;
+}
+
+.fc-cal-nav-next-umber,
+.fc-cal-nav-prev-umber {
+  font-family: "Titillium Web Regular";
+  font-size: 12px;
+}
+
+.fc-cal-date-selected-umber {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Titillium Web Regular";
+}
+
+.fc-cal-date-selected-umber:hover {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: "Titillium Web Regular";
+}
+</style></head>
+<body>
+
+    <script type="text/javascript">
+				$(document).ready(function(){
+					$('#name').focus();
+				});
+			</script>
+<div id="form" class="loginpage-form">
+    <div class="logo loginpage-logo">
+        <a href="http://www.gurock.com/testrail/" target="_blank" class="logo-loginpage"></a>
+    </div>
+    <div id="form-inner">
+                    <h1 class="loginpage-installationname">XXXX TestRail QA</h1>
+        <style>
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+    }
+</style>
+<div id="content">
+    <h1 class="loginpage-login-text">Log into Your Account</h1>
+    <br>
+                                                            <noscript>
+        <div class="loginpage-message-title-hint">
+            <div class="hint-alert"><img src="images/theme-modern/layout/warning-icon.svg" align="left" height="18" width="16"/>
+                <span class="hint-on-top">Warning!</span></div>
+            <div class="error-text"> Javascript is disabled in your web browser. Please enable Javascript, as Javascript is required to use TestRail.</div>
+        </div>
+    </noscript>
+        
+    <form action="index.php?/auth/login/" method="post" data-bitwarden-watching="1">
+    
+    
+                        <div style="min-height:24px;"></div>
+            
+    <div class="form-group" style="padding-bottom:10px" ;="">
+        <div class="login-inputx">
+            <input id="name" class="login-input" type="text" name="name">
+
+                            <label for="name" class="login-label">Login</label>
+                    </div>
+    </div>
+
+    
+    <div class="form-group" style="padding-bottom:10px; margin-top: -9px;" '="">
+        <div class="login-inputx">
+            <input id="password" class="login-input " type="password" name="password" autocomplete="new-password">
+            <label for="password" class="login-label">Password</label>
+        </div>
+    </div>
+    <div class="display-flex" style=" margin-bottom:40px;">
+        <div style="float:left;">
+                    </div>
+                    <a href="index.php?/auth/forgot_password" class="loginpage-forgotpassword" style="margin-bottom:10px;">
+                Forgot your password?            </a>
+            </div>
+
+            <label class="loginpage-container">
+            Keep me logged in            <input type="checkbox" checked="checked" id="rememberme" name="rememberme" value="1">
+            <span class="loginpage-checkmark"></span>
+        </label>
+    
+        <button id="button_primary" class="loginpage-button-sso-disable loginpage-button-sso-disable-hover  loginpage-button-sso-disable-active">
+        <span class="single-sign-on"> Log In</span>
+    </button>
+
+    </form>
+    </div>
+	</div>
+<br>
+<span class="loginpage-version">v8.0.1 Default (1029)</span>
+</div>
+
+<script type="text/javascript">
+	var Consts = {};
+	Consts.ajaxBaseUrl = 'index.php?';
+	Consts.ajaxErrorMessage = 'An error occurred during the last operation. Please try again or refresh the current page.';
+	Consts.ajaxCsrf = '';
+	Consts.ajaxVersion = '8.0.1.1029';
+	Consts.resourceBaseUrl = '';
+	Consts.dialogTitleError = 'Error';
+</script>
+
+
+
+<input type="hidden" id="chart_color1" value="#3cb850">
+<input type="hidden" id="chart_color2" value="#202020">
+<input type="hidden" id="chart_color3" value="#fcc200">
+<input type="hidden" id="chart_color4" value="#e40046">
+<input type="hidden" id="chart_color5" value="#2f5dbf">
+<input type="hidden" id="chart_color6" value="#ee7d00">
+<input type="hidden" id="chart_color7" value="#66267b">
+<input type="hidden" id="chart_color8" value="#049474">
+<input type="hidden" id="chart_color9" value="#487ef0">
+<input type="hidden" id="chart_color10" value="#203f81">
+
+<script type="text/javascript" src="js/fusioncharts.theme.gammel.js"></script>
+<script type="text/javascript" src="js/fusioncharts.theme.candy.js"></script>
+<script type="text/javascript" src="js/fusioncharts.theme.umber.js"></script>
+<script type="text/javascript" src="js/fusioncharts.theme.testrail.js"></script>
+<script type="text/javascript" src="js/fusioncharts.theme.custom.js"></script>
+<script type="text/javascript" src="js/autocomplete.js"></script>
+
+<script>
+    var text_format_type = "" ;
+</script>
+            <script type="text/javascript" src="js/extensions-combined.js?1029"></script>
+        <script type="text/javascript" src="js/application-combined.js?1029"></script>
+    	<script type="text/javascript" id="js-js-indicator" src="js/indicator.js"></script>
+	<script type="text/javascript" id="js-js-autocomplete" src="js/autocomplete.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+		App.Translations.add(
+		"timespans_hour_short",
+		"h"	);
+		App.Translations.add(
+		"timespans_minute_short",
+		"m"	);
+		App.Translations.add(
+		"timespans_second_short",
+		"s"	);
+		App.Translations.add(
+		"auth_confirm_not_match_password",
+		"Password doesn't match."	);
+		App.Translations.add(
+		"auth_password_good",
+		"Good"	);
+		App.Translations.add(
+		"auth_password_weak",
+		"Weak"	);
+	});
+</script><script>
+  var currentProjectId = '' || "0";
+    var scrollWidth = 0;
+    $(document).on('mousedown', '.field-editor', function (e)
+    {
+        var currentWidth = e.offsetX;
+        var key = "";
+        var selector ="#"+e.currentTarget.id
+        if (currentProjectId == "0")
+        {
+            var nProject = getURL();
+            key = nProject +"-"+selector+"-width";
+        }
+        else
+        {
+            key = currentProjectId +"-"+selector+"-width";
+        }
+
+        var editorWidth = JSON.parse(localStorage.getItem(key));
+        if(!editorWidth)
+        {
+            editorWidth = $(selector).width()-12;
+        }
+        scrollWidth = currentWidth+12-editorWidth;
+    });
+    $(function()
+    {
+        $('.testrail-editor').each(function()
+        {
+            $(this).attr('tabindex', '-1')
+        });
+        $('body').click(function(evt)
+        {
+            if($(evt.target).is('.field-editor') || $(evt.target).is('.testrail-editor') || $(evt.target).parents().hasClass('fr-box') || $(evt.target).parents().hasClass('frolaAttachmentpop') || $(evt.target).parents().hasClass('attachments-new-dialog')  || $(evt.target).parents().hasClass('attachments-library') || $(evt.target).is('attachments-library') || $(evt.target).hasClass('dz-hidden-input') || $(evt.target).hasClass('attachment-block') || $(evt.target).parents().hasClass('attachment-info-details') || $(evt.target).parents().hasClass('dialog') || $(evt.target).hasClass('blockOverlay'))
+            {
+             return
+            }
+        });
+        $("input").focus(function(){
+        });
+
+        if(window.location.search.indexOf("?/auth/login") !=0)
+        {
+            Consts.formConfirmLeaveMessage = 'You have changed one or more fields in this form. Are you sure you want to navigate away from this page? You would lose all changes you have made.';
+        }
+
+        
+
+        var crsf_token = '';
+
+        /*
+        *dynamic_obj varibale
+        *
+        */
+
+        var dynamic_obj = {
+            project_id: '',
+            text_drop: 'Drop files here to upload, or',
+            text_select:'Select Files',
+            library_title: 'Media Library',
+            library_add_new: 'Add New',
+            remove_title: 'Remove',
+            delete_title: 'Delete',
+            dialog_info: 'Maximum file size: 256 MB.',
+            add_attach: 'Attach',
+            cancel_title: 'Cancel',
+            isBDDAutocompleteEnabled: false        };
+
+        /*
+        * To display project text editor type
+        *text_format_type defined project wise textformat type
+        * seting_format_type global setting format type
+        */
+         text_format_type = '';
+        var seting_format_type = '';
+        if (seting_format_type != '' && text_format_type == '')
+        {
+            text_format_type = seting_format_type;
+        }
+        var currentProjectId = '' || "0";
+
+        // $('.testrail-editor').each(function()
+        // {
+        //     var editorId = $(this).attr('id');
+        //     if (editorId != undefined)
+        //     {
+        //         if ($('#testrail_cont-' + editorId).length < 1)
+        //         {
+        //                 $('#'+editorId).wrap('<div class="testrail-container" id="testrail_cont-' + editorId + '"></div>');
+        //         }
+        //     }
+        // });
+        if (currentProjectId == "0")
+        {
+            var nProject = getURL();
+            $('.testrail-editor').each(function()
+            {
+                var editorId = $(this).attr('id');
+                if (editorId != undefined)
+                {
+                    getLocalStorgeData(nProject,"#"+editorId);
+                }
+            });
+
+        }
+        else
+        {
+            $('.testrail-editor').each(function()
+            {
+                var editorId = $(this).attr('id');
+                if (editorId != undefined)
+                {
+                    getLocalStorgeData(currentProjectId,"#"+editorId);
+                }
+            });
+        }
+
+        /*
+        * Based on the editor type editor will display
+        */
+
+        if(text_format_type =="plaintext")
+        {
+            $('.testrail-editor').each(function()
+            {
+                var editorId = $(this).attr('id');
+
+                $(document).on('focus keyup blur', '.testrail-editor', function()
+                {
+                    var editor_id = $(this).attr('id');
+                    var content = $(this).text();
+                    $("#"+editor_id+"_mark").val(content);
+                });
+            });
+        }
+
+    });
+    /*
+    * rename tag to
+    * @param object $obj
+    * @param string new_tag
+    */
+    function renameTag($obj, new_tag)
+    {
+        var obj = $obj.get(0);
+        var tag = obj.tagName.toLowerCase();
+        var tag_start = new RegExp('^<' + tag);
+        var tag_end = new RegExp('<\\/' + tag + '>$');
+        var new_html = obj.outerHTML.replace(tag_start, "<" + new_tag).replace(tag_end, '</' + new_tag + '>');
+        $obj.replaceWith(new_html);
+    }
+
+    function getURL()
+    {
+        var currentProjectId = '' || "0";
+
+        if (currentProjectId == "0")
+        {
+            var lhref = window.location.href;
+            lhrefSplit = lhref.split("/");
+            lEle=lhrefSplit[lhrefSplit.length - 1];
+            lEle1=lhrefSplit[lhrefSplit.length - 2];
+            lEle2=lhrefSplit[lhrefSplit.length - 3];
+            var newproject_id=lEle2+"_"+lEle1+"_"+lEle;
+            return  newproject_id;
+        }
+        else
+        {
+            return  currentProjectId;
+        }
+
+    }
+    function getLocalStorgeData(project_id,selector)
+    {
+        var key=project_id +"-"+selector;
+        var key1=project_id +"-"+selector+"-width";
+        let lData = JSON.parse(localStorage.getItem(key));
+        let lDataWid = JSON.parse(localStorage.getItem(key1));
+        if (lData !== null)
+        {
+            if($(selector).prev().hasClass('fr-box'))
+            {
+                $($(selector).prev().find('.fr-wrapper')[0]).height(lData-2);
+            }
+            else
+            {
+                $(selector).height(lData);
+            }
+
+        }
+        if (lDataWid !== null)
+        {
+            if($(selector).prev().hasClass('fr-box'))
+            {
+                $($(selector).prev().find('.fr-wrapper')[0]).width(lDataWid);
+                $($(selector).prev().find('.fr-toolbar')[0]).width(lDataWid);
+            }
+            else
+            {
+                $(selector).width(lDataWid);
+            }
+        }
+    }
+    function setLocalStorgeData (ht,lproject_id,selector,wt)
+    {
+        var key=lproject_id +"-"+selector;
+        var key1=lproject_id +"-"+selector +"-width";
+        var lData1= JSON.parse(localStorage.getItem(key));
+        var lDataWid= JSON.parse(localStorage.getItem(key1));
+        if (lData1 !== null &&  lData1 != 0)
+        {
+            // getLocalStorgeData(lproject_id,selector);
+            lData1 = ht;
+            localStorage.setItem(key, JSON.stringify(lData1));
+
+        }
+        else
+        {
+            var obj = ht;
+            if(ht == 0)
+            {
+                localStorage.setItem(key,$(selector).height());
+            }
+            else
+            {
+                localStorage.setItem(key, JSON.stringify(obj));
+            }
+
+        }
+        if (lDataWid !== null && lDataWid != 0)
+        {
+            // getLocalStorgeData(lproject_id,selector);
+            lDataWid = wt;
+            localStorage.setItem(key1, JSON.stringify(lDataWid));
+
+        }
+        else
+        {
+            var objWid = wt;
+            if(wt == 0)
+            {
+                localStorage.setItem(key1,$(selector).width());
+            }
+            else
+            {
+                localStorage.setItem(key1, JSON.stringify(objWid));
+            }
+        }
+    }
+
+    $(function()
+    {
+        activateResizeObserver();
+        $(window).resize(function(){
+        });
+    })
+
+    function activateResizeObserver()
+    {
+        // $('.testrail-container').each(function()
+        // {
+        //     var editorId = $(this).children('.testrail-editor').attr('id');
+        // });
+    }
+
+    $(document).ready(() => {
+        // $('.testrail-container').each(function()
+        // {
+        //     var editorId = $(this).children('.testrail-editor').attr('id');
+        //     var nProject = getURL();
+        //     if (editorId != undefined)
+        //     {
+        //         getLocalStorgeData(nProject,editorId);
+        //     }
+        // })
+    })
+
+    $(function() {
+        
+        
+    });
+</script>
+
+
+    <script type="text/javascript">
+        var browser = function() {
+            // Return cached result if avalible, else get result then cache it.
+            if (browser.prototype._cachedResult)
+                return browser.prototype._cachedResult;
+        
+            // Opera 8.0+
+            var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+        
+            // Firefox 1.0+
+            var isFirefox = typeof InstallTrigger !== 'undefined';
+        
+            // Safari 3.0+ "[object HTMLElementConstructor]"
+            var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+        
+            // Internet Explorer 6-11
+            var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        
+            // Edge 20+
+            var isEdge = !isIE && !!window.StyleMedia;
+        
+            // Chrome 1+
+            var isChrome = !!window.chrome && !!window.chrome.webstore;
+        
+            // Blink engine detection
+            var isBlink = (isChrome || isOpera) && !!window.CSS;
+        
+            return browser.prototype._cachedResult =
+                isOpera ? 'Opera' :
+                isFirefox ? 'Firefox' :
+                isSafari ? 'Safari' :
+                isChrome ? 'Chrome' :
+                isIE ? 'IE' :
+                isEdge ? 'Edge' :
+                isBlink ? 'Blink' :
+                "Don't know";
+        };
+        
+        $('input[type=password]').val('');
+        if(browser() == 'Edge'){
+            $("#password").removeAttr("autocomplete");
+        }
+        if(browser() != 'IE' && browser() != 'Edge'){
+            $("#password").attr("autocomplete","new-password");
+        }
+
+        $('.login-input').on('blur change',function () {
+
+            var $label, $this, $value;
+            $this = $(this);
+            $label = $this.siblings("login-label");
+            $value = $this.val();
+            $label.removeClass("label-active");
+            if ($value !== "") {
+                return $this.addClass("input-notempty");
+            } else {
+                return $this.removeClass("input-notempty");
+            }
+        });
+    </script>
+<div id="fancy_overlay"></div><div id="fancy_wrap"><div class="fancy_loading" id="fancy_loading"><div id="fancy_loading_spinner"></div></div><div id="fancy_outer"><div id="fancy_inner"><div id="fancy_close"></div><div id="fancy_bg"><div class="fancy_bg fancy_bg_n"></div><div class="fancy_bg fancy_bg_ne"></div><div class="fancy_bg fancy_bg_e"></div><div class="fancy_bg fancy_bg_se"></div><div class="fancy_bg fancy_bg_s"></div><div class="fancy_bg fancy_bg_sw"></div><div class="fancy_bg fancy_bg_w"></div><div class="fancy_bg fancy_bg_nw"></div></div><a href="javascript:;" id="fancy_left"><span class="fancy_ico" id="fancy_left_ico"></span></a><a href="javascript:;" id="fancy_right"><span class="fancy_ico" id="fancy_right_ico"></span></a><div id="fancy_content"></div><div id="fancy_title"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="fancy_title" id="fancy_title_left"></td><td class="fancy_title" id="fancy_title_main"><div></div></td><td class="fancy_title" id="fancy_title_right"></td></tr></tbody></table></div></div></div></div><div id="jstree-marker" style="display: none;"></div></body></html>

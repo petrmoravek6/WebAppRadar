@@ -36,7 +36,11 @@ mock_web_app_rules = [
     WebAppRule(name="JFrog Artifactory Pro",
                identifier="<img class=\"logo-picture\" alt=\"Artifactory\"",
                version_path=None,
-               version="<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev")
+               version="<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"),
+    WebAppRule(name="Prometheus",
+               identifier="<title>Prometheus Time Series Collection and Processing Server</title>",
+               version_path="/status",
+               version="<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>")
 ]
 
 
@@ -48,7 +52,11 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
             'confluence.example.org': cls._load_html_content('tests/assets/confluence-main-page.html'),
             'jira.example.org': cls._load_html_content('tests/assets/jira-main-page.html'),
             'artifactory.example.org': cls._load_html_content('tests/assets/artifactory-main-page.html'),
-            'unknown.example.org': cls._load_html_content('tests/assets/not-jira-main-page.html')
+            'unknown.example.org': cls._load_html_content('tests/assets/not-jira-main-page.html'),
+            'prometheus.example.org': cls._load_html_content('tests/assets/prometheus-main-page.html'),
+            'prometheus.example.org/status': cls._load_html_content('tests/assets/prometheus-status-page.html'),
+            'prometheus.example2.org': cls._load_html_content('tests/assets/prometheus-main-page.html'),
+            'prometheus.example2.org/status': cls._load_html_content('tests/assets/not-jira-main-page.html')
         }
 
     @classmethod
@@ -93,3 +101,68 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
         result = detector.inspect_host('unknown.example.org')
 
         self.assertIsNone(result)
+
+    @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
+    @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
+    def test_inspect_host_followup_version(self, mock_get_full_page_content, mock_get_web_app_rules):
+        mock_client = MagicMock(spec=IClientSideRenderer)
+        detector = MockHtmlContentParsingMethod(client=mock_client)
+
+        # Use the preloaded HTML content for the mock side effect
+        mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
+
+        info_found = detector.inspect_host('prometheus.example.org')
+
+        real_info = WebAppInfo("Prometheus", "2.14.0")
+
+        self.assertEqual(info_found, real_info)
+
+    @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
+    @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
+    def test_inspect_host_followup_version_not_found(self, mock_get_full_page_content, mock_get_web_app_rules):
+        mock_client = MagicMock(spec=IClientSideRenderer)
+        detector = MockHtmlContentParsingMethod(client=mock_client)
+
+        # Use the preloaded HTML content for the mock side effect
+        mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
+
+        info_found = detector.inspect_host('prometheus.example2.org')
+
+        # method tries to look for version at 'prometheus.example2.org/status' as defined in the web app rules,
+        # but the element with version is not present there
+        real_info = WebAppInfo("Prometheus", None)
+
+        self.assertEqual(info_found, real_info)
+
+    @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=[])
+    @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
+    def test_inspect_host_no_rules(self, mock_get_full_page_content, mock_get_web_app_rules):
+        mock_client = MagicMock(spec=IClientSideRenderer)
+        detector = MockHtmlContentParsingMethod(client=mock_client)
+
+        # Use the preloaded HTML content for the mock side effect
+        mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
+
+        result_confluence = detector.inspect_host('confluence.example.org')
+        result_jira = detector.inspect_host('jira.example.org')
+        result_artifactory = detector.inspect_host('artifactory.example.org')
+
+        self.assertIsNone(result_confluence)
+        self.assertIsNone(result_artifactory)
+        self.assertIsNone(result_jira)
+
+    @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
+    @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content', return_value=None)
+    def test_inspect_host_no_page_content(self, mock_get_full_page_content, mock_get_web_app_rules):
+        mock_client = MagicMock(spec=IClientSideRenderer)
+        detector = MockHtmlContentParsingMethod(client=mock_client)
+
+        result_confluence = detector.inspect_host('confluence.example.org')
+        result_jira = detector.inspect_host('jira.example.org')
+        result_artifactory = detector.inspect_host('artifactory.example.org')
+
+        self.assertIsNone(result_confluence)
+        self.assertIsNone(result_artifactory)
+        self.assertIsNone(result_jira)
+
+

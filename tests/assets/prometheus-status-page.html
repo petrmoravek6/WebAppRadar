@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="robots" content="noindex,nofollow">
+        <title>Prometheus Time Series Collection and Processing Server</title>
+        <link rel="shortcut icon" href="/static/img/favicon.ico?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19">
+        <script src="/static/vendor/js/jquery-3.3.1.min.js?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19"></script>
+        <script src="/static/vendor/js/popper.min.js?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19"></script>
+        <script src="/static/vendor/bootstrap-4.3.1/js/bootstrap.min.js?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19"></script>
+
+        <link type="text/css" rel="stylesheet" href="/static/vendor/bootstrap-4.3.1/css/bootstrap.min.css?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19">
+        <link type="text/css" rel="stylesheet" href="/static/css/prometheus.css?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19">
+        <link type="text/css" rel="stylesheet" href="/static/vendor/bootstrap4-glyphicons/css/bootstrap-glyphicons.min.css?v=edeb7a44cbf745f1d8be4ea6f215e79e651bfe19">
+
+        <script>
+            var PATH_PREFIX = "";
+            var BUILD_VERSION = "edeb7a44cbf745f1d8be4ea6f215e79e651bfe19";
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+        </script>
+
+
+    </head>
+
+    <body>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+            <div class="container-fluid">
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-content" aria-expanded="false" aria-controls="nav-content" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <a class="navbar-brand" href="/">Prometheus</a>
+
+
+                <div id="nav-content" class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
+
+
+                        <li class="nav-item"><a class="nav-link" href="/alerts">Alerts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/graph">Graph</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Status <span class="caret"></span></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/status">Runtime &amp; Build Information</a>
+                                <a class="dropdown-item" href="/flags">Command-Line Flags</a>
+                                <a class="dropdown-item" href="/config">Configuration</a>
+                                <a class="dropdown-item" href="/rules">Rules</a>
+                                <a class="dropdown-item" href="/targets">Targets</a>
+                                <a class="dropdown-item" href="/service-discovery">Service Discovery</a>
+                            </div>
+                        </li>
+                        <li class= "nav-item" >
+                            <a class ="nav-link" href="https://prometheus.io/docs/prometheus/latest/getting_started/" target="_blank">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+  <div class="container-fluid">
+    <h2 id="runtime">Runtime Information</h2>
+    <table class="table table-sm table-bordered table-striped table-hover">
+      <tbody>
+        <tr>
+          <th>Uptime</th>
+          <td>2024-03-06 11:58:24.199395693 &#43;0000 UTC</td>
+        </tr>
+        <tr>
+          <th>Working Directory</th>
+          <td>/</td>
+        </tr>
+        <tr>
+          <th>Configuration reload</th>
+          <td>Successful</td>
+        </tr>
+        <tr>
+          <th>Last successful configuration reload</th>
+          <td>2024-03-06 11:58:29 &#43;0000 UTC</td>
+        </tr>
+        <tr>
+          <th>WAL corruptions</th>
+          <td>0</td>
+        </tr>
+        <tr>
+          <th>Goroutines</th>
+          <td>98</td>
+        </tr>
+        <tr>
+          <th>GOMAXPROCS</th>
+          <td>2</td>
+        </tr>
+        <tr>
+          <th>GOGC</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>GODEBUG</th>
+          <td></td>
+        </tr>
+        <tr>
+          <th>Storage Retention</th>
+          <td>2w</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="buildinformation">Build Information</h2>
+    <table class="table table-sm table-bordered table-striped table-hover">
+      <tbody>
+        <tr>
+          <th scope="row">Version</th>
+          <td>2.14.0</td>
+        </tr>
+        <tr>
+          <th scope="row">Revision</th>
+          <td>edeb7a44cbf745f1d8be4ea6f215e79e651bfe19</td>
+        </tr>
+        <tr>
+          <th scope="row">Branch</th>
+          <td>HEAD</td>
+        </tr>
+        <tr>
+          <th scope="row">BuildUser</th>
+          <td>root@df2327081015</td>
+        </tr>
+        <tr>
+          <th scope="row">BuildDate</th>
+          <td>20191111-14:27:12</td>
+        </tr>
+        <tr>
+          <th scope="row">GoVersion</th>
+          <td>go1.13.4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="alertmanagers">Alertmanagers</h2>
+    <table class="table table-sm table-bordered table-striped table-hover">
+      <tbody>
+        <tr>
+           <th>Endpoint</th>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <h2 id="headstatus">Head Stats</h2>
+    <table class="table table-sm table-bordered table-striped table-hover">
+      <tbody>
+        <tr>
+           <th>Number Of Series </th>
+           <th>Number of Chunks</th>
+           <th>Current Max Time</th>
+           <th>Current Min Time</th>
+        </tr>
+        <tr>
+          <td scope="row">18586</th>
+          <td>80177</td>
+          <td>1711976466370</td>
+          <td>1711976466370</td>
+        </tr>
+      </tbody>
+    </table>
+    <div>Total Query Time: 0.001 Seconds</div>
+    <h3 id="headstatus">Highest Cardinality Labels </h3>
+    <table class="table table-sm table-bordered table-striped table-hover">
+      <tbody>
+        <tr>
+           <th>Name</th>
+           <th>Count</th>
+        </tr>
+
+        <tr>
+          <td scope="row">__name__</th>
+          <td>552</td>
+        </tr>
+
+        <tr>
+          <td scope="row">PhoneNumber</th>
+          <td>211</td>
+        </tr>
+
+        <tr>
+          <td scope="row">le</th>
+          <td>112</td>
+        </tr>
+
+        <tr>
+          <td scope="row">tcp_state</th>
+          <td>110</td>
+        </tr>
+
+        <tr>
+          <td scope="row">device</th>
+          <td>98</td>
+        </tr>
+
+        <tr>
+          <td scope="row">User</th>
+          <td>85</td>
+        </tr>
+
+        <tr>
+          <td scope="row">id</th>
+          <td>64</td>
+        </tr>
+
+        <tr>
+          <td scope="row">container_label_com_docker_compose_slug</th>
+          <td>36</td>
+        </tr>
+
+        <tr>
+          <td scope="row">image</th>
+          <td>27</td>
+        </tr>
+
+        <tr>
+          <td scope="row">container_label_com_docker_compose_config_hash</th>
+          <td>25</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <h3 id="headstatus">Highest Cardinality Metric Names</h3>
+    <table class="table table-sm table-bordered table-striped table-hover">
+        <tbody>
+          <tr>
+             <th>Name</th>
+             <th>Count</th>
+          </tr>
+
+          <tr>
+            <td scope="row">container_network_advance_tcp_stats_total</th>
+            <td>6534</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_network_tcp_usage_total</th>
+            <td>726</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_network_tcp6_usage_total</th>
+            <td>726</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_memory_numa_pages</th>
+            <td>564</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_tasks_state</th>
+            <td>330</td>
+          </tr>
+
+          <tr>
+            <td scope="row">smokeping_response_duration_seconds_bucket</th>
+            <td>315</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_network_udp_usage_total</th>
+            <td>264</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_network_udp6_usage_total</th>
+            <td>264</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_memory_failures_total</th>
+            <td>264</td>
+          </tr>
+
+          <tr>
+            <td scope="row">container_fs_writes_total</th>
+            <td>219</td>
+          </tr>
+
+        </tbody>
+      </table>
+      <h3 id="headstatus">Label Names With Highest Cumulative Label Value Length</h3>
+      <table class="table table-sm table-bordered table-striped table-hover">
+          <tbody>
+            <tr>
+               <th>Name</th>
+               <th>Length</th>
+            </tr>
+
+            <tr>
+              <td scope="row">__name__</th>
+              <td>22285</td>
+            </tr>
+
+            <tr>
+              <td scope="row">device</th>
+              <td>7462</td>
+            </tr>
+
+            <tr>
+              <td scope="row">id</th>
+              <td>4681</td>
+            </tr>
+
+            <tr>
+              <td scope="row">container_label_com_docker_compose_slug</th>
+              <td>2267</td>
+            </tr>
+
+            <tr>
+              <td scope="row">User</th>
+              <td>2027</td>
+            </tr>
+
+            <tr>
+              <td scope="row">PhoneNumber</th>
+              <td>1900</td>
+            </tr>
+
+            <tr>
+              <td scope="row">image</th>
+              <td>1675</td>
+            </tr>
+
+            <tr>
+              <td scope="row">container_label_com_docker_compose_config_hash</th>
+              <td>1600</td>
+            </tr>
+
+            <tr>
+              <td scope="row">tcp_state</th>
+              <td>1457</td>
+            </tr>
+
+            <tr>
+              <td scope="row">le</th>
+              <td>840</td>
+            </tr>
+
+          </tbody>
+        </table>
+        <h3 id="headstatus">Most Common Label Pairs</h3>
+        <table class="table table-sm table-bordered table-striped table-hover">
+            <tbody>
+              <tr>
+                 <th>Name</th>
+                 <th>Count</th>
+              </tr>
+
+              <tr>
+                <td scope="row">application=cadvisor</th>
+                <td>15577</td>
+              </tr>
+
+              <tr>
+                <td scope="row">job=cadvisor-exporters</th>
+                <td>15577</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_version=1.27.4</th>
+                <td>12944</td>
+              </tr>
+
+              <tr>
+                <td scope="row">environment=prod</th>
+                <td>9752</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_project_working_dir=/opt/airstop_parser/cs</th>
+                <td>7236</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_project_config_files=/opt/airstop_parser/cs/docker-compose.yaml,/opt/airstop_parser/cs/docker-compose.override.yaml</th>
+                <td>7236</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_service=sick-parser</th>
+                <td>7236</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_oneoff=True</th>
+                <td>7236</td>
+              </tr>
+
+              <tr>
+                <td scope="row">container_label_com_docker_compose_project=cs</th>
+                <td>7236</td>
+              </tr>
+
+              <tr>
+                <td scope="row">node=airstop-sick-testing</th>
+                <td>6662</td>
+              </tr>
+
+            </tbody>
+        </table>
+  </div>
+
+    </body>
+</html>
+
+
+

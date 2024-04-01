@@ -21,6 +21,15 @@ class SeleniumRenderer(IClientSideRenderer, ABC):
             self.driver.get(host)
         except TimeoutException:
             raise ConnectionError("Timeout while waiting for page to load")
+        except selenium.common.exceptions.WebDriverException:
+            raise ConnectionError(f"Unable to resolve: '{host}'")
         time.sleep(self.explicit_waiting)
         page_content = self.driver.page_source
         return page_content
+
+    def __del__(self):
+        if self.driver:
+            try:
+                self.driver.close()
+            except Exception:
+                return

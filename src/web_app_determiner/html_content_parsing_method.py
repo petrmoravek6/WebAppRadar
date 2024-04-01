@@ -3,7 +3,7 @@ from abc import abstractmethod
 from typing import Optional, Iterable, Collection
 from src.exceptions import FatalError
 from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMethod
-from src.client_side_renderer.client_side_renderer import IClientSideRenderer
+from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
 import logging
 from src.web_app_determiner.web_app_rule import WebAppRule, IWebAppRuleDeserializer
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class HtmlContentParsingMethod(IWebAppDetectionMethod):
-    def __init__(self, client: IClientSideRenderer):
+    def __init__(self, client: SeleniumRenderer):
         self.client = client
 
     def _get_full_page_content(self, host: str) -> Optional[str]:
@@ -40,8 +40,10 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
         for rule in web_app_rules:
             if rule.matches(page_content):
                 name = rule.name
-                if rule.auth_method:
-                    page_content = self._authenticate()
+                if rule.auth:
+                    page_content = rule.auth.accept(self.client.driver)
+                    if page_content is None:
+                        # todo
                 if rule.version_path:
                     page_content = self._get_full_page_content(host + rule.version_path)
                 ver = None
@@ -50,12 +52,12 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
                 return WebAppInfo(name, ver)
         return None
 
-    def _authenticate(self):
+    def _authenticate(self) -> None:
         raise NotImplementedError()
 
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
-    def __init__(self, client: IClientSideRenderer, file_path: str, deserializer: IWebAppRuleDeserializer):
+    def __init__(self, client: SeleniumRenderer, file_path: str, deserializer: IWebAppRuleDeserializer):
         super().__init__(client)
         self.rules = HTMLContentParsingFromFileMethod._load_rules(file_path, deserializer)
 

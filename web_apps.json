@@ -13,5 +13,40 @@
     "name": "JFrog Artifactory Pro",
     "identifier": "<img class=\"logo-picture\" alt=\"Artifactory\"",
     "version": "<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"
+  },
+  {
+    "name": "Bareos",
+    "identifier": "<title>Bareos\\s*-\\s*Login</title>",
+    "version": "<p class=\"text-muted\">Bareos\\s*WebUI\\s*Version\\s*(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
+  },
+  {
+    "name": "",
+    "identifier": "",
+    "version": ""
   }
 ]

@@ -47,7 +47,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
         cls.html_contents = {
             'confluence.example.org': cls._load_html_content('tests/assets/confluence-main-page.html'),
             'jira.example.org': cls._load_html_content('tests/assets/jira-main-page.html'),
-            'artifactory.example.org': cls._load_html_content('tests/assets/artifactory-main-page.html')
+            'artifactory.example.org': cls._load_html_content('tests/assets/artifactory-main-page.html'),
+            'unknown.example.org': cls._load_html_content('tests/assets/not-jira-main-page.html')
         }
 
     @classmethod
@@ -71,3 +72,24 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
         self.assertEqual(WebAppInfo("Atlassian Confluence", "8.5.7"), result_confluence)
         self.assertEqual(WebAppInfo("Atlassian Jira", "9.4.18"), result_jira)
         self.assertEqual(WebAppInfo("JFrog Artifactory Pro", "7.24.3"), result_artifactory)
+
+        self.assertNotEqual(WebAppInfo("Atlassian Confluence", "88.5.7"), result_confluence)
+        self.assertNotEqual(WebAppInfo("Atlassian Jira", "99.4.18"), result_jira)
+        self.assertNotEqual(WebAppInfo("JFrog Artifactory Pro", "77.24.3"), result_artifactory)
+
+        self.assertNotEqual(WebAppInfo("Atlassian Confluence", "8.5.7"), result_jira)
+        self.assertNotEqual(WebAppInfo("Atlassian Jira", "9.4.18"), result_artifactory)
+        self.assertNotEqual(WebAppInfo("JFrog Artifactory Pro", "7.24.3"), result_confluence)
+
+    @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
+    @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
+    def test_inspect_unknown_host(self, mock_get_full_page_content, mock_get_web_app_rules):
+        mock_client = MagicMock(spec=IClientSideRenderer)
+        detector = MockHtmlContentParsingMethod(client=mock_client)
+
+        # Use the preloaded HTML content for the mock side effect
+        mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
+
+        result = detector.inspect_host('unknown.example.org')
+
+        self.assertIsNone(result)

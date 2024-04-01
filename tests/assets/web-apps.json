@@ -1,0 +1,43 @@
+[
+  {
+    "name": "Atlassian Jira",
+    "identifier": "<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\"",
+    "version": "<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\" data-version=\"(\\d+\\.\\d+\\.\\d+)\""
+  },
+  {
+    "name": "Atlassian Confluence",
+    "identifier": "<a href=\"https://www.atlassian.com/software/confluence\" class=\"hover-footer-link\" rel=\"nofollow\">Atlassian Confluence</a>",
+    "version": "<span id=\"footer-build-information\">(\\d+\\.\\d+\\.\\d+)</span>"
+  },
+  {
+    "name": "JFrog Artifactory Pro",
+    "identifier": "<img class=\"logo-picture\" alt=\"Artifactory\"",
+    "version": "<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"
+  },
+  {
+    "name": "Bareos",
+    "identifier": "<title>Bareos\\s*-\\s*Login</title>",
+    "version": "<p class=\"text-muted\">Bareos\\s+WebUI\\s+Version\\s+(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Prometheus",
+    "identifier": "<title>Prometheus Time Series Collection and Processing Server</title>",
+    "version_path": "/status",
+    "version": "<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>"
+  },
+  {
+    "name": "Grafana",
+    "identifier": "<title>Grafana</title>",
+    "version": "a href=\"\\S+\" target=\"_blank\" rel=\"noopener noreferrer\" id=\"version\">v(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "TestRail",
+    "identifier": "<title>Login - TestRail</title>",
+    "version": "<span class=\"loginpage-version\">v(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "TeamCity",
+    "identifier": "<meta name=\"application-name\"\\s+content=\"TeamCity",
+    "version": "<span class=\"greyNote version\"><span class=\"vWord\">Version</span>\\s*(\\d+\\.\\d+\\.\\d+)"
+  }
+]

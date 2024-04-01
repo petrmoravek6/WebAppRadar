@@ -18,11 +18,6 @@ class MockHtmlContentParsingMethod(HtmlContentParsingMethod):
         raise NotImplementedError()
 
 
-def _load_html_content(file_name):
-    with open(file_name, 'r', encoding='utf-8') as file:
-        return file.read()
-
-
 # Mock WebAppRules
 mock_web_app_rules = [
     WebAppRule(name="Atlassian Jira",
@@ -68,14 +63,14 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
 
-        result_confluence = detector.inspect_host('confluence.example.org')
-        result_jira = detector.inspect_host('jira.example.org')
-        result_artifactory = detector.inspect_host('artifactory.example.org')
+        result_confluence = method.inspect_host('confluence.example.org')
+        result_jira = method.inspect_host('jira.example.org')
+        result_artifactory = method.inspect_host('artifactory.example.org')
 
         self.assertEqual(WebAppInfo("Atlassian Confluence", "8.5.7"), result_confluence)
         self.assertEqual(WebAppInfo("Atlassian Jira", "9.4.18"), result_jira)
@@ -93,12 +88,12 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_unknown_host(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
 
-        result = detector.inspect_host('unknown.example.org')
+        result = method.inspect_host('unknown.example.org')
 
         self.assertIsNone(result)
 
@@ -106,12 +101,12 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_followup_version(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
 
-        info_found = detector.inspect_host('prometheus.example.org')
+        info_found = method.inspect_host('prometheus.example.org')
 
         real_info = WebAppInfo("Prometheus", "2.14.0")
 
@@ -121,12 +116,12 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_followup_version_not_found(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
 
-        info_found = detector.inspect_host('prometheus.example2.org')
+        info_found = method.inspect_host('prometheus.example2.org')
 
         # method tries to look for version at 'prometheus.example2.org/status' as defined in the web app rules,
         # but the element with version is not present there
@@ -138,14 +133,14 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_no_rules(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
 
-        result_confluence = detector.inspect_host('confluence.example.org')
-        result_jira = detector.inspect_host('jira.example.org')
-        result_artifactory = detector.inspect_host('artifactory.example.org')
+        result_confluence = method.inspect_host('confluence.example.org')
+        result_jira = method.inspect_host('jira.example.org')
+        result_artifactory = method.inspect_host('artifactory.example.org')
 
         self.assertIsNone(result_confluence)
         self.assertIsNone(result_artifactory)
@@ -155,11 +150,11 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content', return_value=None)
     def test_inspect_host_no_page_content(self, mock_get_full_page_content, mock_get_web_app_rules):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        detector = MockHtmlContentParsingMethod(client=mock_client)
+        method = MockHtmlContentParsingMethod(client=mock_client)
 
-        result_confluence = detector.inspect_host('confluence.example.org')
-        result_jira = detector.inspect_host('jira.example.org')
-        result_artifactory = detector.inspect_host('artifactory.example.org')
+        result_confluence = method.inspect_host('confluence.example.org')
+        result_jira = method.inspect_host('jira.example.org')
+        result_artifactory = method.inspect_host('artifactory.example.org')
 
         self.assertIsNone(result_confluence)
         self.assertIsNone(result_artifactory)

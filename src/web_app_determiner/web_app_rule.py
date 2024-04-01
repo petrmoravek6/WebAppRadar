@@ -13,8 +13,8 @@ import re
 class WebAppRule:
     def __init__(self, name: str,
                  identifier: str,
-                 version_path: Optional[str],
                  version: str,
+                 version_path: Optional[str] = None,
                  auth_method: Optional[bool] = None):
         self.name = name
         self.identifier = identifier

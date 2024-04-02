@@ -3,8 +3,8 @@ from typing import Iterable
 from unittest.mock import patch, MagicMock
 from src.client_side_renderer.client_side_renderer import IClientSideRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
-from src.web_app_determiner.web_app_rule import WebAppRule
 from src.web_app_determiner.html_content_parsing_method import HtmlContentParsingMethod
+from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 
 class MockHtmlContentParsingMethod(HtmlContentParsingMethod):

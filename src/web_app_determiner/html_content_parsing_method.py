@@ -6,7 +6,9 @@ from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMeth
 from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
 import logging
-from src.web_app_determiner.web_app_rule import WebAppRule, IWebAppRuleDeserializer
+
+
+from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 logger = logging.getLogger(__name__)
 
@@ -57,6 +59,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
 
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
+    from src.web_app_determiner.web_app_rule.deserializer import IWebAppRuleDeserializer
     def __init__(self, client: SeleniumRenderer, file_path: str, deserializer: IWebAppRuleDeserializer):
         super().__init__(client)
         self.rules = HTMLContentParsingFromFileMethod._load_rules(file_path, deserializer)

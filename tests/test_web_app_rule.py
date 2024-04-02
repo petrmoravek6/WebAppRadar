@@ -1,6 +1,7 @@
 import unittest
 import os
-from src.web_app_determiner.web_app_rule import WebAppRule
+
+from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 
 class TestWebAppRule(unittest.TestCase):

@@ -1,12 +1,11 @@
 import os
 import unittest
-from typing import Iterable
 from unittest.mock import patch, MagicMock
 from src.client_side_renderer.client_side_renderer import IClientSideRenderer
 from src.exceptions import FatalError
 from src.web_app_determiner.web_app_info import WebAppInfo
-from src.web_app_determiner.web_app_rule import WebAppRule, JsonWebAppRuleDeserializer
 from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
+from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRuleDeserializer
 
 
 class TestHtmlContentParsingMethod(unittest.TestCase):

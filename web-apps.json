@@ -83,20 +83,6 @@
     "version": "<footer class=\".+\">Graylog\\s+(\\d+\\.\\d+\\.\\d+)"
   },
   {
-    "name": "Graylog",
-    "identifier": "<title>Graylog - Sign in</title>",
-    "auth":{
-      "method": "username_and_password",
-      "user_box_params": [
-        {"key": "id", "value": "username"}
-      ],
-      "pwd_box_params": [
-        {"key": "id", "value": "password"}
-      ]
-    },
-    "version": "<footer class=\".+\">Graylog\\s+(\\d+\\.\\d+\\.\\d+)"
-  },
-  {
     "name": "Snipe-IT",
     "identifier": "Asset Management</title>",
     "auth":{

@@ -1,5 +1,5 @@
 # Use Nginx base image
-FROM nginx:stable-alpine3.17-slim
+FROM nginx:1.24-bullseye
 
 # Remove default Nginx configuration
 RUN rm /etc/nginx/conf.d/default.conf
@@ -13,23 +13,24 @@ RUN mkdir /etc/nginx/sites-enabled && \
 # Copy static content
 #COPY www /var/www/html
 
-# Install OpenSSH
-RUN apk add --no-cache openssh && \
-    echo "root:test" | chpasswd
+# Install OpenSSH Server
+RUN apt-get update && \
+    apt-get install -y openssh-server && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir /var/run/sshd
 
-# Setup a user 'test' with password 'test'
-RUN adduser -D test && \
-    echo "test:test" | chpasswd
+# Add a user 'test' with the specified password
+RUN useradd -m -s /bin/bash test && \
+    echo 'test:test' | chpasswd
 
-# Configure SSHD to accept login with password
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+# Setup SSH to accept login with password
+RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 
-# Generate host keys for SSHD
-RUN ssh-keygen -A
+# Optional: Disable SSH root login
+RUN sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 
-# Expose SSH port
+# Expose the SSH port
 EXPOSE 22
 
 # Start Nginx and SSH services
-CMD ["/bin/sh", "-c", "exec nginx -g 'daemon off;' & /usr/sbin/sshd -D"]
+CMD service ssh start && nginx -g 'daemon off;'

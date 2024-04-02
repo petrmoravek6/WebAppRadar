@@ -94,6 +94,21 @@
         {"key": "id", "value": "password"}
       ]
     },
-    "version": "<strong>Version</strong>\\s+v(\\d+\\.\\d+\\.\\d+)"
+    "version": "<strong>Version</strong>\\s+v(\\d+\\.\\d+\\.\\d+)",/admin/master/console/
+  },
+  {
+    "name": "Keycloak",
+    "identifier": "<title>Welcome to Keycloak</title>",
+    "auth":{
+      "auth_path": "/admin/master/console/",
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "id", "value": "username"}
+      ],
+      "pwd_box_params": [
+        {"key": "id", "value": "password"}
+      ]
+    },
+    "version": "<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>"
   }
 ]

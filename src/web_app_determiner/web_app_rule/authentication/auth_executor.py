@@ -23,14 +23,14 @@ class AuthExecutor(IAuthVisitor):
             if not username_input:
                 return None
             username_input.clear()
-            username_input.send_keys('your_username')
+            username_input.send_keys(auth.username)
 
             password_input_xpath = f"//input{AuthExecutor.get_xpath_params(auth.pwd_box_params)}"
             password_input = self.renderer.driver.find_element(By.XPATH, password_input_xpath)
             if not password_input:
                 return None
             password_input.clear()
-            password_input.send_keys('your_password')
+            password_input.send_keys(auth.password)
 
             password_input.send_keys(Keys.ENTER)
             time.sleep(self.renderer.explicit_waiting)

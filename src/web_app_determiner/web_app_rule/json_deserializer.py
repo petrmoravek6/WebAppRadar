@@ -23,7 +23,9 @@ class JsonWebAppRulesDeserializer(IWebAppRulesDeserializer):
                                        auth_data.get('user_box_params', [])]
                     pwd_box_params = [HTMLElementParam(key=d['key'], value=d['value']) for d in
                                       auth_data.get('pwd_box_params', [])]
-                    auth_instance = UserAndPwdAuth(method, user_box_params, pwd_box_params, auth_path)
+                    username = auth_data.get('username')
+                    pwd = auth_data.get('password')
+                    auth_instance = UserAndPwdAuth(method, user_box_params, pwd_box_params, username, pwd, auth_path)
 
             rule = WebAppRule(
                 name=item.get('name'),

@@ -2,9 +2,11 @@ import os
 import unittest
 from unittest.mock import patch, MagicMock
 from src.client_side_renderer.client_side_renderer import IClientSideRenderer
+from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.exceptions import FatalError
 from src.web_app_determiner.web_app_info import WebAppInfo
 from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
+from src.web_app_determiner.web_app_rule.authentication.auth import IAuthVisitor
 from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRulesDeserializer
 
 
@@ -31,19 +33,21 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
             return file.read()
 
     def test_wrong_file(self):
-        self.assertRaises(FatalError, HTMLContentParsingFromFileMethod, MagicMock, "", MagicMock)
-        self.assertRaises(FatalError, HTMLContentParsingFromFileMethod, MagicMock, "..", MagicMock)
+        self.assertRaises(FatalError, HTMLContentParsingFromFileMethod, MagicMock, MagicMock, "", MagicMock)
+        self.assertRaises(FatalError, HTMLContentParsingFromFileMethod, MagicMock, MagicMock, "..", MagicMock)
         self.assertRaises(FatalError,
                           HTMLContentParsingFromFileMethod,
+                          MagicMock,
                           MagicMock,
                           os.path.join(os.path.dirname(__file__), "tests", "test_html_content_parsing_from_file_method.py"),
                           MagicMock)
 
     @patch.object(HTMLContentParsingFromFileMethod, '_get_full_page_content')
     def test_inspect_host(self, mock_get_full_page_content):
-        mock_client = MagicMock(spec=IClientSideRenderer)
+        mock_client = MagicMock(spec=SeleniumRenderer)
         json_deserializer = JsonWebAppRulesDeserializer()
         method = HTMLContentParsingFromFileMethod(mock_client,
+                                                  MagicMock(spec=IAuthVisitor),
                                                   os.path.join(os.path.dirname(__file__),
                                                                "assets",
                                                                "web-apps.json"),

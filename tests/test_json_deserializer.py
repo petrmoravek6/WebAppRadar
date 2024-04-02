@@ -70,10 +70,14 @@ class TestJsonWebAppRulesDeserializer(unittest.TestCase):
 
     def test_auth_method_types(self):
         """Test that the auth method is correctly identified as UserAndPwdAuth."""
+        expected_username = "user123"
+        expected_pwd = "password123"
         for rule_name in ["GitLab", "Zabbix", "Graylog", "Snipe-IT", "Keycloak"]:
             rule = self.find_rule_by_name(rule_name)
             self.assertIsNotNone(rule.auth, f"{rule_name} should have an auth object.")
             self.assertIsInstance(rule.auth, UserAndPwdAuth, f"{rule_name}'s auth should be UserAndPwdAuth.")
+            self.assertEqual(rule.auth.username, expected_username)
+            self.assertEqual(rule.auth.password, expected_pwd)
 
     def test_auth_object_completeness(self):
         """Test for completeness of the Auth object for a given application."""

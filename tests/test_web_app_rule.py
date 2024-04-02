@@ -36,6 +36,8 @@ class TestWebAppRule(unittest.TestCase):
                                method="username_and_password",
                                user_box_params=[HTMLElementParam(key="key", value="value")],
                                pwd_box_params=[HTMLElementParam(key="key", value="value")],
+                               username="XXX",
+                               password="XXX"
                            ))
         self.assertTrue(rule1.matches(self.html_content1))
         self.assertTrue(rule2.matches(self.html_content3))
@@ -61,6 +63,8 @@ class TestWebAppRule(unittest.TestCase):
                                method="username_and_password",
                                user_box_params=[HTMLElementParam(key="key", value="value")],
                                pwd_box_params=[HTMLElementParam(key="key", value="value")],
+                               username="XXX",
+                               password="XXX"
                            ))
         expected_version = "9.4.18"
         expected_version2 = "22.0.3"

@@ -50,7 +50,9 @@
       ],
       "pwd_box_params": [
         {"key": "name", "value": "password"}
-      ]
+      ],
+      "username": "user123",
+      "password": "password123"
     },
     "version": "gon.version=\"(\\d+\\.\\d+\\.\\d+)\";"
   },
@@ -64,7 +66,9 @@
       ],
       "pwd_box_params": [
         {"key": "id", "value": "password"}
-      ]
+      ],
+      "username": "user123",
+      "password": "password123"
     },
     "version": "<footer role=\"contentinfo\">Zabbix\\s+(\\d+\\.\\d+\\.\\d+)"
   },
@@ -78,7 +82,9 @@
       ],
       "pwd_box_params": [
         {"key": "id", "value": "password"}
-      ]
+      ],
+      "username": "user123",
+      "password": "password123"
     },
     "version": "<footer class=\".+\">Graylog\\s+(\\d+\\.\\d+\\.\\d+)"
   },
@@ -92,7 +98,9 @@
       ],
       "pwd_box_params": [
         {"key": "id", "value": "password"}
-      ]
+      ],
+      "username": "user123",
+      "password": "password123"
     },
     "version": "<strong>Version</strong>\\s+v(\\d+\\.\\d+\\.\\d+)"
   },
@@ -107,7 +115,9 @@
       ],
       "pwd_box_params": [
         {"key": "id", "value": "password"}
-      ]
+      ],
+      "username": "user123",
+      "password": "password123"
     },
     "version": "<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>"
   }

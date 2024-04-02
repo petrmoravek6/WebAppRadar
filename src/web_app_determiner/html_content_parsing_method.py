@@ -6,6 +6,7 @@ from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMeth
 from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
 import logging
+from src.web_app_determiner.web_app_rule.authentication.auth import IAuthVisitor
 from src.web_app_determiner.web_app_rule.deserializer import IWebAppRulesDeserializer
 from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
@@ -13,8 +14,9 @@ logger = logging.getLogger(__name__)
 
 
 class HtmlContentParsingMethod(IWebAppDetectionMethod):
-    def __init__(self, client: SeleniumRenderer):
+    def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor):
         self.client = client
+        self.auth_executor = auth_executor
 
     def _get_full_page_content(self, host: str) -> Optional[str]:
         """
@@ -42,15 +44,22 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
             if rule.matches(page_content):
                 name = rule.name
                 if rule.auth:
-                    page_content = rule.auth.accept(self.client.driver)
+                    page_content = rule.auth.accept(self.auth_executor)
                     if page_content is None:
+                        logger.error(f"Authentication to {name} on '{host}' was not successful. Please check the set credentials and locators.")
                         return WebAppInfo(name, None)
                 if rule.version_path:
-                    page_content = self._get_full_page_content(host + rule.version_path)
+                    ful_ver_path = host + rule.version_path
+                    page_content = self._get_full_page_content(ful_ver_path)
+                    if page_content is None:
+                        logger.error(f"Couldn't visit {ful_ver_path} for {name}'s version. Please check the set 'version_path' and 'version' for {name}")
+                        return WebAppInfo(name, None)
                 ver = None
                 if page_content:
                     ver = rule.find_version(page_content)
+                logger.info(f"{name} ({ver if ver else 'unknown'}) running on {host}")
                 return WebAppInfo(name, ver)
+        logger.info(f"{host} was not matched with any known web application")
         return None
 
     def _authenticate(self) -> None:
@@ -58,8 +67,9 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
 
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
-    def __init__(self, client: SeleniumRenderer, file_path: str, deserializer: IWebAppRulesDeserializer):
-        super().__init__(client)
+    def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor,
+                 file_path: str, deserializer: IWebAppRulesDeserializer):
+        super().__init__(client, auth_executor)
         self.rules = HTMLContentParsingFromFileMethod._load_rules(file_path, deserializer)
 
     def _get_web_app_rules(self) -> Iterable[WebAppRule]:

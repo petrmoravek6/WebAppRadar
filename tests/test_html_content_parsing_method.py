@@ -1,9 +1,10 @@
 import unittest
 from typing import Iterable
 from unittest.mock import patch, MagicMock
-from src.client_side_renderer.client_side_renderer import IClientSideRenderer
+from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
 from src.web_app_determiner.html_content_parsing_method import HtmlContentParsingMethod
+from src.web_app_determiner.web_app_rule.authentication.auth import IAuthVisitor
 from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 
@@ -11,8 +12,8 @@ class MockHtmlContentParsingMethod(HtmlContentParsingMethod):
     """
     This is a class that corresponds to HtmlContentParsingMethod with dummy implementation of abstract class which will be mocked anyway
     """
-    def __init__(self, client: IClientSideRenderer):
-        super().__init__(client)
+    def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor):
+        super().__init__(client, auth_executor)
 
     def _get_web_app_rules(self) -> Iterable[WebAppRule]:
         raise NotImplementedError()
@@ -62,8 +63,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
@@ -87,8 +88,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_unknown_host(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
@@ -100,8 +101,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_followup_version(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
@@ -115,8 +116,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_followup_version_not_found(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
@@ -132,8 +133,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=[])
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content')
     def test_inspect_host_no_rules(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         # Use the preloaded HTML content for the mock side effect
         mock_get_full_page_content.side_effect = lambda host: self.html_contents.get(host)
@@ -149,8 +150,8 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(MockHtmlContentParsingMethod, '_get_web_app_rules', return_value=mock_web_app_rules)
     @patch.object(MockHtmlContentParsingMethod, '_get_full_page_content', return_value=None)
     def test_inspect_host_no_page_content(self, mock_get_full_page_content, mock_get_web_app_rules):
-        mock_client = MagicMock(spec=IClientSideRenderer)
-        method = MockHtmlContentParsingMethod(client=mock_client)
+        mock_client = MagicMock(spec=SeleniumRenderer)
+        method = MockHtmlContentParsingMethod(client=mock_client, auth_executor=MagicMock(spec=IAuthVisitor))
 
         result_confluence = method.inspect_host('confluence.example.org')
         result_jira = method.inspect_host('jira.example.org')

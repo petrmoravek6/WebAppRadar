@@ -43,7 +43,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
                 if rule.auth:
                     page_content = rule.auth.accept(self.client.driver)
                     if page_content is None:
-                        # todo
+                        return WebAppInfo(name, None)
                 if rule.version_path:
                     page_content = self._get_full_page_content(host + rule.version_path)
                 ver = None

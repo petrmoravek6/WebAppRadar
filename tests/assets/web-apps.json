@@ -39,5 +39,76 @@
     "name": "TeamCity",
     "identifier": "<meta name=\"application-name\"\\s+content=\"TeamCity",
     "version": "<span class=\"greyNote version\"><span class=\"vWord\">Version</span>\\s*(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "GitLab",
+    "identifier": "<meta content=\"GitLab\" property=\"og:site_name\">",
+    "auth":{
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "name", "value": "username"}
+      ],
+      "pwd_box_params": [
+        {"key": "name", "value": "password"}
+      ]
+    },
+    "version": "gon.version=\"(\\d+\\.\\d+\\.\\d+)\";"
+  },
+  {
+    "name": "Zabbix",
+    "identifier": "<meta name=\"Author\" content=\"Zabbix SIA\">",
+    "auth":{
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "id", "value": "name"}
+      ],
+      "pwd_box_params": [
+        {"key": "id", "value": "password"}
+      ]
+    },
+    "version": "<footer role=\"contentinfo\">Zabbix\\s+(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Graylog",
+    "identifier": "<title>Graylog - Sign in</title>",
+    "auth":{
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "id", "value": "username"}
+      ],
+      "pwd_box_params": [
+        {"key": "id", "value": "password"}
+      ]
+    },
+    "version": "<footer class=\".+\">Graylog\\s+(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Snipe-IT",
+    "identifier": "Asset Management</title>",
+    "auth":{
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "id", "value": "username"}
+      ],
+      "pwd_box_params": [
+        {"key": "id", "value": "password"}
+      ]
+    },
+    "version": "<strong>Version</strong>\\s+v(\\d+\\.\\d+\\.\\d+)"
+  },
+  {
+    "name": "Keycloak",
+    "identifier": "<title>Welcome to Keycloak</title>",
+    "auth":{
+      "auth_path": "/admin/master/console/",
+      "method": "username_and_password",
+      "user_box_params": [
+        {"key": "id", "value": "username"}
+      ],
+      "pwd_box_params": [
+        {"key": "id", "value": "password"}
+      ]
+    },
+    "version": "<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>"
   }
 ]

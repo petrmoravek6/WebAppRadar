@@ -2,11 +2,11 @@ import json
 from typing import Collection
 from src.web_app_determiner.web_app_rule.authentication.html_elem_param import HTMLElementParam
 from src.web_app_determiner.web_app_rule.authentication.user_and_pwd_auth import UserAndPwdAuth
-from src.web_app_determiner.web_app_rule.deserializer import IWebAppRuleDeserializer
+from src.web_app_determiner.web_app_rule.deserializer import IWebAppRulesDeserializer
 from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 
-class JsonWebAppRuleDeserializer(IWebAppRuleDeserializer):
+class JsonWebAppRulesDeserializer(IWebAppRulesDeserializer):
     def deserialize(self, data: str) -> Collection[WebAppRule]:
         parsed_data = json.loads(data)
         rules = []
@@ -19,9 +19,11 @@ class JsonWebAppRuleDeserializer(IWebAppRuleDeserializer):
                 # Determine the type of auth and create the appropriate instance
                 method = auth_data.get('method')
                 if method == 'username_and_password':
-                    user_box_params = [HTMLElementParam(k, v) for k, v in auth_data.get('user_box_params', [])]
-                    pwd_box_params = [HTMLElementParam(k, v) for k, v in auth_data.get('pwd_box_params', [])]
-                    auth_instance = UserAndPwdAuth(method, auth_path, user_box_params, pwd_box_params)
+                    user_box_params = [HTMLElementParam(key=d['key'], value=d['value']) for d in
+                                       auth_data.get('user_box_params', [])]
+                    pwd_box_params = [HTMLElementParam(key=d['key'], value=d['value']) for d in
+                                      auth_data.get('pwd_box_params', [])]
+                    auth_instance = UserAndPwdAuth(method, user_box_params, pwd_box_params, auth_path)
 
             rule = WebAppRule(
                 name=item.get('name'),

@@ -5,7 +5,7 @@ from src.client_side_renderer.client_side_renderer import IClientSideRenderer
 from src.exceptions import FatalError
 from src.web_app_determiner.web_app_info import WebAppInfo
 from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
-from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRuleDeserializer
+from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRulesDeserializer
 
 
 class TestHtmlContentParsingMethod(unittest.TestCase):
@@ -42,7 +42,7 @@ class TestHtmlContentParsingMethod(unittest.TestCase):
     @patch.object(HTMLContentParsingFromFileMethod, '_get_full_page_content')
     def test_inspect_host(self, mock_get_full_page_content):
         mock_client = MagicMock(spec=IClientSideRenderer)
-        json_deserializer = JsonWebAppRuleDeserializer()
+        json_deserializer = JsonWebAppRulesDeserializer()
         method = HTMLContentParsingFromFileMethod(mock_client,
                                                   os.path.join(os.path.dirname(__file__),
                                                                "assets",

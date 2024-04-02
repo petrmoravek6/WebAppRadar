@@ -6,7 +6,7 @@ from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMeth
 from src.client_side_renderer.selenium_renderer import SeleniumRenderer
 from src.web_app_determiner.web_app_info import WebAppInfo
 import logging
-from src.web_app_determiner.web_app_rule.deserializer import IWebAppRuleDeserializer
+from src.web_app_determiner.web_app_rule.deserializer import IWebAppRulesDeserializer
 from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 
 logger = logging.getLogger(__name__)
@@ -58,7 +58,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
 
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
-    def __init__(self, client: SeleniumRenderer, file_path: str, deserializer: IWebAppRuleDeserializer):
+    def __init__(self, client: SeleniumRenderer, file_path: str, deserializer: IWebAppRulesDeserializer):
         super().__init__(client)
         self.rules = HTMLContentParsingFromFileMethod._load_rules(file_path, deserializer)
 
@@ -66,7 +66,7 @@ class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
         return self.rules
 
     @staticmethod
-    def _load_rules(file_path: str, deserializer: IWebAppRuleDeserializer) -> Collection[WebAppRule]:
+    def _load_rules(file_path: str, deserializer: IWebAppRulesDeserializer) -> Collection[WebAppRule]:
         if not os.path.exists(file_path) or not os.path.isfile(file_path):
             raise FatalError(f"The path for web app rules: '{file_path}' is not valid or does not exist.",
                              "Please check the file exists and is not a folder")

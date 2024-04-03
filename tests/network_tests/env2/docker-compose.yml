@@ -7,7 +7,9 @@ services:
       custom_network:
         ipv4_address: 192.0.0.10
   apache2:
-    image: httpd:2.4.58-alpine
+    build:
+      context: .
+      dockerfile: ./apache.Dockerfile
     networks:
       custom_network:
         ipv4_address: 192.0.0.11

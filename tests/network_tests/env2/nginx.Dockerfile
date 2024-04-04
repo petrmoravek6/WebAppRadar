@@ -25,7 +25,7 @@ RUN ln -s /etc/nginx/sites-available/example1.conf /etc/nginx/sites-enabled/
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the HTML content
-COPY dummy_index.html /var/www/html
+COPY dummy_index.html /var/www/html/dummy_index.html
 
 # Expose the SSH port
 EXPOSE 22

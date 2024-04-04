@@ -25,6 +25,10 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.0.0.12
+    extra_hosts:
+      - "example1.mywebsite-webappradar.org:192.0.0.10"
+      - "example2.mywebsite-webappradar.org:192.0.0.11"
+      - "example3.mywebsite-webappradar.org:192.0.0.11"
 
 networks:
   custom_network:

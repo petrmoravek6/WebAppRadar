@@ -22,3 +22,10 @@ class TestOpenPortWebServerScanner(unittest.TestCase):
 
         self.assertEqual(ip1, '192.0.0.10')
         self.assertEqual(ip2, '192.0.0.11')
+
+    def test_invalid_hostname(self):
+        with self.assertRaises(ValueError):
+            self.resolver.get_ip('example1534.mywebsite-webappradar.org')
+
+        with self.assertRaises(ValueError):
+            self.resolver.get_ip('easdasdasdasd64-asd54asd-asd5')

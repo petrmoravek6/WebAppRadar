@@ -6,7 +6,7 @@ from src.vhost_net_scanner.web_server_vhost_net_scanner import WebServerVhostNet
 from src.web_server_scanner.web_server_scanner import IWebServerScanner
 
 
-class LocalWebServerVhostsNetScanner(WebServerVhostNetScanner):
+class LocalVhostsNetScanner(WebServerVhostNetScanner):
     def __init__(self,
                  web_server_scanner: IWebServerScanner,
                  vhost_discoverer: IVhostDiscoverer,
@@ -14,12 +14,12 @@ class LocalWebServerVhostsNetScanner(WebServerVhostNetScanner):
         super().__init__(web_server_scanner, vhost_discoverer)
         self.hostname_validator = hostname_validator
 
-    def get_all_vhosts(self, hosts: Iterable[str]) -> Iterable[str]:
-        vhosts = super().get_all_vhosts(hosts)
+    def get_all_vhosts(self, subnets: Iterable[str]) -> Iterable[str]:
+        vhosts = super().get_all_vhosts(subnets)
         res = set()
         for vhost in vhosts:
-            for host in hosts:
-                if self.hostname_validator.is_hostname_in_subnet(vhost, host):
+            for subnet in subnets:
+                if self.hostname_validator.is_hostname_in_subnet(vhost, subnet):
                     res.add(vhost)
                     break
         return res

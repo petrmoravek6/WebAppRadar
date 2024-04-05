@@ -18,6 +18,6 @@ class TestParamikoSshAgentVhostDiscoverer(unittest.TestCase):
     def test_discover_vhosts(self):
         vhosts1 = self.discoverer.get_virtual_hosts('192.0.0.10')
         vhosts2 = self.discoverer.get_virtual_hosts('192.0.0.11')
-        #
+
         self.assertCountEqual(vhosts1, ('example1.mywebsite-webappradar.org',))
         self.assertCountEqual(vhosts2, ('example2.mywebsite-webappradar.org', 'example3.mywebsite-webappradar.org'))

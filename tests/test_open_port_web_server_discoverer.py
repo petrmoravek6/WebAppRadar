@@ -17,7 +17,7 @@ class TestOpenPortWebServerDiscoverer(unittest.TestCase):
         }
 
         result = self.discoverer.discover(['192.168.1.1', '192.168.1.2'])
-        self.assertEqual(set(result), {'192.168.1.1', '192.168.1.2'})
+        self.assertCountEqual(set(result), {'192.168.1.1', '192.168.1.2'})
 
     def test_discover_with_no_open_web_servers(self):
         # Simulate no open web server ports
@@ -27,7 +27,7 @@ class TestOpenPortWebServerDiscoverer(unittest.TestCase):
         }
 
         result = self.discoverer.discover(['192.168.1.1', '192.168.1.2'])
-        self.assertEqual(set(result), set())
+        self.assertCountEqual(set(result), set())
 
     def test_discover_with_all_hosts_open(self):
         # Simulate all hosts have at least one open web server port
@@ -38,11 +38,11 @@ class TestOpenPortWebServerDiscoverer(unittest.TestCase):
         }
 
         result = self.discoverer.discover(['10.0.0.1', '10.0.0.2', '10.0.0.3'])
-        self.assertEqual(set(result), {'10.0.0.1', '10.0.0.2', '10.0.0.3'})
+        self.assertCountEqual(set(result), {'10.0.0.1', '10.0.0.2', '10.0.0.3'})
 
     def test_discover_with_empty_input(self):
         # Test with no hosts provided
         self.mock_scanner.get_open_ports.return_value = {}
 
         result = self.discoverer.discover([])
-        self.assertEqual(set(result), set())
+        self.assertCountEqual(set(result), set())

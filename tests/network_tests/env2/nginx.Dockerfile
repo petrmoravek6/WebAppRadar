@@ -17,6 +17,13 @@ RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/
 # Optional: Disable SSH root login
 RUN sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
 
+# Permit user environment and setup PATH environment variable
+RUN echo "PermitUserEnvironment yes" >> /etc/ssh/sshd_config
+RUN mkdir -p /home/test/.ssh && \
+    echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" > /home/test/.ssh/environment && \
+    chown test:test /home/test/.ssh/environment && \
+    chmod 600 /home/test/.ssh/environment
+
 # Copy the Nginx site configuration to sites-available and create a symlink in sites-enabled
 RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
 COPY example1.conf /etc/nginx/sites-available/

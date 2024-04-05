@@ -13,18 +13,25 @@ RUN useradd -m -s /bin/bash test && \
 
 # Setup SSH to accept login with password
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
 # Optional: Disable SSH root login
 RUN sed -i 's/PermitRootLogin yes/PermitRootLogin no/' /etc/ssh/sshd_config
+
+# Permit user environment and setup PATH environment variable
+RUN echo "PermitUserEnvironment yes" >> /etc/ssh/sshd_config
+RUN mkdir -p /home/test/.ssh && \
+    echo "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" > /home/test/.ssh/environment && \
+    chown test:test /home/test/.ssh/environment && \
+    chmod 600 /home/test/.ssh/environment
 
 # Create sites-available and sites-enabled directories
 RUN mkdir /usr/local/apache2/sites-available /usr/local/apache2/sites-enabled
 
 # Copy the Apache site configurations to sites-available
-COPY example2.conf /usr/local/apache2/sites-available/example.conf
+COPY example2.conf /usr/local/apache2/sites-available/example2.conf
 
-# Create symlinks in sites-enabled
-RUN ln -s /usr/local/apache2/sites-available/example1.conf /usr/local/apache2/sites-enabled/example1.conf && \
-    ln -s /usr/local/apache2/sites-available/example3.conf /usr/local/apache2/sites-enabled/example3.conf
+# Create symlink in sites-enabled
+RUN ln -s /usr/local/apache2/sites-available/example2.conf /usr/local/apache2/sites-enabled/example2.conf
 
 # Include the sites-enabled directory in the main Apache configuration
 RUN echo "IncludeOptional /usr/local/apache2/sites-enabled/*.conf" >> /usr/local/apache2/conf/httpd.conf

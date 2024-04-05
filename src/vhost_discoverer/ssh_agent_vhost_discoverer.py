@@ -22,12 +22,19 @@ class SshAgentVhostDiscoverer(IVhostDiscoverer):
         res = set()
         for cmd in self.web_server_cmds:
             try:
-                if self.ssh_client.exec_command(cmd.is_web_server_running()).exit_code == 0:
+                cmd1 = self.ssh_client.exec_command(cmd.is_web_server_running())
+                if cmd1.exit_code == 0:
+                    logger.debug(f"Web server detected on '{host}' using '{cmd.is_web_server_running()}' command to "
+                                 f"check zero exit code")
                     server_vhosts_content = self.ssh_client.exec_command(cmd.get_content_from_server()).stdout
                     vhosts = cmd.get_all_vhosts_from_content(server_vhosts_content)
                     vhosts_w_localhost = {host if (host == "localhost" or host == "127.0.0.1") else host for host in
                                           vhosts}
                     res = res.union(vhosts_w_localhost)
+                else:
+                    logger.debug(f"Could not check if web server is running using '{cmd.is_web_server_running()}' on "
+                                 f"'{host}' exit code: {cmd1.exit_code}, stdout: {cmd1.stdout}, stderr: {cmd1.stdout}"
+                                 f", stderr: {cmd1.stderr}")
             except Exception as e:
                 logger.error(f"Error during SSH {host} inspection. {e}")
                 return tuple()

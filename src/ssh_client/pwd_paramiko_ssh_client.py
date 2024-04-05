@@ -1,6 +1,5 @@
 import logging
-
-from paramiko_ssh_client import ParamikoSSHClient
+from src.ssh_client.paramiko_ssh_client import ParamikoSSHClient
 import paramiko
 
 

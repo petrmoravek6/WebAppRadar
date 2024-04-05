@@ -21,12 +21,12 @@ class TestOpenPortWebServerScanner(unittest.TestCase):
 
         expected = {'192.0.0.2'}
 
-        self.assertEqual(result, expected)
+        self.assertCountEqual(result, expected)
 
     def test_non_existent_hosts(self):
         result = self.scanner.discover(['192.0.0.6', '192.0.0.7'])
 
-        self.assertEqual(result, set())
+        self.assertCountEqual(result, set())
 
     def test_whole_subnet(self):
         result = self.scanner.discover(['192.0.0.0/29'])

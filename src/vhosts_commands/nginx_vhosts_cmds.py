@@ -4,8 +4,7 @@ import re
 
 class NginxVhostsCmds(IVhostsCmds):
     def is_web_server_running(self) -> str:
-        return ("systemctl -q is-active nginx || (service nginx status > /dev/null 2>&1 && service nginx status | grep "
-                "-q 'active (running)')")
+        return "systemctl -q is-active nginx || (service nginx status && service nginx status | grep -q running)"
 
     def get_content_from_server(self) -> str:
         return "cat /etc/nginx/sites-enabled/*"

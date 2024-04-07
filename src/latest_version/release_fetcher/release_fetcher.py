@@ -3,6 +3,7 @@ from typing import Iterable
 from src.latest_version.cycle_info import CycleInfo
 import logging
 from src.latest_version.release_fetcher.method.endoflife import EndOfLifeReleaseFetcherMethod
+from src.latest_version.release_fetcher.method.github import GitHubReleaseFetcherMethod
 
 logger = logging.getLogger(__name__)
 
@@ -10,16 +11,20 @@ logger = logging.getLogger(__name__)
 class ReleaseFetcher:
     def __init__(self):
         endoflife_fetcher_method = EndOfLifeReleaseFetcherMethod()
+        github_fetcher_method = GitHubReleaseFetcherMethod()
+
         self.methods = {
-            "Atlassian Jira": partial(endoflife_fetcher_method.fetch_cycle_info, "Atlassian Jira"),
-            "Atlassian Confluence": partial(endoflife_fetcher_method.fetch_cycle_info, "Atlassian Confluence"),
-            "JFrog Artifactory Pro": partial(endoflife_fetcher_method.fetch_cycle_info, "JFrog Artifactory Pro"),
-            "Prometheus": partial(endoflife_fetcher_method.fetch_cycle_info, "Prometheus"),
-            "Grafana": partial(endoflife_fetcher_method.fetch_cycle_info, "Grafana"),
-            "GitLab": partial(endoflife_fetcher_method.fetch_cycle_info, "GitLab"),
-            "Zabbix": partial(endoflife_fetcher_method.fetch_cycle_info, "Zabbix"),
-            "Graylog": partial(endoflife_fetcher_method.fetch_cycle_info, "Graylog"),
-            "Keycloak": partial(endoflife_fetcher_method.fetch_cycle_info, "Keycloak"),
+            "Atlassian Jira": partial(endoflife_fetcher_method.fetch_cycle_info, "jira-software"),
+            "Atlassian Confluence": partial(endoflife_fetcher_method.fetch_cycle_info, "confluence"),
+            "JFrog Artifactory Pro": partial(endoflife_fetcher_method.fetch_cycle_info, "artifactory"),
+            "Prometheus": partial(endoflife_fetcher_method.fetch_cycle_info, "prometheus"),
+            "Grafana": partial(endoflife_fetcher_method.fetch_cycle_info, "grafana"),
+            "GitLab": partial(endoflife_fetcher_method.fetch_cycle_info, "gitlab"),
+            "Zabbix": partial(endoflife_fetcher_method.fetch_cycle_info, "zabbix"),
+            "Graylog": partial(endoflife_fetcher_method.fetch_cycle_info, "graylog"),
+            "Keycloak": partial(endoflife_fetcher_method.fetch_cycle_info, "keycloak"),
+            "Bareos": partial(github_fetcher_method.fetch_cycle_info, 'bareos', 'bareos', "name", r'\S*\s*(\d+\.\d+.\d+)'),
+            "Snipe-IT": partial(github_fetcher_method.fetch_cycle_info, 'snipe', 'snipe-it', "name", r'v(\d+\.\d+.\d+)')
         }
 
     def fetch_web_app_cycle_info(self, web_app_name: str) -> Iterable[CycleInfo]:

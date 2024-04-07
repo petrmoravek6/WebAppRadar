@@ -23,9 +23,9 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
 
         expected_results = [
             CycleInfo(cycle="24.0", latest="24.0.2", eol=False, eol_date=None),
-            CycleInfo(cycle="23.0", latest="23.0.7", eol=True,
+            CycleInfo(cycle="23.0", latest="23.0.7", eol=False,
                       eol_date=datetime.strptime("2024-05-04", "%Y-%m-%d").date()),
-            CycleInfo(cycle="22.0", latest="22.0.9", eol=False,
+            CycleInfo(cycle="22.0", latest="22.0.9", eol=True,
                       eol_date=datetime.strptime("2023-11-23", "%Y-%m-%d").date()),
         ]
 
@@ -48,11 +48,11 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
         mock_get_json.return_value = mock_response
 
         expected_results = [
-            CycleInfo(cycle="8.9", latest="8.9.0", eol=True,
+            CycleInfo(cycle="8.9", latest="8.9.0", eol=False,
                       eol_date=datetime.strptime("2026-04-02", "%Y-%m-%d").date()),
-            CycleInfo(cycle="8.8", latest="8.8.1", eol=True,
+            CycleInfo(cycle="8.8", latest="8.8.1", eol=False,
                       eol_date=datetime.strptime("2026-02-08", "%Y-%m-%d").date()),
-            CycleInfo(cycle="8.7", latest="8.7.2", eol=False,
+            CycleInfo(cycle="8.7", latest="8.7.2", eol=True,
                       eol_date=datetime.strptime("2023-12-06", "%Y-%m-%d").date()),
         ]
 

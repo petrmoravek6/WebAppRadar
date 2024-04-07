@@ -15,6 +15,8 @@ class EndOfLifeReleaseFetcherMethod:
         "Atlassian Jira": "jira-software",
         "Atlassian Confluence": "confluence",
         "JFrog Artifactory Pro": "artifactory",
+        "JFrog Artifactory Oss": "artifactory",
+        "JFrog Artifactory OSS": "artifactory",
         "Prometheus": "prometheus",
         "Grafana": "grafana",
         "GitLab": "gitlab",
@@ -67,7 +69,7 @@ class EndOfLifeReleaseFetcherMethod:
                     eol_date = None
                 else:
                     eol_date = datetime.strptime(eol_raw, '%Y-%m-%d').date()
-                    eol = eol_date >= EndOfLifeReleaseFetcherMethod._get_current_date()
+                    eol = eol_date < EndOfLifeReleaseFetcherMethod._get_current_date()
 
                 cycle_info = CycleInfo(
                     cycle=cycle,

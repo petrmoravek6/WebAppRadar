@@ -1,6 +1,8 @@
 import unittest
 from datetime import datetime
-from src.latest_version.verson_comparator import SemanticVersionComparator, CycleInfo, VersionComparison
+
+from src.latest_version.semantic_version_comparator import SemanticVersionComparator
+from src.latest_version.verson_comparator import CycleInfo
 
 
 class TestSemanticVersionComparator(unittest.TestCase):

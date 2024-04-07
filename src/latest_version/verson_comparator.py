@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
-from typing import Iterable
+from typing import Iterable, NamedTuple
 from src.latest_version.cycle_info import CycleInfo
 from src.latest_version.version_comparison import VersionComparison
+
 
 class IVersionComparator(ABC):
     @abstractmethod

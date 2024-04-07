@@ -1,5 +1,5 @@
 import re
-from packaging.version import Version, parse
+from packaging.version import parse
 from typing import Iterable, List, Dict, Any
 from src.latest_version.cycle_info import CycleInfo
 import logging

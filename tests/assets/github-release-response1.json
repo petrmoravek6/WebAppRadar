@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://api.github.com/repos/snipe/snipe-it/releases/149022627",
+    "assets_url": "https://api.github.com/repos/snipe/snipe-it/releases/149022627/assets",
+    "upload_url": "https://uploads.github.com/repos/snipe/snipe-it/releases/149022627/assets{?name,label}",
+    "html_url": "https://github.com/snipe/snipe-it/releases/tag/v6.3.4",
+    "id": 149022627,
+    "author": {
+      "login": "snipe",
+      "id": 197404,
+      "node_id": "MDQ6VXNlcjE5NzQwNA==",
+      "avatar_url": "https://avatars.githubusercontent.com/u/197404?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/snipe",
+      "html_url": "https://github.com/snipe",
+      "followers_url": "https://api.github.com/users/snipe/followers",
+      "following_url": "https://api.github.com/users/snipe/following{/other_user}",
+      "gists_url": "https://api.github.com/users/snipe/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/snipe/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/snipe/subscriptions",
+      "organizations_url": "https://api.github.com/users/snipe/orgs",
+      "repos_url": "https://api.github.com/users/snipe/repos",
+      "events_url": "https://api.github.com/users/snipe/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/snipe/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "node_id": "RE_kwDOANrq484I4eej",
+    "tag_name": "v6.3.4",
+    "target_commitish": "master",
+    "name": "v6.3.4",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2024-03-29T13:20:22Z",
+    "published_at": "2024-03-29T13:40:53Z",
+    "assets": [
+
+    ],
+    "tarball_url": "https://api.github.com/repos/snipe/snipe-it/tarball/v6.3.4",
+    "zipball_url": "https://api.github.com/repos/snipe/snipe-it/zipball/v6.3.4",
+    "body": "> [!CAUTION]  \r\n>  **The upcoming v7 release of Snipe-IT will require PHP 8.1 or greater**\r\n\r\nHappy Friday! Lots of fixes and improvements in this version. Here's the tldr;, with the full changelog below:\r\n\r\n- Added Somali translation\r\n- Fixed several label setting glitches\r\n- Fixed some API scoping issues where results were not as constrained as they should have been when searching\r\n- Added column selectors and signatures to the \"print all assigned\" page\r\n- Added 2FA reset logging (this shows up as a separate action, not a normal user edit)\r\n- Added AVIF as an accepted image format\r\n- Added ability to \"toggle all\" columns in the list views on most pages\r\n- Added the ability to \"deep link\" to search results in those list views\r\n- Updated the documentation to reflect that the [php exif](https://www.php.net/manual/en/exif.setup.php) library is required\r\n\r\n> [!WARNING]  \r\n>  **Upcoming Breaking API change!** In between the last release and this one, we also discovered that a change we made midway through releases broke the [Jamf2Snipe](https://github.com/grokability/jamf2snipe) integration for adding/updating assets. We had changed the \"shape\" of the asset response to be more consistent with how we present that JSON in other API responses - however in doing so, we broke some of the Jamf2Snipe capabilities. We've reverted that change for now, but in the next release, we'll be adding that change back *and* updating the Jamf2Snipe library to match that capability. \r\n\r\nWe *are* noticing in some of the translations in CrowdIn that some `trans_choice()` translations are showing with a weird `<unk>` symbol instead of the pipe (`|`) symbol that the translations strings need in order to decide whether or not to pluralize a string. We've been fixing them as we find them, but if you see anything unusual, open an issue here or [propose the change in our CrowdIn project](https://crowdin.com/project/snipe-it).\r\n\r\n## What's Changed\r\n* Updated language strings, added Somali by @snipe in https://github.com/snipe/snipe-it/pull/14400\r\n* Fixed uninitialized string offset error in labels in new label engine when field label was blank by @snipe in https://github.com/snipe/snipe-it/pull/14404\r\n* Fixed `checkout_date` for licenses on print all assigned for users by @snipe in https://github.com/snipe/snipe-it/pull/14407\r\n* Fixed deprecation warning on `strtoupper()` by @snipe in https://github.com/snipe/snipe-it/pull/14413\r\n* Fixed requestable search API scoping by @snipe in https://github.com/snipe/snipe-it/pull/14430\r\n* Removes the unused `mediconesystems/livewire-datatables` package by @marcusmoore in https://github.com/snipe/snipe-it/pull/14427\r\n* Fixed z-index of date-picker by @Godmartinz in https://github.com/snipe/snipe-it/pull/14415\r\n* Fix [sc-25008] - correct and improve legacy language warnings by @uberbrady in https://github.com/snipe/snipe-it/pull/14401\r\n* Removed dead test code by @marcusmoore in https://github.com/snipe/snipe-it/pull/14437\r\n* Hide/Show ecnrypted values when click on the lock icon by @mauro-miatello in https://github.com/snipe/snipe-it/pull/14406\r\n* Organized notification test cases by @marcusmoore in https://github.com/snipe/snipe-it/pull/14436\r\n* Make sure the category is still valid before displaying on view assets by @snipe in https://github.com/snipe/snipe-it/pull/14445\r\n* Add additional options to print all assigned view by @snipe in https://github.com/snipe/snipe-it/pull/14447\r\n* Fixed Bulk delete locations bug by @Godmartinz in https://github.com/snipe/snipe-it/pull/14457\r\n* [Snyk] Upgrade bootstrap-table from 1.22.2 to 1.22.3 #14455 by @snipe in https://github.com/snipe/snipe-it/pull/14461\r\n* Wider country dropdown by @snipe in https://github.com/snipe/snipe-it/pull/14462\r\n* Added #14460 add avif format by @snipe in https://github.com/snipe/snipe-it/pull/14465\r\n* Added default location to print all assigned by @snipe in https://github.com/snipe/snipe-it/pull/14468\r\n* Added \"toggle all\" to column selector by @snipe in https://github.com/snipe/snipe-it/pull/14464\r\n* Removed the need to add `InteractsWithSettings` to each test case by @marcusmoore in https://github.com/snipe/snipe-it/pull/14438\r\n* Adds a minimal amount of validation around asset_tags in AssetsController by @marcusmoore in https://github.com/snipe/snipe-it/pull/14421\r\n* Added 2FA reset log entry by @snipe in https://github.com/snipe/snipe-it/pull/14469\r\n* Use `htmlentities()` instead of `htmlspecialcharacters()` on Custom Field Listbox Values by @spencerrlongg in https://github.com/snipe/snipe-it/pull/14089\r\n* Added validation for `last_audit_date` and `next_audit_date` by @snipe in https://github.com/snipe/snipe-it/pull/14472\r\n* Created Dymo LabelWriter Label 2112283 by @PP-JN-RL in https://github.com/snipe/snipe-it/pull/14485\r\n* Fixes `last_audit_date` not being stored via API correctly by @marcusmoore in https://github.com/snipe/snipe-it/pull/14486\r\n* Handle badly formatted `last_audit_date` in `StoreAssetRequest` by @marcusmoore in https://github.com/snipe/snipe-it/pull/14488\r\n* Fixed #14482 - bad method call model restore from view by @snipe in https://github.com/snipe/snipe-it/pull/14490\r\n* Added Dymo Labelwriter 1933081 by @PP-JN-RL in https://github.com/snipe/snipe-it/pull/14491\r\n* Fixed #14483 - Added deeplinking to search/sort/pagination by @snipe in https://github.com/snipe/snipe-it/pull/14492\r\n* Added supplier details to license view by @snipe in https://github.com/snipe/snipe-it/pull/14494\r\n* Fixed #14495 - Allow user_id to be passed to limit to only specific admins by @snipe in https://github.com/snipe/snipe-it/pull/14498\r\n* Add new validator for custom field checkboxes and fix asset model default updates  by @spencerrlongg in https://github.com/snipe/snipe-it/pull/14369\r\n* Added validation around `pwd_secure_complexity` by @marcusmoore in https://github.com/snipe/snipe-it/pull/14502\r\n* Added ability to filter in user's assigned assets by category ID and model ID by @snipe in https://github.com/snipe/snipe-it/pull/14509\r\n* Last Checkin Date added to Hardware View and Index by @akemidx in https://github.com/snipe/snipe-it/pull/14262\r\n* Added signature to user print report for Accessories and Consumables by @Godmartinz in https://github.com/snipe/snipe-it/pull/14500\r\n* Fixes #14289: /reports/activity API endpoint scoping by @squintfox in https://github.com/snipe/snipe-it/pull/14515\r\n* Fixed sorting on last checkin assets api by @snipe in https://github.com/snipe/snipe-it/pull/14516\r\n* Check that the array key exists in the label engine by @snipe in https://github.com/snipe/snipe-it/pull/14517\r\n* Default Locale database value changed to en-US by @akemidx in https://github.com/snipe/snipe-it/pull/14456\r\n\r\n## New Contributors\r\n* @PP-JN-RL made their first contribution in https://github.com/snipe/snipe-it/pull/14485\r\n* @squintfox made their first contribution in https://github.com/snipe/snipe-it/pull/14515\r\n\r\n**Full Changelog**: https://github.com/snipe/snipe-it/compare/v6.3.3...v6.3.4",
+    "reactions": {
+      "url": "https://api.github.com/repos/snipe/snipe-it/releases/149022627/reactions",
+      "total_count": 6,
+      "+1": 2,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 4,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "mentions_count": 9
+  }
+]

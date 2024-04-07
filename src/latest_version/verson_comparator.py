@@ -1,25 +1,18 @@
 from abc import ABC, abstractmethod
-from datetime import datetime
+from datetime import date
 from typing import Iterable, NamedTuple, Optional
 from packaging.version import Version, parse
-# from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import CycleInfo
 import logging
 
 logger = logging.getLogger(__name__)
-
-
-class CycleInfo(NamedTuple):
-    cycle: str
-    latest: str
-    eol: Optional[bool]
-    eol_date: Optional[datetime]
 
 
 class VersionComparison(NamedTuple):
     latest_version: Optional[str]
     latest_cycle_version: Optional[str]
     eol: Optional[bool]
-    eol_date: Optional[datetime]
+    eol_date: Optional[date]
 
 
 class IVersionComparator(ABC):

@@ -57,7 +57,7 @@ class TestSemanticVersionComparator(unittest.TestCase):
             CycleInfo(cycle='2.0', latest='2.0.3', eol=False, eol_date=None),
         ]
         ver_cycles2 = [
-            CycleInfo(cycle='2024.3', latest='2024.3.2', eol=True, eol_date=datetime.now()),
+            CycleInfo(cycle='2024.3', latest='2024.3.2', eol=True, eol_date=datetime.now().date()),
             CycleInfo(cycle='2023.9', latest='2023.9', eol=False, eol_date=None),
         ]
         ver_cycles3 = [

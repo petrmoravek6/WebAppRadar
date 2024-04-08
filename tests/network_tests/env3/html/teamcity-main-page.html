@@ -1,0 +1,525 @@
+<html lang="en" class="ua-js ring-variables-light"><head>
+      <title>Log in to TeamCity — TeamCity</title>
+      
+
+
+
+
+
+
+
+      
+<link rel="Shortcut Icon" href="/favicon.ico?v10" type="image/x-icon" sizes="16x16 32x32">
+<meta charset="UTF-8">
+
+<meta name="format-detection" content="telephone=no">
+
+<meta name="application-name" content="TeamCity (Log in to TeamCity &amp;mdash; TeamCity)">
+<meta name="description" content="Powerful Continuous Integration and Build Server">
+<meta name="viewport" content="width=1000">
+
+<link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon-180x180.png">
+
+<link rel="mask-icon" href="/img/icons/teamcity.black.svg?v2" color="black">
+
+<meta name="msapplication-TileColor" content="#000000">
+
+<meta name="msapplication-TileImage" content="/img/icons/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="/img/icons/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="/img/icons/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="/img/icons/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="/img/icons/mstile-310x310.png">
+<meta name="tc-csrf-token" content="76eec392-1d1e-4e2f-9f36-5621c8fbacd7">
+<meta name="robots" content="noindex">
+
+
+      
+
+
+<style id="18e11132cda" type="text/css">
+    @import "/res/6114880409683721742.css?v=1709682348693";
+  
+</style>
+
+
+      
+
+
+<script type="text/javascript" src="/res/-3603535750726916660.js?v=1709682348693"></script><script src="chrome-extension://nngceckbapebfimnlniiiahkandclblb/content/fido2/page-script.js" id="bw-fido2-page-script"></script>
+
+
+      <script type="text/javascript">
+  var base_uri=window.location.protocol+"//"+window.location.host+"";
+</script>
+
+
+      
+
+
+
+<script type="text/javascript" src="/res/-6060474511570324796.js?v=1709682348693"></script>
+
+
+      
+
+
+
+
+<style id="18e11132cdb" type="text/css">
+    @import "/res/459560978433157637.css?v=1709682348693";
+  
+</style>
+
+
+
+
+
+<script type="text/javascript" src="/res/5833290380196265600.js?v=1709682348693"></script>
+
+
+<script type="text/javascript">
+  window.$j = jQuery.noConflict();
+</script>
+
+
+
+
+<script type="text/javascript" src="/res/-5410233700357870077.js?v=1709682348693"></script>
+
+
+      
+
+
+
+<script type="text/javascript" src="/res/-4735258447288317237.js?v=1709682348693"></script>
+
+      
+
+
+
+<script type="text/javascript" src="/res/-4985008087834695917.js?v=1709682348693"></script>
+
+
+
+      
+
+
+
+
+
+
+
+<script type="text/javascript">
+  var internalProps = [];
+
+  internalProps['teamcity.ui.experimental'] = 'enableDefault';
+  internalProps['teamcity.ui.useServiceWorkers'] =  true;
+  internalProps['teamcity.ui.forceServiceWorkerSkipWaiting'] =  true;
+
+  internalProps['teamcity.ui.websocket.connectTimeout'] =  3000;
+  internalProps['teamcity.ui.webSocket.logToConsole'] =  false;
+
+  internalProps['teamcity.ui.pollInterval'] = 6;
+  internalProps['teamcity.ui.serverAvailability.pollInterval'] = 3;
+
+  internalProps['teamcity.ui.events.pollInterval'] = 6;
+  internalProps['teamcity.ui.systemProblems.pollInterval'] = 40;
+  internalProps['teamcity.ui.problemsSummary.pollInterval'] = 8;
+  internalProps['teamcity.ui.buildQueueEstimates.pollInterval'] = 10;
+  internalProps['teamcity.ui.subscriptions.debounceInterval'] = 3000;
+
+  // Doesn't use BS.SubscriptionManager and standard subscription mechanism
+  internalProps['teamcity.ui.cleanupNotificatorProgress.pollInterval'] = 6;
+
+  internalProps['teamcity.ui.codeMirrorEditor.enabled'] = true;
+  internalProps['teamcity.ui.customConfirm'] = false;
+  internalProps['teamcity.ui.restBreadcrumbs.popupInMainLink.enabled'] = false;
+
+  internalProps['teamcity.ui.serverRestart.warningDelay'] = 120;
+  internalProps['teamcity.ui.serverUpdate.warningDelay'] = 120;
+
+  internalProps['teamcity.ui.editSettings.showResolveValueIcon'] = false;
+
+  internalProps['teamcity.ui.changesPage.singleExpandedNodeOnly'] = true;
+
+  internalProps['teamcity.internal.buildChangesPopupLimit'] = '100';
+
+  internalProps['teamcity.internal.agent.distribution.jdk.bundle.enabled'] = true
+
+  internalProps['teamcity.development.mode'] = false;
+
+  internalProps['teamcity.ui.showObligatoryHints'] = false;
+
+  internalProps['teamcity.ui.showLicenseAgreementToAllUsers'] = true;
+
+  internalProps['teamcity.ui.showNoCompatibleAgentsPopup'] = true;
+
+  internalProps['teamcity.ui.showDownloadAllArtifactsLink'] = true;
+
+  internalProps['teamcity.ui.newBuildParametersTab'] = true;
+
+  internalProps['teamcity.ui.newInvestigationsPage'] = false;
+
+  internalProps['teamcity.matrixBuildFeature.enabled'] = false;
+
+  internalProps['teamcity.ui.rememberTestGroupingMode'] = true;
+
+  internalProps['teamcity.ui.sakuraQueuePage.enabled'] = true;
+
+  internalProps['teamcity.ui.buildlog.search.enabled'] = true;
+
+  internalProps['teamcity.ui.customWelcomeTitle'] = '';
+
+  internalProps['teamcity.ui.showExperimentalUIWelcome'] = true;
+
+  internalProps['teamcity.ui.sakuraInvestigationsTab'] = false;
+
+  internalProps['teamcity.ui.sakuraProblemsTab'] = false;
+
+  internalProps['teamcity.ui.requestPoolSize'] = 5;
+
+  internalProps['teamcity.ui.internalSubscriptionsAutobatching'] = true;
+
+  internalProps['teamcity.ui.newAgentCompatibleConfigurationsTab'] = false;
+
+  internalProps['teamcity.ui.newAgentPoolManagement'] = true;
+
+  internalProps['teamcity.ui.newAgentParametersTab'] = true;
+  internalProps['teamcity.ui.newCloudImageParametersTab'] = true;
+  internalProps['teamcity.ui.agentPoolsFavoriteLimit'] = 30;
+
+  internalProps['teamcity.overviewPage.buildTypes.limit'] = 200;
+
+  internalProps['teamcity.ui.agentPreviewsUpdateTimeout'] = 8000;
+
+  internalProps['teamcity.ui.agentDataUpdateTimeout'] = 8000;
+
+  internalProps['teamcity.ui.statuses.throttleInterval'] = -1;
+
+  internalProps['teamcity.ui.supportLink.enabled'] = true;
+
+  try {
+    internalProps['teamcity.ui.tabs.linkToMainUI.build'] = '';
+    internalProps['teamcity.ui.tabs.linkToMainUI.buildType'] = '';
+    internalProps['teamcity.ui.tabs.linkToMainUI.project'] = '';
+  } catch (error) {
+    console.log('Iframe Adapter blacklist properties have not been correctly specified');
+  }
+  internalProps['teamcity.ui.tabs.buildType.chain'] = true;
+
+  internalProps['teamcity.ui.sidebar.skipWSEventsSubscription'] = true;
+
+  internalProps['teamcity.cloudProfiles.hiddenCloudTypes'] = '';
+
+  internalProps['teamcity.pipelines.enabled'] = false;
+  internalProps['teamcity.pipelines.projects.enabled'] = true;
+  internalProps['teamcity.pipelines.jobCountSoftLimit'] = 20;
+  internalProps['teamcity.pipelines.jobCountHardLimit'] = 30;
+  internalProps['teamcity.pipelines.gitHubConnectionId'] = 'tc-cloud-github-connection';
+  internalProps['teamcity.pipelines.featuresWaitingForBackend'] = false;
+  internalProps['teamcity.pipelines.dockerfile.support'] = false;
+
+  internalProps['teamcity.docker.dockerhub.autocomplete'] = false;
+
+  internalProps['teamcity.ui.sakura.releaseBanner.enabled'] = true;
+  internalProps['teamcity.hidden.artifacts.use.extended.names'] = true;
+
+  internalProps['teamcity.ui.statistics.enabled'] = false;
+  internalProps['teamcity.ui.darkTheme.allowed'] = true;
+  internalProps['teamcity.ui.darkTheme.adapter.enabled'] = true;
+
+</script>
+
+
+      
+
+
+<script type="text/javascript" src="/res/-4634852899786694785.js?v=1709682348693"></script>
+
+
+      
+
+
+
+<script type="text/javascript" src="/res/2083999511917917652.js?v=1709682348693"></script>
+
+
+      
+
+
+
+<style id="18e11132cdc" type="text/css">
+    @import "/res/-3342039278521329535.css?v=1709682348693";
+  
+</style>
+<link data-ignore-dark-theme-adapter="" href="/js/ring/styles.ad4c3bd8015f3e50ced1.css" rel="stylesheet">
+<script src="/js/ring/vendors-node_modules_atlaskit_logo_dist_esm_bitbucket-logo_icon_js-node_modules_hypnosphi_rec-f69a95.e3fa0230365ae7c25fa0.js"></script>
+<script src="/js/ring/bundle.e8cb09ccb8df977075fb.js"></script><style type="text/css">
+.tc-icon_bitbucket {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20color%3D%22%23000%22%20viewBox%3D%220%200%2032%2032%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20focusable%3D%22false%22%20aria-hidden%3D%22true%22%3E%20%20%20%20%3Cdefs%3E%20%20%20%20%20%20%3ClinearGradient%20id%3D%22uid1%22%20x1%3D%22100%25%22%20x2%3D%2245.339%25%22%20y1%3D%2229.23%25%22%20y2%3D%2275.038%25%22%3E%20%20%20%20%20%20%20%20%3Cstop%20stop-color%3D%22rgb(153%2C%20153%2C%20153)%22%20%20offset%3D%220%25%22%3E%3C%2Fstop%3E%20%20%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23000%22%20offset%3D%22100%25%22%3E%3C%2Fstop%3E%20%20%20%20%20%20%3C%2FlinearGradient%3E%20%20%20%20%3C%2Fdefs%3E%20%20%20%20%3Cg%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill-rule%3D%22nonzero%22%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22%23000%22%20d%3D%22M4.78580435%2C5%20C4.55423538%2C4.99701333%204.33319771%2C5.09657765%204.18198458%2C5.27198488%20C4.03077145%2C5.44739211%203.96486141%2C5.68068714%204.00193478%2C5.9092887%20L7.32946109%2C26.1096074%20C7.3703589%2C26.355373%207.49665951%2C26.578828%207.68612174%2C26.7406224%20C7.87680866%2C26.9055104%208.11992598%2C26.9972003%208.37200761%2C26.9992993%20L14.5488998%2C19.5995707%20L13.6827239%2C19.5995707%20L12.3227102%2C12.3958093%20L27.3886833%2C12.3958093%20L28.4469072%2C5.91712739%20C28.4862006%2C5.68935393%2028.4229655%2C5.45584955%2028.2741046%2C5.27903%20C28.1252437%2C5.10221045%2027.9059335%2C5.00010264%2027.6747957%2C5%20L4.78580435%2C5%20Z%22%20%2F%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22url(%23uid1)%22%20d%3D%22M27.3886833%2C12.3958093%20L20.0320674%2C12.3958093%20L18.7974728%2C19.5995707%20L13.7023207%2C19.5995707%20L7.68612174%2C26.7445417%20C7.87680866%2C26.9094297%208.11992598%2C27.0011197%208.37200761%2C27.0032187%20L24.3394307%2C27.0032187%20C24.727754%2C27.0082167%2025.0611955%2C26.7281258%2025.1233002%2C26.3447683%20L27.3886833%2C12.3958093%20Z%22%2F%3E%20%20%20%20%3C%2Fg%3E%20%20%3C%2Fsvg%3E');
+  background-size: 140% 140%;
+  background-position: 50% 55%;
+}</style><style type="text/css">
+.tc-icon_bitbucket_disabled {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20color%3D%22%23e5e5e5%22%20viewBox%3D%220%200%2032%2032%22%20height%3D%2232%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20focusable%3D%22false%22%20aria-hidden%3D%22true%22%3E%20%20%20%20%3Cdefs%3E%20%20%20%20%20%20%3ClinearGradient%20id%3D%22uid2%22%20x1%3D%22100%25%22%20x2%3D%2245.339%25%22%20y1%3D%2229.23%25%22%20y2%3D%2275.038%25%22%3E%20%20%20%20%20%20%20%20%3Cstop%20stop-color%3D%22rgb(153%2C%20153%2C%20153)%22%20%20offset%3D%220%25%22%3E%3C%2Fstop%3E%20%20%20%20%20%20%20%20%3Cstop%20stop-color%3D%22%23e5e5e5%22%20offset%3D%22100%25%22%3E%3C%2Fstop%3E%20%20%20%20%20%20%3C%2FlinearGradient%3E%20%20%20%20%3C%2Fdefs%3E%20%20%20%20%3Cg%20stroke%3D%22none%22%20stroke-width%3D%221%22%20fill-rule%3D%22nonzero%22%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22%23e5e5e5%22%20d%3D%22M4.78580435%2C5%20C4.55423538%2C4.99701333%204.33319771%2C5.09657765%204.18198458%2C5.27198488%20C4.03077145%2C5.44739211%203.96486141%2C5.68068714%204.00193478%2C5.9092887%20L7.32946109%2C26.1096074%20C7.3703589%2C26.355373%207.49665951%2C26.578828%207.68612174%2C26.7406224%20C7.87680866%2C26.9055104%208.11992598%2C26.9972003%208.37200761%2C26.9992993%20L14.5488998%2C19.5995707%20L13.6827239%2C19.5995707%20L12.3227102%2C12.3958093%20L27.3886833%2C12.3958093%20L28.4469072%2C5.91712739%20C28.4862006%2C5.68935393%2028.4229655%2C5.45584955%2028.2741046%2C5.27903%20C28.1252437%2C5.10221045%2027.9059335%2C5.00010264%2027.6747957%2C5%20L4.78580435%2C5%20Z%22%20%2F%3E%20%20%20%20%20%20%3Cpath%20fill%3D%22url(%23uid2)%22%20d%3D%22M27.3886833%2C12.3958093%20L20.0320674%2C12.3958093%20L18.7974728%2C19.5995707%20L13.7023207%2C19.5995707%20L7.68612174%2C26.7445417%20C7.87680866%2C26.9094297%208.11992598%2C27.0011197%208.37200761%2C27.0032187%20L24.3394307%2C27.0032187%20C24.727754%2C27.0082167%2025.0611955%2C26.7281258%2025.1233002%2C26.3447683%20L27.3886833%2C12.3958093%20Z%22%2F%3E%20%20%20%20%3C%2Fg%3E%20%20%3C%2Fsvg%3E');
+  background-size: 140% 140%;
+  background-position: 50% 55%;
+}</style><style type="text/css">
+.tc-icon_gitlab,
+  .tc-icon_gitlab_disabled,
+  .tc-icon_gitlab-enterprise,
+  .tc-icon_gitlab-enterprise_disabled {
+  background: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20id%3D%22gitlab_svg__logo_art%22%20viewBox%3D%220%200%20586%20559%22%20role%3D%22presentation%22%3E%3Cdefs%3E%3Cstyle%3E.cls-1%7Bfill%3A%23fc6d26%7D.cls-2%7Bfill%3A%23e24329%7D.cls-3%7Bfill%3A%23fca326%7D%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22gitlab_svg__g44%22%3E%3Cpath%20id%3D%22gitlab_svg__path46%22%20d%3D%22m461.17%20301.83-18.91-58.12-37.42-115.28a6.47%206.47%200%200%200-12.27%200l-37.42%20115.21H230.82L193.4%20128.43a6.46%206.46%200%200%200-12.26%200l-37.36%20115.21-18.91%2058.19a12.88%2012.88%200%200%200%204.66%2014.39L293%20435l163.44-118.78a12.9%2012.9%200%200%200%204.73-14.39%22%20class%3D%22cls-1%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g48%22%3E%3Cpath%20id%3D%22gitlab_svg__path50%22%20d%3D%22m293%20434.91%2062.16-191.28H230.87L293%20434.91z%22%20class%3D%22cls-2%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g56%22%3E%3Cpath%20id%3D%22gitlab_svg__path58%22%20d%3D%22m293%20434.91-62.18-191.28h-87L293%20434.91z%22%20class%3D%22cls-1%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g64%22%3E%3Cpath%20id%3D%22gitlab_svg__path66%22%20d%3D%22m143.75%20243.69-18.91%2058.12a12.88%2012.88%200%200%200%204.66%2014.39L293%20435%20143.75%20243.69z%22%20class%3D%22cls-3%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g72%22%3E%3Cpath%20id%3D%22gitlab_svg__path74%22%20d%3D%22M143.78%20243.69h87.11l-37.49-115.2a6.47%206.47%200%200%200-12.27%200l-37.35%20115.2z%22%20class%3D%22cls-2%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g76%22%3E%3Cpath%20id%3D%22gitlab_svg__path78%22%20d%3D%22m293%20434.91%2062.16-191.28h87.14L293%20434.91z%22%20class%3D%22cls-1%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g80%22%3E%3Cpath%20id%3D%22gitlab_svg__path82%22%20d%3D%22m442.24%20243.69%2018.91%2058.12a12.85%2012.85%200%200%201-4.66%2014.39L293%20434.91l149.2-191.22z%22%20class%3D%22cls-3%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3Cg%20id%3D%22gitlab_svg__g84%22%3E%3Cpath%20id%3D%22gitlab_svg__path86%22%20d%3D%22M442.28%20243.69h-87.1l37.42-115.2a6.46%206.46%200%200%201%2012.26%200l37.42%20115.2z%22%20class%3D%22cls-2%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E');
+  background-size: 175%;
+  background-position: 50% 55%;
+}</style><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/arrow-line-left-svg.228022d9d3d4a143dd0b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/arrow-line-right-svg.70a39babee4f8d2d798a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/azure-devops-svg.46f17547fe0c2bdebb3b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/build-runner-default-svg.017153ecf59da449a29c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/flaky-svg.23291905fffc202317f0.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/google-svg.4d5d3ddcc98b185a3355.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-bsd-20px-svg.c51c208087ab7d938892.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-bsd-svg.e86e27ab47dc501e4406.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-linux-20px-svg.de3ca5332bc1b2725d20.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-linux-svg.7cce9649a51b5313ffb3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-mac-20px-svg.1300022fc28962935ebe.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-mac-svg.22afb8e8f625e865ceaa.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-solaris-20px-svg.1f7db4ac7cdf0e360b40.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-solaris-svg.29046f254d2138bac6d8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-unix-20px-svg.71606077c79b3f6023e8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-unix-svg.1b62197b3868ecf18e14.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-windows-20px-svg.6c67963124270878f27f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/os-windows-svg.3de056ed8f541b3847db.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/space-svg.3e22fc88d2dd051f5715.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/sparkles-36px-svg.4f1f207a1fb62bca8627.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/spinner-arrow-20px-svg.635178459e6595cde0d6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/spinner-arrow-svg.12e5df32d3011ad1c909.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unmute-svg.d1ba6f378376f51bf945.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unsupported-browser-svg.4b58b199edbb30b12d9c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-spinner-arrow-20px-svg.f97854ed6edd6be175a8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-spinner-arrow-svg.66adc4aafa133ccb3b7c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/activity-svg.db9a33f8a85142f9434e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/add-10px-svg.7cdda45995b2d4b71770.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/add-20px-svg.3c39c82426cd824122f3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/add-svg.6d3d89a0329870317165.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/analytics-svg.61abfeccca3ccd7d5854.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/archive-svg.d41488f590ea6fd231c0.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/arrow-up-svg.6531e79bdd4d7e3fab04.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/article-svg.0889f5dd33f512a3d5e9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/artifacts-add-svg.8ab1e99ea3c1ceeff018.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/attachment-svg.58386a6d95c15c1b7a85.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/average-svg.89cb61b62ef5465f4375.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/bars-svg.1c21d30d8c722debf7f9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/bell-svg.81d22cf97d410f246ee2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/branches-svg.170bb744f26f420ba2ed.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/bug-svg.2201b07842de5ca4e646.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/burndown-svg.dbdb4ee17b82aa2a4cee.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/calendar-svg.d21faecec9ce4f479ff1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/caret-down-10px-svg.e34ea51bd92331ab78e4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/caret-right-10px-svg.2a62ef3bae89ca522867.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/change-svg.b8d32b3be36b5734f7b6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/checkmark-14px-svg.a66c5ea45b4254bae6e5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/checkmark-svg.844e2b3f3e3bacf347b6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/chevron-10px-svg.9cacf02d88547a0c4273.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/chevron-down-svg.5b841ca8ebc513f95b60.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/chevron-left-svg.3526fe0c8c91eee2c7e2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/chevron-right-svg.d7183847165ff1361841.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/chevron-up-svg.690ae55370c7a2c445ef.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/close-12px-svg.a7f65889d05d6f1b0c53.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/close-svg.7edaa3fefcef8345291a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/cloud-svg.2a09be237e17a7187111.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/code-svg.377e3de0e94234e0225f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/collapse-14px-svg.0f9a9fcb0b2ecfadb284.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/collapse-svg.cbf9cbced29aa0e1bdbe.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/comment-svg.fd84382f5765cd7eab5c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/commit-svg.52a2a99e204e96e1eb6c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/compare-svg.2890d584cdc3dd6a0086.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/copy-svg.d94a08e8a25897aa5140.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/crop-svg.b3f78d3f1d87e3eed077.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/data-svg.7256d39544bd37473c19.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/disconnected-svg.3f2bf8985b41bd232f94.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/distribution-svg.4d25567bb357c6072a88.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/double-chevron-left-svg.4ea09350094c10e43ef8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/double-chevron-right-svg.6d0fa64fdf8cacffd0ab.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/download-svg.e7742ade4ecef00ad6ad.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/drag-svg.cbd48ee63685fa59e594.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/drop-svg.fe78f0964ef570265995.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/e-mail-svg.d1e4dd5ba64cb48ae43e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/earth-svg.325641efc71e4d336be3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/emoji-round-plus-svg.5194619616de9278529d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/emoji-round-svg.9d72b8818e545e2900d5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/emoji-svg.1a9ca895f7d70c3f690d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/entry-svg.3cdab4daf6b9a3b09310.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/expand-14px-svg.4a27797914b69095c827.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/expand-svg.d964a48e5266bf716995.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/experiment-20px-svg.219dab53ae14fa393aef.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/eye-svg.b6a8585d2237c827b85f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/fields-svg.ebb676c02edb9f414c7d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-add-any-svg.539b91ab17b3eac1590b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-archive-svg.a298e940a712c2424046.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-as-svg.c2ed28b5596be51d2ad4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-aspectj-svg.80536b4ddcef1da96edd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-config-svg.a2db09184a7859a9a9d5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-css-svg.2c92940793fdcc8a0588.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-custom-svg.db934dbae976ea9a17ef.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-diagram-svg.bd1051d1d3bc351de210.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-dtd-svg.84590704dbc5ff7d5120.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-go-svg.26e7ed3cdb28b809ada1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-gql-svg.c8dbbac9947ecccfe526.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-htaccess-svg.857e21b50d25212d8cbf.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-html-svg.97dd5f053bb3645d214d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-idl-svg.a5782f4bebedd8d9092e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-java-class-svg.09a90ba2e9eb8e772796.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-java-outside-source-svg.2aad3fcfaddc71625b03.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-java-svg.975c1e5c28e3a0617e6d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-js-svg.6e975eb4da9b1f45d049.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-json-dark-svg.56477948328ef77f2954.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-json-schema-dark-svg.e39c7429ca3a397c2ea8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-json-schema-svg.63853bb21ba34c9aee32.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-json-svg.823bc600fc143e494225.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-jsp-svg.8c9ee99bde1c8ac75c6c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-jspx-svg.edf10617a91095e3b41e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-kotlin-svg.31e8643e37dea4861917.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-manifest-svg.66201598aed2dae35d51.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-properties-svg.82dc90c43b497df54d30.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-python-svg.10442fd7529409502861.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-regexp-svg.c7c9e555430d62f2a662.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-text-svg.71042370ee43e6cb5be5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-ts-svg.d51692b5af024d230373.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-tsx-svg.637081c489ddc4b8b67c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-ui-form-svg.3aadb8852ab3fcb9d2dd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-unknown-svg.5de621c75b1c1505c0bb.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-wsdl-svg.bd3902420d85dd1c3cca.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-xhtml-svg.3ed4dbe0d01c7ec34280.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-xml-svg.5a7e91283b3ff7a97bca.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-xsd-svg.237630eba6ae3e3f0427.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-yaml-svg.f82811a424f6c256b145.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/file-svg.b34cae08f71d3dddfa6c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/filters-svg.57cbfe9768f2553c48f2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/flag-svg.81e12fe56a07255f04f7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/folder-svg.fb996c35881c89674f89.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/frown-svg.d7ff66dfdc4a2e2836bd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/fullscreen-exit-svg.d9c81000d2091addaf16.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/fullscreen-svg.24230b374791859b860d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/gift-20px-svg.ff3d920bc949d999a0c1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/gift-svg.c1cb3009ca09299e646c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/git-svg.c87edd611a1adafd7b4d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/group-svg.47f36fd52137e5954961.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/help-20px-svg.15ba35bbba17af134ae5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/help-svg.d9f7dbb3e5f0031c8a26.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/history-svg.92c047c4f514e4e160b1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/hourglass-svg.bbe600a2b495edc4b5e1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/info-svg.c17f57fb910ba26725d6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/investigation-14px-svg.f6d93bb176338929bd7d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/investigation-svg.6cf175272d8e6f699a87.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/issue-svg.695936194d7d321558be.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/lamp-svg.a9aaf5ae259c1ed5614e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/link-svg.efe1fbaa7976e96fc653.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/lock-svg.15fb88422b75b92466ed.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/log-svg.8a37def0076f3b199efd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/magic-wand-svg.8093db693c55a5972be3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/mammoth-20px-svg.f352393baed188e588b7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/marker-svg.44ef681ccc51ee218be4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/meta-svg.48410cf4f25c5f8c92b2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/modified-10px-svg.d8954877c0523f1e15e3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/more-options-svg.b3442a346f34b77ba292.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/move-svg.5fa6e94057f2beb649aa.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/mute-svg.d62b1058680e59a533df.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/new-window-svg.95dd6186808cdd123409.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/overtime-svg.dbd994fda2a30febe096.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/paused-14px-svg.bc1177c1c705217c86e2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/paused-svg.3d268455252ab9c2d9c7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pencil-svg.cbde2ae2cb549c5c9b38.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pennant-svg.7c816a679b159dd60cf5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/permission-svg.e24f134f4bc05a5c674d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pin-empty-svg.8faabcc62f36b932389a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pin-filled-svg.26ebc543e250333b5498.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/play-svg.bc6b3151956173504d4d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pr-close-svg.83179dcbaa5322797ba9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pr-merged-svg.0fba9524f3aa78ce7bfb.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pr-open-svg.e9ef41004ee117c3ef5a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/pr-unknown-svg.5a6e4d0d9af77434acfb.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/printer-svg.59ddc005c16353840632.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/puzzle-svg.5a575330a660aa0f17cf.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/rate-svg.bcc4fe1acdbff9d055ef.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/redo-svg.b56eed72be0f4ef960ca.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/remove-10px-svg.b23c67d6fc94f88e398e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/remove-14px-svg.e56334d356bc1d7cb4d7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/renamed-10px-svg.53a84289c95f67ad9dda.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/reviewers-graph-svg.64c26845442d972f391b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/run-svg.b9901d59fae0b7fabe30.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/search-12px-svg.c4f7275dd1a8b253473a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/search-20px-svg.a90bd742ec4c96d9821e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/search-empty-svg.545116ea98fd6baebc9c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/search-error-svg.9cab2fbd20636b6166b4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/services-20px-svg.3e0571f01157444dc935.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/services-svg.dfbaeb64e021e641d284.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/settings-20px-svg.bf44740a38ea594fbe1a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/settings-svg.1d2ed82f6aed39607057.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/shield-svg.4ade4e7651e47353e122.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/similar-svg.7676c7da030884e78561.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/spinner-static-svg.558b9ba9d15f967b6d6c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/spinner-svg.24e312314b42282e913d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/stack-svg.948512f8532c79d9e147.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/stamp-svg.cc121b844419c9544e04.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/star-empty-14px-svg.f9b47389e37e88594048.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/star-filled-14px-svg.c4d295c81f43a13bd48d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/table-svg.5c97ccb63bc2d1cc26b1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/task-svg.f65feb9d663e55b19480.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/terminal-svg.af302daee389dac727ff.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/time-svg.0b0e447d2519c6addf93.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/torrent-svg.a0cc40c289fc5d9bd54d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/trash-svg.ef78d962c40eb714ef18.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/treemap-svg.c5bc60fb021c1cf36410.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/umbrella-svg.fbef851b670c6b62819c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unauthorized-svg.6d9bc5da2fa633fda924.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/undo-svg.3705eb826f41aedc66fa.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unknown-os-20px-svg.907b316217dd27a772fd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unknown-os-svg.3f70f851f950909c708d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/unsorted-10px-svg.065b4cad6dd62d817e00.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/update-svg.e6695f711a1b45b466fc.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-20px-svg.0fd51fb59b27d2c34af4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-cancel-20px-svg.aa3c4b22db1dfeedc5d1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-cancel-svg.d3a831c38379be94b4da.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-exception-20px-svg.e01c640a6d89b67443bd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-exception-svg.06c98c7b25e135cb9292.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-gear-svg.65b5b54b9edb8c1d4679.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-hourglass-20px-svg.e619a257c63ac56fca00.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-hourglass-svg.b5d9cd297b6c6b5dd103.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-ok-20px-svg.5d14ac07c552218f5c29.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-ok-svg.03295d745398954fda03.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-spinner-20px-svg.e45340bdac31560fb945.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-spinner-svg.cf1525083bc4b8a20cf8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-warning-20px-svg.59c002c4b1fa16da82d6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-warning-svg.3612950ed5cee80cdf24.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/user-svg.699f0b9ffc7f1fe6d3ed.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vcs-root-14px-arrow-svg.c63aee0a822b5bb5cc58.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vcs-root-14px-svg.fb8bab19d2cf0f97c508.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vcs-root-20px-arrow-svg.76852d9063ecc503f46d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vcs-root-20px-svg.0ff77799cd44ab33ea7b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vote-empty-svg.800b73b09f3e44866eb9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vote-filled-svg.1a3779086c3ffc334d16.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/warning-14px-svg.2a0badd4efd5a4fcaf1c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/wrap-svg.c799fff63372ab0cbe7f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_date-fns_esm_addYears_index_js-node_modules_date-fns_esm_format_index_js-ed42d8.03a1d819bcfb363ab476.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ScheduleBuild.af2d71b26bb1a56dae00.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_react-virtualized_dist_es_AutoSizer_index_js-node_modules_react-virtuali-e968da.b2464a10f684b446db47.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_list_list_js.9f8929a50cbcccf5cc21.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_select_select_js.c3f8e7941c714c33af52.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_icons_chevron-right_js-node_modules_jetbrains_ring-ui_componen-31d354.9ddbd5a33773f0949dbf.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_dropdown-menu_dropdown-menu_js-node_modules-553e44.7be699f30d43ffcab971.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BuildStatus_BuildStatus_tsx-components_common_ListItem_ListItem_tsx.b39bf46fdf93854fab2a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_Changes_ChangesList_ChangesList_tsx.690b3c39804d8771f531.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_Changes_ChangesDropdown_BuildChangesDropdown_container_tsx.4cec46468a5a3464eccd.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BuildActionsDropdown_BuildActionsDropdown_tsx.becb1af63ff4af9c79be.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_Builds_Builds_tsx.c189dd077e4688d9eb24.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/selectors_projectTrees_ts.d0259fbabb39ccf8b1cc.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_ProjectsTree_ProjectsTree_tsx.4dc5a845fcaff84606df.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_ProjectBuildTypeSelect_ProjectBuildTypeSelect_tsx-components_common_Sidebar-5b32e3.83ad68ec6c3fc2eaa2ba.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BuildsFilters_BuildsFilters_container_tsx-components_common_Pager_BuildPage-4601a0.f80e3187909db1de8e09.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentHistory.20948ccdc8a0a9cbcf24.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AllBuilds.fddc418d51fda555df99.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/HttpsConfiguration.c91f9193f3d2d7b4a7de.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Builds.5a9e3057f3366bf729f2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ThemeSwitcher.04cd000bcf3b7893ecc0.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildsTvMode.46f1ba6ee57e8a248f4b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_icons_help_svg-node_modules_jetbrains_icons_trash_svg-node_mod-af8765.9a1f1f4ea8d5b77422e1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/MatrixParamBuild.a356a221bdfcab231e42.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_react-movable_lib_index_js.63a128e700e0a00d4703.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/EditFederation.3f75040da6fab1e9d8d7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_tabs_tabs_js.c7a95a24848edcfe01ce.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_code_code_js.264983a9b7de10546e0c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_markdown_markdown_js.eaf73563743fd3caa339.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Hints.3a7403ab1aca9ed2aca5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/HintPopup.73d783d82c8f1333f499.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/FavoriteBuilds.9a499d221b6deda66cd4.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ProjectBuildTypeSelect.bd5501b2b05878fb5932.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentAuth.471244aa6e51e246e763.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BranchSelect_BranchSelect_container_tsx.f979506aa7dd5156340c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BranchSelect.df7ec164f3ea38c62e17.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildTypeDslEditor.633adebda5af828d66e2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/FragmentDslEditor.e6cfaae7db3f7e9891be.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Pager.bef6962fe75b5df8b080.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Markdown.a68f2b019773f04d804b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_grid_grid_js-node_modules_jetbrains_ring-ui-046d14.978a460d71421559a288.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentsContainer.4ed869568f649d9597b6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Message.2e7aa3ea4b7cbd1e2559.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Select.3448188479261b817dac.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildStatusWidget.969c82ea9d3c62e7b8a5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Sorter.88bf4b1cc160c5b3baa9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/SelectBuildRunners.b476322f49b9d3b4b8d2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildActionsDropdown.e4cd6f87f468cc72b4c8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/FavoriteBuildsPage.dbfb6d10e27bc3a61ba3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-group_button-group_js-node_modules_j-0970de.e4300169dce15cd7c18a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/CompareBuildsPage.90b08b788236d8bc9489.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/GuidesPage.7cd6ab86e0835901c822.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_anser_lib_index_js.ab04a3ae34765ba0a44b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_yet-another-react-lightbox_dist_plugins_captions_index_js-node_modules_y-df2a44.93e784e27915d9fa2052.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_victory-area_es_victory-area_js-node_modules_victory-chart_es_victory-ch-98b9be.9135eba4f8be225b2ba0.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_pager_pager_js-node_modules_d3-scale_src_li-ad1042.665569e98575567046a6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_victory-bar_es_victory-bar_js-node_modules_victory-brush-container_es_vi-4c5fb8.0dc8ef80de8fe8319611.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_simplify-js_simplify_js-node_modules_victory-pie_es_victory-pie_js.21e391ab8e26485c17c2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-toolbar_button-toolbar_js-node_modul-88aa630.2561878ff62ae178a40e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_BuildLog_BuildLogInfo_BuildLogInfo_tsx-components_packages_BuildLog_Build-ef976c.2d085f64a01bebe8d2d7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_Tests_InvestigationMuteButtons_InvestigationMuteButtons_tsx-components_pa-69729b.2538afbca52f9f100839.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/TestHistoryChart.200b2609e8db0d0d047d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/TestHistoryPage.7859ac26eb9f3502acbf.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_pager_pager_js-node_modules_jetbrains_icons-144a29.f869b0740db986fecf09.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/QueuePage.1c52bcc19b5088ae5d67.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_icons_hourglass_svg-node_modules_jetbrains_icons_link_svg-node-b1484e.4324dca7a0461a1ae4c8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_ArrowPopupMenu_ArrowPopupMenu_tsx-components_common_Investigations_Investig-743481.e58f5b0677c5418b30bc.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_Investigations_TestInvestigations_tsx-components_common_Mutes_TestMutes_tsx-00545a.b8d437e024f938b2de8e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_Tests_TestsTree_TestsTree_tsx.077d2cb94fe221c676c8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_BuildProblems_BuildProblemsTree_BuildProblemsTree_container_tsx-component-a0b687.f2757cf23f1dda36fcd9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ChangeDetailsTabs.c6ac5005c50434403141.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ChangePage.1aa7d4ce3ac41bf9bb8e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ChangesPage.6cc523526c6d79f533f1.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_date-picker_date-picker_js-node_modules_jet-14af24.0d1ae0f3623278e4ea8a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-toolbar_button-toolbar_js-node_modul-88aa631.f078868b3257216edab8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_GroupBy_GroupBy_tsx-components_common_MuteStatusFilter_MuteStatusFilter_tsx-53152d.1be68a38bff9d8b352e2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/InvestigationsPage.a7af3c2e07fc391e8141.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/statistics.2fc08f25a943cdd53937.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Popup.e65e51dba9110c8a30d2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-toolbar_button-toolbar_js-node_modul-d8c771.f218510fdf80142f1041.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-set_button-set_js-node_modules_jetbr-834347.f6aa40cf5d2c30126240.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_Builds_Builds_wrapped_tsx-components_pages_AgentsPages_components_EnableAge-4d0fd8.bb2cc91cc09ca06d5af5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_Parameters_components_GroupControls_ParametersGroupControls_tsx-component-b9e6ee.33c44be76c50a6d45e14.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentPage.47955f69c4625f1c27bf.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_pages_AgentsPages_AgentPagePoolsProvider_tsx-components_pages_AgentsPages_componen-078533.dc73b5fb944b5e31d0ed.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/node_modules_jetbrains_ring-ui_components_pager_pager_js-components_pages_AgentsPages_AgentPo-208fba.f9ec83e51acb3e69d45b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentPoolPage.f2de3eb4e63de4383aa2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_pages_AgentsPages_AgentPoolsFavoritePage_Dialog_AgentPoolsFavoriteDialog_tsx.1b005a976d0d87c09850.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_pages_AgentsPages_AgentsOverviewPage_AllAgentsTab_ExpandableAgentPool_ExpandableAg-38a33c.87b707b64d19a7b2169a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_UIPlaceholder_UIPlaceholder_tsx.fb3ebbdc38758040bfb3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentsPoolsFavoritePage.1dd431d2a46a085594f9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentsOverviewPage.4bc8e32fafd32039853f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentsPages.ae88a57192ea95486a72.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AgentTypePage.5f622a724044b29d185d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/UnauthorizedAgentsPage.7b4145e5bb58dece357d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_RunBuild_RunBuild_container_tsx-hooks_useInterval_ts.9aa0cfc2c1bb4bef7f15.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_BuildLog_BuildLogTimeline_BuildLogTimeline_container_ts-components_packag-a7fc74.7693a0338c535828e68a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_packages_BuildLog_FullBuildLog_FullBuildLog_container_tsx.9f39456b54ab0d7df35e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_AvailabilityErrorPage_AvailabilityErrorPage_tsx-components_common_Availabil-230fe3.5914a128f07caa9b6fcc.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_AgentInfo_AgentInfo_container_ts-components_common_BuildCanceled_BuildCance-ea499b.b4a93423076faf729ad7.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/node_modules_jetbrains_ring-ui_components_button-set_button-set_js-node_modules_jetbrains_rin-42cf7b.54e26bd3860549befb74.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildPage.35f75f8e96270fc4406c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_pager_pager_js-node_modules_lodash_sortBy_js.f91b36bb9934bfb80983.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BuildInfoTable_BuildInfoTable_tsx-components_common_Sidebar_Sidebar_utils_t-9edf14.b7bb00c4747222e804c9.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildOverviewTab.8dc46793d8b818369b59.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildTestsTab.02d067b21c80af06f3ea.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_message_message_js-node_modules_jetbrains_i-85e0ef.43c0c61e41946beb093e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_Builds_BuildBatchActions_BuildBatchActions_tsx-components_common_Pager_Buil-195a20.4d263ac01c4a0d75a2a0.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/DependenciesTab.82395d2d3075a6c50559.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_common_BuildTypePauseInfo_BuildTypePauseInfo_tsx-components_common_Builds_Builds_w-7c60a6.22fd7e965a85250e50a8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildTypePage.5589e271a9745498fcb8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/FavoriteProjectsPage.64467bdea024acd282ad.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ProjectPage.9e4ee9f47d0caf62ac7c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_dropdown-menu_dropdown-menu_js-node_modules-49807e.911763a5b5eddd142f66.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ProjectInvestigationsTab.9d5e4fbaba2a9e3cd5fc.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/PipelinesPages.bba560ebf2bd5b6ea88f.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-toolbar_button-toolbar_js-node_modul-142f89.bdda22f4e76f08b881a6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/PipelinesIndexPage.aea279be70e0d04b4f42.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/CreatePipelinePage.6a4cee8ceec7044d0590.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_toggle_toggle_js-node_modules_re-resizable_-9f6452.9321f47d5096178972c6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_error-message_error-message_js-node_modules-f1a2a3.43fe4a201886a46f27a6.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/EditPipelinePage.0c24a6a92d9b6bb84e40.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_dropdown-menu_dropdown-menu_js-node_modules-4f8fd1.e9c29b05f9743f72cfa8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_pages_PipelinesPages_components_common_Breadcrumbs_Breadcrumbs_tsx-components_page-484041.1c7fe32dad47f135cc5c.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/PipelinePage.91dcd5e36dc108e799f5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-group_button-group_js-node_modules_j-090474.9b58158b828a39240d57.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/PipelineRunPage.0afc98cd9d1245a35bf2.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/App.1b1757b3ee46e2d69e33.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-toolbar_button-toolbar_js-node_modul-88aa632.c0b8b6de30d1825645c3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildDetailsContent.f5565b1e2532261acc7a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_header_header_js-node_modules_jetbrains_ico-c7b217.fee6e6840ee0df9d048a.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Header.ab690beafff4ec26d877.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/HealthItem.5fe21289e488741148f8.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildTypeOverview.0e667b90d598b3ae965e.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/AvatarEditorDialog.12c9d94d290544f98f5b.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/PopupMenu.46686ee7b09bb262943d.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/ProjectsPopup.2246830da697fa3f22ea.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/OpenInSakuraUI.18b87537183e8fae0cb3.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/BuildTypeHistory.02deecf7021694bd56b5.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/vendors-node_modules_jetbrains_ring-ui_components_button-group_button-group_js-node_modules_j-f6ad64.8f68e624a6699deec4fe.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/components_pages_CleanupProjectPage_Listings_Rules_Rules_container_ts.77a7c5da3ad887791832.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/CleanupProjectPage.8e2ba6af64116ae80cec.js"><link rel="prefetch" as="script" href="https://teamcity.XYZ.cz/js/ring/Rules.1faf5ba3a94d38a8dae5.js">
+
+
+
+      
+
+
+<style id="18e11132cdd" type="text/css">
+    @import "/res/-1503540342333606626.css?v=1709682348693";
+  
+</style>
+
+    
+
+
+
+
+    
+
+
+<script type="text/javascript" src="/res/-419506198816766862.js?v=1709682348693"></script>
+
+    <script>
+      ReactUI.serviceWorkers.cleanServiceWorkerCaches();
+      localStorage.clear();
+      ReactUI.setGlobalTheme();
+    </script>
+    <script type="text/javascript">
+      $j(document).ready(function($) {
+        var loginForm = $('.loginForm');
+
+        $("#username").focus();
+
+        loginForm.attr('action', '/loginSubmit.html');
+        loginForm.submit(function() {
+          return BS.LoginForm.submitLogin();
+        });
+
+        if (BS.Cookie.get("__test") != "1") {
+          $("#noCookiesEnabledMessage").show();
+        }
+
+        if (BS.Cookie.get("RecentLogin") !== null) {
+          const errBlock = document.querySelector('#errorMessage');
+          errBlock.textContent = "Clear the browser cookies or restart the browser to log in.";
+          errBlock.style.display = "block";
+          BS.Cookie.remove("RecentLogin");
+        }
+
+        if ($('#fading').length > 0) {
+          BS.Highlight('fading');
+        }
+
+        const username = {
+          name: 'Username',
+          input: document.getElementById('username'),
+          error: document.getElementById('username-error'),
+          maxLength: 60
+        };
+        const password = {
+          name: 'Password',
+          input: document.getElementById('password'),
+          error: document.getElementById('password-error'),
+          maxLength: 128
+        };
+        const submit = document.querySelector('.loginButton');
+        function validateInput({name, input, error, maxLength}) {
+          if (input.value.length > maxLength) {
+            input.classList.add('errorField');
+            error.textContent = name + ' should be no longer than ' + maxLength + ' characters';
+            return false
+          } else {
+            input.classList.remove('errorField');
+            error.textContent = '';
+            return true;
+          }
+        }
+        function handleChange() {
+          const usernameValid = validateInput(username);
+          const passwordValid = validateInput(password);
+          submit.disabled = !usernameValid || !passwordValid;
+        }
+        username.input.addEventListener('input', handleChange);
+        password.input.addEventListener('input', handleChange);
+      });
+    </script>
+
+    </head>
+
+    <body>
+    
+
+
+
+
+
+
+
+
+    
+
+
+
+
+<div id="loginPage" class="initialPage">
+  <div class="page-content-wrapper">
+    <div id="pageContent">
+      <span class="logo" title="TeamCity"></span>
+      <h1 id="header">Log in to TeamCity</h1>
+
+      
+      
+        <div class="loginDescription">Welcome to XYZ s.r.o. Build Server</div>
+      
+
+      
+
+
+
+
+
+      
+
+
+
+      
+
+
+
+      <div id="errorMessage"></div>
+
+      
+
+      
+
+      <div id="loginForm">
+
+        <form class="loginForm" method="post" action="/loginSubmit.html" data-bitwarden-watching="1">
+          
+            <div>
+              <label for="username">Username</label>
+              <input class="text" id="username" type="text" name="username">
+              <span class="error" id="username-error"></span>
+            </div>
+          
+
+          <div>
+            <label for="password">Password</label>
+            <input class="text" id="password" type="password" name="password">
+            <span class="error" id="password-error"></span>
+          </div>
+
+
+          <div class="remember-section">
+          <div class="remember-section__inner">
+  
+    <span class="custom-checkbox ring-checkbox-checkbox checkbox custom-checkbox_checked">
+      <input type="checkbox" class="custom-checkbox_input ring-checkbox-input" name="remember" id="remember" checked="" value="true">
+      <span class="ring-checkbox-cell">
+        <span class="svg-icon ring-checkbox-check ring-checkbox-icon ring-icon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"><path d="M11.78 3.1497C12.0425 3.37384 12.0736 3.76835 11.8495 4.03085L6.30786 10.5208C5.79248 11.1243 4.87455 11.1675 4.30485 10.6149L2.18984 8.56337C1.94208 8.32304 1.93605 7.92736 2.17638 7.67959C2.41671 7.43182 2.81239 7.42579 3.06016 7.66612L5.17516 9.71763C5.22695 9.76787 5.3104 9.76395 5.35725 9.70908L10.8989 3.21915C11.123 2.95665 11.5175 2.92555 11.78 3.1497Z"></path></svg></span>
+      </span>
+      <input type="hidden" name="_remember" value="">
+    </span>
+  
+  
+
+
+            <label class="rememberMe" for="remember">Remember me</label></div>
+
+            <span id="resetPasswordContainer"></span>
+          </div>
+
+          <noscript>
+            <div class="noJavaScriptEnabledMessage">
+              Please enable JavaScript in your browser to proceed with the login.
+            </div>
+          </noscript>
+
+          <div id="noCookiesEnabledMessage" class="noCookiesEnabledMessage" style="display: none;">
+            Please enable cookies in your browser to proceed with the login.
+          </div>
+
+          <div class="buttons">
+            <input class="btn loginButton" type="submit" name="submitLogin" value="Log in">
+            <div class="loader-cell"><i id="saving" style="display: none; " class="ring-loader-inline progressRing progressRingSubmitBlock" title="Please wait..."></i></div>
+          </div>
+
+          <input type="hidden" id="publicKey" name="publicKey" value="0097efecb0b90a2f1509584cc9e7cacb0a646280b23f33ab54a3c26bd1bdf4253af4f92f05bbf921a5c98ba6b598225b0786d000bd25cdf30feae2c6ffe97f4e0521c0df84f6be1b52293c58a2ad786ab6d59c45f42e49876b8be5c5d6720167aa718fa48705df8669658b8dd2c6d5d099f42249912bfa2cc60504a991b26b96c7">
+          
+        </form>
+
+        
+          
+        
+      </div>
+
+      
+
+      
+        
+        
+
+
+
+    <!-- START EXTENSION CONTENT jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning$Extension: name:jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning: /forbiddenDomainWarning.jsp -->
+      
+
+
+
+
+
+
+
+
+
+  <!-- END EXTENSION CONTENT jetbrains.buildServer.web.forbiddenDomains.ForbiddenDomainHeaderWarning$Extension -->
+  
+
+
+
+
+      
+    
+
+      <div class="version">
+        
+  
+  
+    <span class="greyNote version"><span class="vWord">Version</span> 2023.11.3 (build 147512)</span>
+  
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div data-iframe-height=""></div>
+    
+    
+  
+
+
+</body></html>

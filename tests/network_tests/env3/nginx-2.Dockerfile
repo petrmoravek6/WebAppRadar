@@ -32,7 +32,13 @@ RUN ln -s /etc/nginx/sites-available/example1.conf /etc/nginx/sites-enabled/
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the HTML content
-COPY dummy_index.html /var/www/html/dummy_index.html
+COPY html/gitlab-main-page.html /var/www/html/gitlab/index.html
+COPY html/prometheus-main-page.html /var/www/html/prometheus/index.html
+COPY html/snipe-it-main-page.html /var/www/html/snipe-it/index.html
+COPY html/teamcity-main-page.html /var/www/html/teamcity/index.html
+COPY html/testrail-main-page.html /var/www/html/testrail/index.html
+#COPY html/keycloak-auth.html /var/www/html/keycloak/admin/master/console/index.html
+#COPY html/keycloak-aa.html /var/www/html/keycloak/after-auth.html
 
 # Expose the SSH port
 EXPOSE 22

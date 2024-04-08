@@ -19,9 +19,8 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
         self.auth_executor = auth_executor
 
     def _get_full_page_content(self, host: str) -> Optional[str]:
-        """
-        Todo mention client side rendering
-        """
+        if not host.startswith('http://') and not host.startswith('https://'):
+            host = f'http://{host}'
         try:
             return self.client.get_page_content(host)
         except ConnectionError as ce:
@@ -46,7 +45,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
                 if rule.auth:
                     page_content = rule.auth.accept(self.auth_executor)
                     if page_content is None:
-                        logger.error(f"Authentication to {name} on '{host}' was not successful. Please check the set credentials and locators.")
+                        logger.error(f"Authentication to {name} on '{host}' was not successful. Please check the provided credentials and locators.")
                         return WebAppInfo(name, None)
                 if rule.version_path:
                     ful_ver_path = host + rule.version_path

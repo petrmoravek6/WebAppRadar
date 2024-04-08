@@ -11,7 +11,7 @@ class SeleniumRenderer(IClientSideRenderer, ABC):
     def _get_driver(self) -> selenium.webdriver.remote.webdriver.WebDriver:
         pass
 
-    def __init__(self, page_load_timeout: int = 10, explicit_waiting: float = 3.0):
+    def __init__(self, page_load_timeout: int = 10, explicit_waiting: float = 3.5):
         self.explicit_waiting = explicit_waiting
         self.driver = self._get_driver()
         self.driver.set_page_load_timeout(page_load_timeout)

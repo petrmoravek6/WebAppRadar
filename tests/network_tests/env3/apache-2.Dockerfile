@@ -28,16 +28,20 @@ RUN mkdir -p /home/test/.ssh && \
 RUN mkdir /usr/local/apache2/sites-available /usr/local/apache2/sites-enabled
 
 # Copy the Apache site configurations to sites-available
-COPY example2.conf /usr/local/apache2/sites-available/example2.conf
+COPY example-apache-2.conf /usr/local/apache2/sites-available/example.conf
 
 # Create symlink in sites-enabled
-RUN ln -s /usr/local/apache2/sites-available/example2.conf /usr/local/apache2/sites-enabled/example2.conf
+RUN ln -s /usr/local/apache2/sites-available/example.conf /usr/local/apache2/sites-enabled/example.conf
 
 # Include the sites-enabled directory in the main Apache configuration
 RUN echo "IncludeOptional /usr/local/apache2/sites-enabled/*.conf" >> /usr/local/apache2/conf/httpd.conf
 
 # Copy the HTML content
-COPY dummy_index.html /usr/local/apache2/htdocs/index.html
+COPY html/bareos-main-page.html /usr/local/apache2/htdocs/bareos/index.html
+COPY html/grafana-main-page.html /usr/local/apache2/htdocs/grafana/index.html
+COPY html/keycloak-main-page.html /usr/local/apache2/htdocs/keycloak/index.html
+COPY html/keycloak-auth.html /usr/local/apache2/htdocs/keycloak/admin/master/console/index.html
+COPY html/keycloak-aa.html /usr/local/apache2/htdocs/keycloak/after-auth.html
 
 # Expose the SSH port
 EXPOSE 22

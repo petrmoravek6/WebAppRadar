@@ -3,9 +3,12 @@ from unittest.mock import patch
 from datetime import datetime, date
 from src.latest_version.cycle_info import CycleInfo
 from src.latest_version.release_fetcher.method.endoflife import EndOfLifeReleaseFetcherMethod
-
+import logging
 
 class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
+    def setUp(self):
+        # Suppress logging below CRITICAL level
+        logging.basicConfig(level=logging.CRITICAL)
 
     @patch.object(EndOfLifeReleaseFetcherMethod, '_get_json_from_api')
     @patch.object(EndOfLifeReleaseFetcherMethod, '_get_current_date', return_value=date(2024, 4, 7))

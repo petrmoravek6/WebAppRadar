@@ -1,0 +1,55 @@
+services:
+  nginx-1:
+    build:
+      context: .
+      dockerfile: ./nginx-1.Dockerfile
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.18
+#  nginx-2:
+#    build:
+#      context: .
+#      dockerfile: ./nginx-2.Dockerfile
+#    networks:
+#      custom_network:
+#        ipv4_address: 192.0.0.19
+  apache-1:
+    build:
+      context: .
+      dockerfile: ./apache-1.Dockerfile
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.20
+#  apache-2:
+#    build:
+#      context: .
+#      dockerfile: ./apache-2.Dockerfile
+#    networks:
+#      custom_network:
+#        ipv4_address: 192.0.0.21
+  app:
+    build:
+      context: ../../../.
+      dockerfile: ./Dockerfile
+    # run all tests in the specific directory
+    entrypoint: ["python3", "-m", "unittest", "discover", "tests/network_tests/env3"]
+    depends_on:
+      - nginx-1
+      - apache-1
+#      - nginx-2
+#      - apache-2
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.22
+    extra_hosts:
+      - "jira.webappradar-example.io:192.0.0.18"
+#      - "example2.mywebsite-webappradar.org:192.0.0.11"
+#      - "example3.mywebsite-webappradar.org:192.0.0.11" # todo
+
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.0.0.16/29

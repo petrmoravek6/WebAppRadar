@@ -21,8 +21,6 @@ class FullInfoFetcher:
 
     def fetch(self, basic_info: WebAppInfo) -> FullWebAppInfo:
         """Tries to found out as much information about given web app as possible. It uses object from the constructor"""
-        if not basic_info.version:
-            return FullWebAppInfo(basic_info.name)
         cycles = self.release_fetcher.fetch_web_app_cycle_info(basic_info.name)
         # no release info
         if not cycles:

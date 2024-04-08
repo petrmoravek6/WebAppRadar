@@ -29,10 +29,10 @@ EXPOSE 22
 
 # Copy the Nginx site configuration to sites-available and create a symlink in sites-enabled
 RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
-COPY jira.webappradar-example.io.conf /etc/nginx/sites-available/
+COPY conf/jira.webappradar-example.io.conf /etc/nginx/sites-available/
 RUN ln -s /etc/nginx/sites-available/jira.webappradar-example.io.conf /etc/nginx/sites-enabled/
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the HTML content
 COPY html/jira-main-page.html /var/www/html/index.html

@@ -28,7 +28,7 @@ RUN mkdir -p /home/test/.ssh && \
 RUN mkdir /usr/local/apache2/sites-available /usr/local/apache2/sites-enabled
 
 # Copy the Apache site configurations to sites-available
-COPY example-apache-2.conf /usr/local/apache2/sites-available/example.conf
+COPY conf/example-apache-2.conf /usr/local/apache2/sites-available/example.conf
 
 # Create symlink in sites-enabled
 RUN ln -s /usr/local/apache2/sites-available/example.conf /usr/local/apache2/sites-enabled/example.conf

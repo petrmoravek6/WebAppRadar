@@ -27,7 +27,7 @@ RUN mkdir -p /home/test/.ssh && \
 # Copy the Nginx site configuration to sites-available and create a symlink in sites-enabled
 RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the HTML content
 COPY html/gitlab-main-page.html /var/www/html/gitlab/index.html

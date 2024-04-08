@@ -1,0 +1,37 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+
+# CI
+.codeclimate.yml
+.travis.yml
+.taskcluster.yml
+
+# Docker
+docker-compose.yml
+Dockerfile
+.docker
+.dockerignore
+
+# Byte-compiled / optimized / DLL files
+**/__pycache__/
+**/*.py[cod]
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# Virtual environment
+.env
+.venv/
+venv/
+
+# PyCharm
+.idea
+
+# VS Code
+.vscode/

@@ -26,19 +26,18 @@ RUN mkdir -p /home/test/.ssh && \
 
 # Copy the Nginx site configuration to sites-available and create a symlink in sites-enabled
 RUN mkdir -p /etc/nginx/sites-available /etc/nginx/sites-enabled
-COPY example1.conf /etc/nginx/sites-available/
-RUN ln -s /etc/nginx/sites-available/example1.conf /etc/nginx/sites-enabled/
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the HTML content
 COPY html/gitlab-main-page.html /var/www/html/gitlab/index.html
 COPY html/prometheus-main-page.html /var/www/html/prometheus/index.html
-COPY html/snipe-it-main-page.html /var/www/html/snipe-it/index.html
+COPY html/snipeit-main-page.html /var/www/html/snipe-it/index.html
 COPY html/teamcity-main-page.html /var/www/html/teamcity/index.html
 COPY html/testrail-main-page.html /var/www/html/testrail/index.html
-#COPY html/keycloak-auth.html /var/www/html/keycloak/admin/master/console/index.html
-#COPY html/keycloak-aa.html /var/www/html/keycloak/after-auth.html
+COPY html/prometheus-status-page.html /var/www/html/prometheus/status/index.html
+COPY html/gitlab-main-page-aa.html /var/www/html/gitlab/after-auth.html
+COPY html/snipeit-main-page-aa.html /var/www/html/snipe-it/after-auth.html
 
 # Expose the SSH port
 EXPOSE 22

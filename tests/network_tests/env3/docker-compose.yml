@@ -6,13 +6,16 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.0.0.18
-#  nginx-2:
-#    build:
-#      context: .
-#      dockerfile: ./nginx-2.Dockerfile
-#    networks:
-#      custom_network:
-#        ipv4_address: 192.0.0.19
+  nginx-2:
+    build:
+      context: .
+      dockerfile: ./nginx-2.Dockerfile
+    volumes:
+      - ./nginx-2-vhosts:/etc/nginx/sites-available
+      - ./nginx-2-vhosts:/etc/nginx/sites-enabled
+    networks:
+      custom_network:
+        ipv4_address: 192.0.0.19
   apache-1:
     build:
       context: .
@@ -36,7 +39,7 @@ services:
     depends_on:
       - nginx-1
       - apache-1
-#      - nginx-2
+      - nginx-2
       - apache-2
     networks:
       custom_network:
@@ -46,6 +49,11 @@ services:
       - "grafana.webappradar-example.io:192.0.0.21"
       - "bareos.webappradar-example.io:192.0.0.21"
       - "keycloak.webappradar-example.io:192.0.0.21"
+      - "gitlab.webappradar-example.io:192.0.0.19"
+      - "prometheus.webappradar-example.io:192.0.0.19"
+      - "snipe-it.webappradar-example.io:192.0.0.19"
+      - "teamcity.webappradar-example.io:192.0.0.19"
+      - "testrail.webappradar-example.io:192.0.0.19"
 
 networks:
   custom_network:

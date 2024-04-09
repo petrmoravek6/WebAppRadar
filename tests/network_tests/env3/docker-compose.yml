@@ -2,31 +2,34 @@ services:
   nginx-1:
     build:
       context: .
-      dockerfile: ./nginx-1.Dockerfile
+      dockerfile: dockerfiles/nginx-1.Dockerfile
     networks:
       custom_network:
         ipv4_address: 192.0.0.18
+
   nginx-2:
     build:
       context: .
-      dockerfile: ./nginx-2.Dockerfile
+      dockerfile: dockerfiles/nginx-2.Dockerfile
     volumes:
       - ./nginx-2-vhosts:/etc/nginx/sites-available
       - ./nginx-2-vhosts:/etc/nginx/sites-enabled
     networks:
       custom_network:
         ipv4_address: 192.0.0.19
+
   apache-1:
     build:
       context: .
-      dockerfile: ./apache-1.Dockerfile
+      dockerfile: dockerfiles/apache-1.Dockerfile
     networks:
       custom_network:
         ipv4_address: 192.0.0.20
+
   apache-2:
     build:
       context: .
-      dockerfile: ./apache-2.Dockerfile
+      dockerfile: dockerfiles/apache-2.Dockerfile
     networks:
       custom_network:
         ipv4_address: 192.0.0.21

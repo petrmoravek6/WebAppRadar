@@ -26,14 +26,14 @@ RUN mkdir -p /home/test/.ssh && \
     chown test:test /home/test/.ssh/environment && \
     chmod 600 /home/test/.ssh/environment
 
+# Expose the SSH port
+EXPOSE 22
+
 # Create sites-available and sites-enabled directories
 RUN mkdir /usr/local/apache2/sites-available /usr/local/apache2/sites-enabled
 
 # Include the sites-enabled directory in the main Apache configuration
 RUN echo "IncludeOptional /usr/local/apache2/sites-enabled/*.conf" >> /usr/local/apache2/conf/httpd.conf
-
-# Expose the SSH port
-EXPOSE 22
 
 # Start Apache and SSH services
 CMD service ssh start && httpd-foreground

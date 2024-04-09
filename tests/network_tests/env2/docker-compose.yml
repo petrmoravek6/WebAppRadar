@@ -6,6 +6,7 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.0.0.10
+
   apache2:
     build:
       context: .
@@ -13,6 +14,7 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.0.0.11
+
   app:
     build:
       context: ../../../.

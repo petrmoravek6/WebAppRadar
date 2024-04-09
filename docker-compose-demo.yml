@@ -1,0 +1,60 @@
+services:
+  nginx-1:
+    build:
+      context: ./tests/network_tests/env3
+      dockerfile: dockerfiles/nginx-1.Dockerfile
+    networks:
+      custom_network:
+        ipv4_address: 192.168.0.26
+
+  nginx-2:
+    build:
+      context: ./tests/network_tests/env3
+      dockerfile: dockerfiles/nginx-2.Dockerfile
+    volumes:
+      - ./tests/network_tests/env3/nginx-2-vhosts:/etc/nginx/sites-available
+      - ./tests/network_tests/env3/nginx-2-vhosts:/etc/nginx/sites-enabled
+    networks:
+      custom_network:
+        ipv4_address: 192.168.0.27
+
+  apache-2:
+    build:
+      context: ./tests/network_tests/env3
+      dockerfile: dockerfiles/apache-2-demo.Dockerfile
+    networks:
+      custom_network:
+        ipv4_address: 192.168.0.29
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # run all tests in the specific directory
+    entrypoint: ["python3", "-u", "demo.py"]
+    depends_on:
+      - nginx-1
+      - nginx-2
+      - apache-2
+    networks:
+      custom_network:
+        ipv4_address: 192.168.0.28
+    extra_hosts:
+      - "jira.webappradar-example.io:192.168.0.26"
+      - "grafana.webappradar-example.io:192.168.0.29"
+      - "bareos.webappradar-example.io:192.168.0.29"
+      - "keycloak.webappradar-example.io:192.168.0.29"
+      - "unknown.webappradar-example.io:192.168.0.29"
+      - "gitlab.webappradar-example.io:192.168.0.27"
+      - "prometheus.webappradar-example.io:192.168.0.27"
+      - "snipe-it.webappradar-example.io:192.168.0.27"
+      - "teamcity.webappradar-example.io:192.168.0.27"
+      - "testrail.webappradar-example.io:192.168.0.27"
+
+networks:
+  custom_network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.24/29

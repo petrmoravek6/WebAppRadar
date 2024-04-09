@@ -4,11 +4,13 @@ services:
     networks:
       custom_network:
         ipv4_address: 192.0.0.2
+
   redis:
     image: redis:7.2.4-bookworm
     networks:
       custom_network:
         ipv4_address: 192.0.0.3
+
   app:
     build:
       context: ../../../.

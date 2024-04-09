@@ -17,18 +17,18 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
     def setUp(self):
         hostname_resolver = SocketHostnameResolver()
         ip_validator = PytIPSubnetValidator()
-        hostname_validator = PytHostnameSubnetValidator(hostname_resolver, ip_validator)
+        self.hostname_validator = PytHostnameSubnetValidator(hostname_resolver, ip_validator)
 
         ssh_pwd = 'test'
         ssh_user = 'test'
-        web_server_cmds = (NginxVhostsCmds(), Apache2VhostsCmds())
+        self.web_server_cmds = (NginxVhostsCmds(), Apache2VhostsCmds())
         ssh_client = PasswordParamikoSSHClient(ssh_pwd)
-        vhosts_discoverer = SshAgentVhostDiscoverer(ssh_client, web_server_cmds, ssh_user)
+        vhosts_discoverer = SshAgentVhostDiscoverer(ssh_client, self.web_server_cmds, ssh_user)
 
         open_port_scanner = NMapOpenPortScanner()
-        web_server_scanner = OpenPortWebServerScanner(open_port_scanner)
+        self.web_server_scanner = OpenPortWebServerScanner(open_port_scanner)
 
-        self.scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
+        self.scanner = LocalVhostsNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
 
     def test_ip_addresses(self):
         res1 = self.scanner.get_all_vhosts(('192.0.0.10', '192.0.0.11'))
@@ -57,3 +57,15 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
 
         self.assertCountEqual(empty_res, [])
         self.assertRaises(ValueError, self.scanner.get_all_vhosts, ['das546546das'])
+
+    def test_invalid_ssh_creds(self):
+        # create another scanner with different credentials
+        ssh_pwd = 'invalid_pwd'
+        ssh_user = 'test'
+        ssh_client = PasswordParamikoSSHClient(ssh_pwd)
+        vhosts_discoverer = SshAgentVhostDiscoverer(ssh_client, self.web_server_cmds, ssh_user)
+        scanner2 = LocalVhostsNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
+
+        res = scanner2.get_all_vhosts(('192.0.0.8/29',))
+
+        self.assertCountEqual(res, [])

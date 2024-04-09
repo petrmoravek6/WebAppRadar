@@ -24,8 +24,9 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 
 app = Flask(__name__)
-api = Api(app, version='1.0', title='Scan API',
-          description='A simple Scan API',
+api = Api(app, version='1.0', title='WebAppRadar API',
+          description='System for detection and monitoring of versions of web applications in internal network '
+                      'environments',
           )
 
 ns = api.namespace('scan', description='Scan operations')

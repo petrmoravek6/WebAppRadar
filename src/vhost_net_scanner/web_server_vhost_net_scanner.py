@@ -1,5 +1,5 @@
 import ipaddress
-from typing import Iterable
+from typing import Iterable, Collection
 import logging
 from src.vhost_net_scanner.vhost_net_scanner import IVhostNetScanner
 from src.web_server_scanner.web_server_scanner import IWebServerScanner
@@ -32,7 +32,7 @@ class WebServerVhostNetScanner(IVhostNetScanner):
         self.web_server_scanner = web_server_scanner
         self.vhost_discoverer = vhost_discoverer
 
-    def get_all_vhosts(self, subnets: Iterable[str]) -> Iterable[str]:
+    def get_all_vhosts(self, subnets: Iterable[str]) -> Collection[str]:
         for subnet in subnets:
             if not self._is_valid_ip_or_subnet(subnet):
                 raise ValueError(f"Invalid IP address or subnet: {subnet}")

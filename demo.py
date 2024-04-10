@@ -23,6 +23,9 @@ from src.web_app_radar import WebAppRadar
 ssh_pwd = 'test'
 ssh_user = 'test'
 web_apps_json_path = os.path.join(os.path.dirname(__file__), 'web-apps.json')
+subnet_to_scan = '192.168.0.24/29'
+
+# =======================================================================================
 
 hostname_resolver = SocketHostnameResolver()
 ip_validator = PytIPSubnetValidator()
@@ -45,6 +48,19 @@ scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_
 release_fetcher = ReleaseFetcher()
 full_info_fetcher = FullInfoFetcher(release_fetcher, dict(), SemanticVersionComparator())
 
+# =======================================================================================
+
 web_app_radar = WebAppRadar(scanner, web_app_determiner, full_info_fetcher)
-
-
+print("STARTING TO SCAN...")
+scan_result = web_app_radar.run((subnet_to_scan,))
+if scan_result and len(scan_result) != 0:
+    print("SCAN RESULT:\n")
+else:
+    print("Unexpected error: DEMO scan didn't find any valuable information")
+for res in scan_result:
+    print(f'- HOSTNAME: {res.hostname}')
+    if res.full_web_app_info:
+        print(f'   INFO: {str(res.full_web_app_info)}')
+    else:
+        print("   INFO: UNKNOWN")
+    print('\n', end='')

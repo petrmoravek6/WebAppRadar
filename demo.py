@@ -1,8 +1,11 @@
 import os
+from functools import partial
 
 from src.client_side_renderer.selenium_chrome_renderer import SeleniumChromeRenderer
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
 from src.latest_version.full_info_fetcher import FullInfoFetcher
+from src.latest_version.release_fetcher.method.endoflife import EndOfLifeReleaseFetcherMethod
+from src.latest_version.release_fetcher.method.github import GitHubReleaseFetcherMethod
 from src.latest_version.release_fetcher.release_fetcher import ReleaseFetcher
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
@@ -45,7 +48,25 @@ det_methods = [HTMLContentParsingFromFileMethod(renderer,
                                                 JsonWebAppRulesDeserializer())]
 web_app_determiner = WebAppDeterminer(det_methods)
 scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
-release_fetcher = ReleaseFetcher()
+
+endoflife_fetcher_method = EndOfLifeReleaseFetcherMethod()
+github_fetcher_method = GitHubReleaseFetcherMethod()
+
+release_methods = {
+    "Atlassian Jira": partial(endoflife_fetcher_method.fetch_cycle_info, "jira-software"),
+    "Atlassian Confluence": partial(endoflife_fetcher_method.fetch_cycle_info, "confluence"),
+    "JFrog Artifactory Pro": partial(endoflife_fetcher_method.fetch_cycle_info, "artifactory"),
+    "Prometheus": partial(endoflife_fetcher_method.fetch_cycle_info, "prometheus"),
+    "Grafana": partial(endoflife_fetcher_method.fetch_cycle_info, "grafana"),
+    "GitLab": partial(endoflife_fetcher_method.fetch_cycle_info, "gitlab"),
+    "Zabbix": partial(endoflife_fetcher_method.fetch_cycle_info, "zabbix"),
+    "Graylog": partial(endoflife_fetcher_method.fetch_cycle_info, "graylog"),
+    "Keycloak": partial(endoflife_fetcher_method.fetch_cycle_info, "keycloak"),
+    "Bareos": partial(github_fetcher_method.fetch_cycle_info, 'bareos', 'bareos', "name", r'\S*\s*(\d+\.\d+.\d+)'),
+    "Snipe-IT": partial(github_fetcher_method.fetch_cycle_info, 'snipe', 'snipe-it', "name", r'v(\d+\.\d+.\d+)')
+}
+
+release_fetcher = ReleaseFetcher(release_methods)
 full_info_fetcher = FullInfoFetcher(release_fetcher, dict(), SemanticVersionComparator())
 
 # =======================================================================================

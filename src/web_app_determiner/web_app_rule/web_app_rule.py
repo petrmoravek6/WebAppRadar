@@ -6,7 +6,7 @@ from src.web_app_determiner.web_app_rule.authentication.auth import Auth
 class WebAppRule:
     def __init__(self, name: str,
                  identifier: str,
-                 version: str,
+                 version: Optional[str],
                  version_path: Optional[str] = None,
                  auth: Optional[Auth] = None):
         self.name = name
@@ -17,7 +17,8 @@ class WebAppRule:
 
         # Compile the regular expression pattern for better performance
         self.id_pattern = WebAppRule._compile_regex_pattern(self.identifier)
-        self.ver_pattern = WebAppRule._compile_regex_pattern(self.version)
+        if self.version is not None:
+            self.ver_pattern = WebAppRule._compile_regex_pattern(self.version)
 
     @staticmethod
     def _compile_regex_pattern(pattern: str) -> re.Pattern[str]:
@@ -30,6 +31,8 @@ class WebAppRule:
         return bool(self.id_pattern.search(html_content))
 
     def find_version(self, html_content: str) -> Optional[str]:
+        if self.version is None:
+            return None
         match = self.ver_pattern.search(html_content)
         if match:
             return match.group(1)

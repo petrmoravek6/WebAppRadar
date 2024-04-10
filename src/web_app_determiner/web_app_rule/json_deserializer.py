@@ -30,7 +30,7 @@ class JsonWebAppRulesDeserializer(IWebAppRulesDeserializer):
             rule = WebAppRule(
                 name=item.get('name'),
                 identifier=item.get('identifier'),
-                version=item.get('version'),
+                version=item.get('version', None),
                 version_path=item.get('version_path', None),
                 auth=auth_instance
             )

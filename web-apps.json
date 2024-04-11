@@ -124,5 +124,9 @@
   {
     "name": "Zimbra",
     "identifier": "<title>Zimbra Web Client Sign In</title>"
+  },
+  {
+    "name": "MinIO",
+    "identifier": "<meta content=\"MinIO Console\""
   }
 ]

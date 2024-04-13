@@ -1,4 +1,6 @@
 from typing import Collection, NamedTuple, Optional
+
+from src.latest_version import full_web_app_info
 from src.latest_version.full_info_fetcher import FullInfoFetcher
 from src.vhost_net_scanner.vhost_net_scanner import IVhostNetScanner
 from src.web_app_determiner.web_app_determiner import WebAppDeterminer
@@ -8,6 +10,17 @@ from src.latest_version.full_web_app_info import FullWebAppInfo
 class HostnameInfo(NamedTuple):
     hostname: str
     full_web_app_info: Optional[FullWebAppInfo]
+
+    def to_dict(self):
+        return {
+            "hostname": self.hostname,
+            "name": self.full_web_app_info.name if self.full_web_app_info else None,
+            "version": self.full_web_app_info.version if self.full_web_app_info and self.full_web_app_info.version else None,
+            "latest_version": self.full_web_app_info.latest_version if self.full_web_app_info and self.full_web_app_info.latest_version else None,
+            "latest_cycle_version": self.full_web_app_info.latest_cycle_version if self.full_web_app_info and self.full_web_app_info.latest_cycle_version else None,
+            "eol": self.full_web_app_info.eol if self.full_web_app_info and self.full_web_app_info.eol is not None else None,
+            "eol_date": self.full_web_app_info.eol_date.isoformat() if self.full_web_app_info and self.full_web_app_info.eol_date else None
+        }
 
 
 class WebAppRadar:

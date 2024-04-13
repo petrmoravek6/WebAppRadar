@@ -16,4 +16,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["python3", "-u", "main.py"]
+ENV FLASK_RUN_HOST=0.0.0.0
+
+ENTRYPOINT ["flask", "run", "--host=0.0.0.0"]

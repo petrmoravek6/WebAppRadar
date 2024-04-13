@@ -34,7 +34,7 @@ class WebServerVhostNetScanner(IVhostNetScanner):
 
     def get_all_vhosts(self, subnets: Iterable[str]) -> Collection[str]:
         for subnet in subnets:
-            if not self._is_valid_ip_or_subnet(subnet):
+            if not self._is_valid_ip_or_subnet(subnet.strip()):
                 raise ValueError(f"Invalid IP address or subnet: {subnet}")
         res = set()
         ip_addresses = self.web_server_scanner.discover(subnets)

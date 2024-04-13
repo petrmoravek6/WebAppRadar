@@ -1,4 +1,6 @@
 import time
+
+from src.exceptions import FatalError
 from src.latest_version.full_web_app_info import FullWebAppInfo
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
@@ -23,6 +25,7 @@ logging.basicConfig(level=logging.DEBUG,
                     filename='app.log',  # Output file
                     filemode='a',  # Append mode
                     format='%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 from flask import Flask, request
 from flask_restx import Api, Resource, fields
@@ -43,12 +46,13 @@ db = client.webapp_radar
 
 # Input and output models
 subnet_model = api.model('SubnetInput', {
-    'subnets': fields.String(required=True, description='Comma-separated subnets', example='192.168.0.0/24,10.0.0.0/8')
+    'subnets': fields.String(required=True, description='Comma-separated subnets or IP addreses (or combination of both) to be scanned', example='192.168.0.0/24,192.168.68.68')
 })
 
 result_model = api.model('ScanResult', {
     'id': fields.String(description='Result ID'),
-    'completed_at': fields.DateTime(description='Completion timestamp')
+    'completed_at': fields.DateTime(description='Timestamp when the scan was completed', example='2024-04-13T19:40:36.323496'),
+    'status': fields.String(description='Flag indicating whether the scan was successful or failed', example='success')
 })
 
 hostname_info_model = api.model('HostnameInfo', {
@@ -63,9 +67,10 @@ hostname_info_model = api.model('HostnameInfo', {
 
 result_detail_model = api.model('ResultDetail', {
     'id': fields.String(attribute='_id', description='Scan ID'),
-    'completed_at': fields.String(description='Timestamp when the scan was completed'),
+    'completed_at': fields.String(description='Timestamp when the scan was completed', example='2024-04-13T19:40:36.323496'),
+    'status': fields.String(description='Flag indicating whether the scan was successful or failed', example='success'),
     'subnets': fields.String(description='Subnets scanned'),
-    'web_apps': fields.List(fields.Nested(hostname_info_model), description='List of web applications discovered')
+    'web_apps': fields.List(fields.Nested(hostname_info_model), description='List of web applications discovered and their information')
 })
 
 
@@ -79,21 +84,32 @@ def validate_subnets(subnets):
         return False
 
 
-def run_scan(subnets, scan_id):
-    # Example data creation using your data classes
-    scan_results = [
-        HostnameInfo('192.168.120.100', FullWebAppInfo('Jira', '5', '7', '6', eol=False, eol_date=datetime.date.today())),
-        HostnameInfo('192.168.120.101', FullWebAppInfo('Confluence', '8', '9', '8.2')),
-        HostnameInfo('192.168.120.102', FullWebAppInfo('Bareos', '6', '7')),
-        HostnameInfo('192.168.120.103', FullWebAppInfo('Git', '6')),
-        HostnameInfo('192.168.120.104', FullWebAppInfo('Test')),
-        HostnameInfo('192.168.120.105', None),
-    ]
+def run_scan(subnets: str, scan_id: str, web_app_radar: WebAppRadar):
+    status = 'success'
+    try:
+        scan_results = web_app_radar.run(subnets.split(','))
+    except FatalError as fe:
+        logger.error(f"Fatal error: {str(fe)}")
+        logger.debug(f"Fatal error details: {fe.debug_msg}")
+        status = 'fail'
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
+        status = 'fail'
 
-    # MongoDB document to be inserted
+    # # Example data creation using your data classes
+    # scan_results = [
+    #     HostnameInfo('192.168.120.100', FullWebAppInfo('Jira', '5', '7', '6', eol=False, eol_date=datetime.date.today())),
+    #     HostnameInfo('192.168.120.101', FullWebAppInfo('Confluence', '8', '9', '8.2')),
+    #     HostnameInfo('192.168.120.102', FullWebAppInfo('Bareos', '6', '7')),
+    #     HostnameInfo('192.168.120.103', FullWebAppInfo('Git', '6')),
+    #     HostnameInfo('192.168.120.104', FullWebAppInfo('Test')),
+    #     HostnameInfo('192.168.120.105', None),
+    # ]
+
     document = {
         '_id': scan_id,
         'completed_at': datetime.datetime.now().isoformat(),
+        'status': status,
         'subnets': subnets,
         'web_apps': [info.to_dict() for info in scan_results]
     }
@@ -124,8 +140,10 @@ class ResultList(Resource):
     @api.doc('list_results', description="asdasasd")
     @api.marshal_list_with(result_model)
     def get(self):
-        results = list(db.results.find({}, {'_id': 1, 'completed_at': 1}))
-        return [{'id': str(result['_id']), 'completed_at': result['completed_at']} for result in results]
+        results = list(db.results.find({}, {'_id': 1, 'completed_at': 1, 'status': 1}))
+        # Sort the results by 'completed_at' field in ascending order
+        results.sort(key=lambda r: r['completed_at'], reverse=True)
+        return [{'id': str(result['_id']), 'completed_at': result['completed_at'], 'status': result['status']} for result in results]
 
 
 @api.route('/result/<id>')

@@ -42,10 +42,11 @@ def hostname_info_as_api_dict(hostname_info: HostnameInfo):
 
 def run_scan(subnets: str, scan_id: str, scan_loc: Lock, db_client, web_app_radar: WebAppRadar):
     scan_loc.acquire()
+    status = 'success'
+    scan_results = tuple()
     try:
-        status = 'success'
-        scan_results = tuple()
         try:
+            logger.info(f"Scan (ID: {scan_id}) of: '{subnets}' started")
             scan_results = web_app_radar.run(subnets.split(','))
             if len(scan_results) < 1:
                 status = 'fail'
@@ -71,3 +72,4 @@ def run_scan(subnets: str, scan_id: str, scan_loc: Lock, db_client, web_app_rada
         logger.error(f"Unexpected error: {str(e)}")
     finally:
         scan_loc.release()
+        logger.info(f"Scan (ID: {scan_id}) of: '{subnets}' finished with status: '{status}'")

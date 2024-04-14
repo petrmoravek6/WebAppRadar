@@ -1,11 +1,11 @@
 # WebAppRadar
 This app is used for automatic network scanning for web apps. 
 It scans given subnet or IP and returns a list of all hostnames hosted within the given network range.
-The main feature of this app is also automatic web app detection. 
-For each hostname, an attempt is made to determine the name and version of the currently deployed web application running on the device.
-It then compares the information with latest releases of the app. 
+However, the main feature of this app is automatic web app detection. 
+For each hostname, an attempt is made to determine the name and version of the web application that is hosted by the hostname.
+It then compares the information with latest releases of the app searched on the internet. 
 
-The "final product" of this app is the comparison of the information about the current web app running within the given network range with the latest release info.
+The "final product" of this app is the comparison of the information about the current web apps running in the given network range with the latest release info for those apps.
 This comparison can serve as a basic scan explore or necessary update reminder.
 
 Please read [user manual](USER_MANUAL.md) for configure and run instructions.

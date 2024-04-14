@@ -11,6 +11,6 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - MONGO_URI=mongodb://localhost:27017/webapp_radar
+      - MONGO_URI=mongodb://mongodb:27017/
     depends_on:
       - mongodb

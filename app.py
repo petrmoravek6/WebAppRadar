@@ -20,6 +20,9 @@ from src.web_app_determiner.web_app_determiner import WebAppDeterminer
 from src.client_side_renderer.selenium_chrome_renderer import SeleniumChromeRenderer
 from src.web_app_determiner.web_app_rule.authentication.auth_executor import AuthExecutor
 from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRulesDeserializer
+from threading import Lock
+
+SCAN_LOCK = Lock()
 
 logging.basicConfig(level=logging.DEBUG,
                     filename='app.log',  # Output file
@@ -41,7 +44,10 @@ api = Api(app, version='1.0', title='WebApp Radar API',
 app.config['RESTX_MASK_SWAGGER'] = False
 
 # MongoDB client setup
-client = MongoClient('mongodb://localhost:27017/')
+mongo_connection_str = os.getenv('MONGO_URI')
+if not mongo_connection_str:
+    raise Exception("MONGO_URI env (connection string for MongoDB) not defined")
+client = MongoClient(mongo_connection_str)
 db = client.webapp_radar
 
 # Input and output models
@@ -84,10 +90,22 @@ def validate_subnets(subnets):
         return False
 
 
-def run_scan(subnets: str, scan_id: str, web_app_radar: WebAppRadar):
+def run_scan(subnets: str, scan_id: str, web_app_radar: WebAppRadar = None):
+    SCAN_LOCK.acquire()
+
     status = 'success'
+    scan_results = tuple()
     try:
-        scan_results = web_app_radar.run(subnets.split(','))
+        # scan_results = web_app_radar.run(subnets.split(','))
+        scan_results = [
+            HostnameInfo('192.168.120.100', FullWebAppInfo('Jira', '5', '7', '6', eol=False, eol_date=datetime.date.today())),
+            HostnameInfo('192.168.120.101', FullWebAppInfo('Confluence', '8', '9', '8.2')),
+            HostnameInfo('192.168.120.102', FullWebAppInfo('Bareos', '6', '7')),
+            HostnameInfo('192.168.120.103', FullWebAppInfo('Git', '6')),
+            HostnameInfo('192.168.120.104', FullWebAppInfo('Test')),
+            HostnameInfo('192.168.120.105', None),
+        ]
+        time.sleep(20)
     except FatalError as fe:
         logger.error(f"Fatal error: {str(fe)}")
         logger.debug(f"Fatal error details: {fe.debug_msg}")
@@ -95,27 +113,18 @@ def run_scan(subnets: str, scan_id: str, web_app_radar: WebAppRadar):
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}")
         status = 'fail'
+    finally:
+        document = {
+            '_id': scan_id,
+            'completed_at': datetime.datetime.now().isoformat(),
+            'status': status,
+            'subnets': subnets,
+            'web_apps': [info.to_dict() for info in scan_results]
+        }
 
-    # # Example data creation using your data classes
-    # scan_results = [
-    #     HostnameInfo('192.168.120.100', FullWebAppInfo('Jira', '5', '7', '6', eol=False, eol_date=datetime.date.today())),
-    #     HostnameInfo('192.168.120.101', FullWebAppInfo('Confluence', '8', '9', '8.2')),
-    #     HostnameInfo('192.168.120.102', FullWebAppInfo('Bareos', '6', '7')),
-    #     HostnameInfo('192.168.120.103', FullWebAppInfo('Git', '6')),
-    #     HostnameInfo('192.168.120.104', FullWebAppInfo('Test')),
-    #     HostnameInfo('192.168.120.105', None),
-    # ]
-
-    document = {
-        '_id': scan_id,
-        'completed_at': datetime.datetime.now().isoformat(),
-        'status': status,
-        'subnets': subnets,
-        'web_apps': [info.to_dict() for info in scan_results]
-    }
-
-    # Insert the document into MongoDB
-    db.results.insert_one(document)
+        # Insert the document into MongoDB
+        db.results.insert_one(document)
+        SCAN_LOCK.release()
 
 
 @api.route('/scan')
@@ -123,6 +132,7 @@ class Scan(Resource):
     @api.doc('start_scan', description="asdasasd")
     @api.expect(subnet_model)
     @api.response(400, 'Invalid input')
+    @api.response(405, 'Scan already in progress')
     @api.response(202, 'Scan started')
     def post(self):
         data = request.json
@@ -130,6 +140,8 @@ class Scan(Resource):
         if not subnets or not validate_subnets(subnets):
             api.abort(400, 'Invalid or empty subnet input')
         scan_id = str(uuid.uuid4())
+        if SCAN_LOCK.locked():
+            api.abort(405, 'Scan already in progress')
         thread = threading.Thread(target=run_scan, args=(subnets, scan_id))
         thread.start()
         return {'message': 'Scan started', 'scan_id': scan_id}, 202
@@ -158,7 +170,3 @@ class Result(Resource):
             return result
         else:
             api.abort(404, 'Result with provided ID not found')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)

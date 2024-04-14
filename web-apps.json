@@ -11,8 +11,8 @@
   },
   {
     "name": "JFrog Artifactory Pro",
-    "identifier": "<img class=\"logo-picture\" alt=\"Artifactory\"",
-    "version": "<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"
+    "identifier": "class=\"vsm--title\">Artifactory",
+    "version": "Commercial license\\s+(\\d+\\.\\d+\\.\\d+)"
   },
   {
     "name": "Bareos",

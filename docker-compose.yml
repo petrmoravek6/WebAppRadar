@@ -8,9 +8,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
+    network_mode: host
     environment:
-      - MONGO_URI=mongodb://mongodb:27017/
+      - MONGO_URI=mongodb://localhost:27017/
     depends_on:
       - mongodb

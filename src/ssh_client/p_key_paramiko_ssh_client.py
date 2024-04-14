@@ -7,10 +7,10 @@ logger = logging.getLogger(__name__)
 
 
 class PrivateKeyCipher(Enum):
-    RSA = 1
-    ED25519 = 2
-    ECDSA = 3
-    DSS = 4
+    RSA = 'RSA'
+    ED25519 = 'ED25519'
+    ECDSA = 'ECDSA'
+    DSS = 'DSS'
 
 
 class PrivateKeyParamikoSSHClient(ParamikoSSHClient):

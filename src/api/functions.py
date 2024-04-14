@@ -1,5 +1,4 @@
 import os
-import time
 from pymongo import MongoClient
 from src.exceptions import FatalError
 from src.web_app_radar import WebAppRadar, HostnameInfo
@@ -8,7 +7,6 @@ from threading import Lock
 import datetime
 import ipaddress
 
-SCAN_LOCK = Lock()
 logger = logging.getLogger(__name__)
 
 
@@ -42,22 +40,15 @@ def hostname_info_as_api_dict(hostname_info: HostnameInfo):
     }
 
 
-def run_scan(subnets: str, scan_id: str, scan_loc: Lock, db_client, web_app_radar: WebAppRadar = None):
+def run_scan(subnets: str, scan_id: str, scan_loc: Lock, db_client, web_app_radar: WebAppRadar):
     scan_loc.acquire()
     try:
         status = 'success'
         scan_results = tuple()
         try:
             scan_results = web_app_radar.run(subnets.split(','))
-            # scan_results = [
-            #     HostnameInfo('192.168.120.100', FullWebAppInfo('Jira', '5', '7', '6', eol=False, eol_date=datetime.date.today())),
-            #     HostnameInfo('192.168.120.101', FullWebAppInfo('Confluence', '8', '9', '8.2')),
-            #     HostnameInfo('192.168.120.102', FullWebAppInfo('Bareos', '6', '7')),
-            #     HostnameInfo('192.168.120.103', FullWebAppInfo('Git', '6')),
-            #     HostnameInfo('192.168.120.104', FullWebAppInfo('Test')),
-            #     HostnameInfo('192.168.120.105', None),
-            # ]
-            # time.sleep(20)
+            if len(scan_results) < 1:
+                status = 'fail'
         except FatalError as fe:
             logger.error(f"Fatal error: {str(fe)}")
             logger.debug(f"Fatal error details: {fe.debug_msg}")

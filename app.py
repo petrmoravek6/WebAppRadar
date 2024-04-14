@@ -1,24 +1,5 @@
-import time
-from src.exceptions import FatalError
-from src.latest_version.full_web_app_info import FullWebAppInfo
-from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
-from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
-from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyParamikoSSHClient
-from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalVhostsNetScanner
-from src.web_app_radar import WebAppRadar, HostnameInfo
-from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServerScanner
-from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
-from src.vhosts_commands.nginx_vhosts_cmds import NginxVhostsCmds
-from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
-from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
-from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+from init import init_web_app_radar
 import logging
-import os
-from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
-from src.web_app_determiner.web_app_determiner import WebAppDeterminer
-from src.client_side_renderer.selenium_chrome_renderer import SeleniumChromeRenderer
-from src.web_app_determiner.web_app_rule.authentication.auth_executor import AuthExecutor
-from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRulesDeserializer
 from threading import Lock
 from flask import Flask, request
 from flask_restx import Api, Resource
@@ -27,23 +8,31 @@ from src.api.functions import init_db_connection, run_scan, validate_subnets
 import threading
 from src.api import models
 
-logging.basicConfig(level=logging.DEBUG,
-                    filename='app.log',  # Output file
-                    filemode='a',  # Append mode
+file_handler = logging.FileHandler('app.log', mode='a')
+file_handler.setLevel(logging.DEBUG)
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO,
+                    handlers=[console_handler, file_handler],
                     format='%(asctime)s - %(name)s - %(levelname)s: %(message)s')
-
-SCAN_LOCK = Lock()
 logger = logging.getLogger(__name__)
 
+scan_lock = Lock()
 app = Flask(__name__)
 api = Api(app, version='1.0', title='WebApp Radar API',
           description='API for scanning web applications in given subnets')
 app.config['RESTX_MASK_SWAGGER'] = False
+
 db = init_db_connection()
 subnet_model = models.subnet_model(api)
 result_model = models.result_model(api)
 hostname_info_model = models.hostname_info_model(api)
 result_detail_model = models.result_detail_model(api, hostname_info_model)
+
+# initialize web_app_radar instance - any error (already logged inside the function) leads to exit
+web_app_radar = init_web_app_radar()
+if not web_app_radar:
+    exit(1)
 
 
 @api.route('/scan')
@@ -61,9 +50,9 @@ class Scan(Resource):
         if not subnets or not validate_subnets(subnets):
             api.abort(400, 'Invalid or empty subnet input')
         scan_id = str(uuid.uuid4())
-        if SCAN_LOCK.locked():
+        if scan_lock.locked():
             api.abort(405, 'Scan already in progress')
-        thread = threading.Thread(target=run_scan, args=(subnets, SCAN_LOCK, scan_id))
+        thread = threading.Thread(target=run_scan, args=(subnets, scan_id, scan_lock, db, web_app_radar))
         thread.start()
         return {'message': 'Scan started', 'scan_id': scan_id}, 202
 

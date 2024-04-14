@@ -1,5 +1,14 @@
 # WebAppRadar
+This app is used for automatic network scanning for web apps. 
+It scans given subnet or IP and returns a list of all hostnames hosted within the given network range.
+The main feature of this app is also automatic web app detection. 
+For each hostname, an attempt is made to determine the name and version of the currently deployed web application running on the device.
+It then compares the information with latest releases of the app. 
 
+The "final product" of this app is the comparison of the information about the current web app running within the given network range with the latest release info.
+This comparison can serve as a basic scan explore or necessary update reminder.
+
+Please read [user manual](USER_MANUAL.md) for configure and run instructions.
 ## DEMO
 You can run WebAppRadar app in simulation environment that consists of 4 devices in isolated Docker network.
 That way, you can see how the app works in small scale without installing further dependencies or scanning real network.
@@ -8,7 +17,7 @@ The demo network consists of 3 servers running Nginx or Apache2 web servers and 
 The 4th server is the app itself which performs whole network scan, web app detection and comparing the information 
 with the latest web app releases using real time information.
 
-To run the demo, use: `docker compose -f docker-compose-demo.yml up --build --force-recreate --exit-code-from app --abort-on-container-exit`
+To run the demo, use: `docker compose -f docker-compose-demo.yml up --build --exit-code-from app --abort-on-container-exit`
 
 After all services are built and started and the scan is finished, you can see the result at the standard output.
 
@@ -16,4 +25,4 @@ After all services are built and started and the scan is finished, you can see t
 ### Unit tests
 Run `python3 -m unittest` in root folder.
 ### Network tests
-Run `docker compose up --build --force-recreate --exit-code-from app --abort-on-container-exit` in `tests/network_tests/env<1/2/3>`
+Run `docker compose up --build --force-recreate --exit-code-from app --abort-on-container-exit` in `tests/network_tests/env<number>`

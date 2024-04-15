@@ -92,7 +92,5 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
     except FatalError as fe:
         logger.error(f"Fatal error: {str(fe)}")
         logger.debug(f"Fatal error details: {fe.debug_msg}")
-        status = 'fail'
     except Exception as e:
         logger.error(f"Unexpected error: {str(e)}")
-        status = 'fail'

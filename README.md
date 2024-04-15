@@ -8,7 +8,9 @@ It then compares the information with latest releases of the app searched on the
 The "final product" of this app is the comparison of the information about the current web apps running in the given network range with the latest release info for those apps.
 This comparison can serve as a basic scan explore or necessary update reminder.
 
-Please read [user manual](USER_MANUAL.md) for configure and run instructions.
+Please read [installation manual](INSTALL_MANUAL.md) for configure and run instructions.
+
+See [user manual](USER_MANUAL.md) to learn how to use the application.
 ## DEMO
 You can run WebAppRadar app in simulation environment that consists of 4 devices in isolated Docker network.
 That way, you can see how the app works in small scale without installing further dependencies or scanning real network.

@@ -2,7 +2,7 @@
 This app is used for automatic network scanning for web apps deployed on Debian based machines. 
 It scans given subnet or IP and returns a list of all hostnames hosted within the given network range.
 However, the main feature of this app is automatic web app detection. 
-For each hostname, an attempt is made to determine the name and version of the web application that is hosted by the hostname.
+For each hostname, an attempt is made to determine the name and version of the web application that is hosted on the hostname's server.
 It then compares the information with latest releases of the app searched on the internet. 
 
 The "final product" of this app is the comparison of the information about the current web apps running in the given network range with the latest release info for those apps.

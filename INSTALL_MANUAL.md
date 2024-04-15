@@ -7,7 +7,7 @@ Application provides HTTP API endpoints for integrating with users.
 Mandatory requirements of the application:
 - internet connection
 - Docker installed
-- all servers you want to scan have to have SSH connection enabled (see [SSH section](#ssh))
+- all servers you want to scan have to have SSH connection enabled (see SSH section)
 - the user that is to be used during SSH connection does not require sudo privilege (it only needs read permissions to _/etc/nginx_ and _/etc/apache2_ configuration files)
 
 ## Configuration

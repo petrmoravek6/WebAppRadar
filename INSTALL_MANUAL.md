@@ -203,7 +203,7 @@ with latest releases of predefined list of web apps, that cannot be changed in a
 
 ## Running the app
 
-After successful configuration you can run the app using `docker compose up` or `docker compose up -d` in detached mode.
+After successful configuration you can run the app using `docker compose up --build` or `docker compose up --build -d` in detached mode.
 
 ## Logging
 

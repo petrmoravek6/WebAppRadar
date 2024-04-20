@@ -85,7 +85,7 @@ services:
 
 #### Change SSH private key path
 If you chose to use private key method ass SSH authentication, you have to adjust to correct file path to the key on the local machine in `docker-compose.yml`.
-Set the correct path instead of `/home/john/.ssh/id_rsa_quanti`.
+Set the correct path instead of `/home/john/.ssh/id_rsa`.
 
 ### Extending the list of supported web applications
 

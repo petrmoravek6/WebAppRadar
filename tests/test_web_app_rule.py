@@ -26,12 +26,12 @@ class TestWebAppRule(unittest.TestCase):
         cls.html_content4 = cls.load_file(cls.html_file_path4)
 
     def test_matches(self):
-        rule1 = WebAppRule(name="Atlassian Jira",
+        rule1 = WebAppRule(web_app_name="Atlassian Jira",
                            identifier=r'<meta name="application-name" content="JIRA" data-name="jira"',
-                           version=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
-        rule2 = WebAppRule(name="Keycloak",
+                           version_string=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
+        rule2 = WebAppRule(web_app_name="Keycloak",
                            identifier='<title>Welcome to Keycloak</title>',
-                           version="<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>",
+                           version_string="<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>",
                            auth=UserAndPwdAuth(
                                method="username_and_password",
                                user_box_params=[HTMLElementParam(key="key", value="value")],
@@ -43,22 +43,22 @@ class TestWebAppRule(unittest.TestCase):
         self.assertTrue(rule2.matches(self.html_content3))
 
     def test_not_matches(self):
-        rule1 = WebAppRule(name="Atlassian Jira",
+        rule1 = WebAppRule(web_app_name="Atlassian Jira",
                            identifier=r'<meta name="application-name" content="XX" data-name="XX"',
-                           version=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
-        rule2 = WebAppRule(name="Atlassian Jira",
+                           version_string=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
+        rule2 = WebAppRule(web_app_name="Atlassian Jira",
                            identifier=r'<meta name="application-name" content="XX" data-name="XX"',
-                           version=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
+                           version_string=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
         self.assertFalse(rule1.matches(self.html_content1))
         self.assertFalse(rule2.matches(self.html_content2))
 
     def test_find_version(self):
-        rule = WebAppRule(name="Atlassian Jira",
+        rule = WebAppRule(web_app_name="Atlassian Jira",
                           identifier=r'<meta name="application-name" content="JIRA" data-name="jira"',
-                          version=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
-        rule2 = WebAppRule(name="Keycloak",
+                          version_string=r'<meta name="application-name" content="JIRA" data-name="jira" data-version="(\d+\.\d+\.\d+)"')
+        rule2 = WebAppRule(web_app_name="Keycloak",
                            identifier='<title>Welcome to Keycloak</title>',
-                           version="<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>",
+                           version_string="<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>",
                            auth=UserAndPwdAuth(
                                method="username_and_password",
                                user_box_params=[HTMLElementParam(key="key", value="value")],

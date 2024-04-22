@@ -28,9 +28,9 @@ class JsonWebAppRulesDeserializer(IWebAppRulesDeserializer):
                     auth_instance = UserAndPwdAuth(method, user_box_params, pwd_box_params, username, pwd, auth_path)
 
             rule = WebAppRule(
-                name=item.get('name'),
+                web_app_name=item.get('name'),
                 identifier=item.get('identifier'),
-                version=item.get('version', None),
+                version_string=item.get('version', None),
                 version_path=item.get('version_path', None),
                 auth=auth_instance
             )

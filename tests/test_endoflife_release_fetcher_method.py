@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from datetime import datetime, date
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 from src.latest_version.release_fetcher.method.endoflife import EndOfLifeReleaseFetcherMethod
 import logging
 
@@ -25,10 +25,10 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
         mock_get_json.return_value = mock_response
 
         expected_results = [
-            CycleInfo(cycle="24.0", latest="24.0.2", eol=False, eol_date=None),
-            CycleInfo(cycle="23.0", latest="23.0.7", eol=False,
+            VersionCycleInfo(cycle="24.0", latest="24.0.2", eol=False, eol_date=None),
+            VersionCycleInfo(cycle="23.0", latest="23.0.7", eol=False,
                       eol_date=datetime.strptime("2024-05-04", "%Y-%m-%d").date()),
-            CycleInfo(cycle="22.0", latest="22.0.9", eol=True,
+            VersionCycleInfo(cycle="22.0", latest="22.0.9", eol=True,
                       eol_date=datetime.strptime("2023-11-23", "%Y-%m-%d").date()),
         ]
 
@@ -51,11 +51,11 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
         mock_get_json.return_value = mock_response
 
         expected_results = [
-            CycleInfo(cycle="8.9", latest="8.9.0", eol=False,
+            VersionCycleInfo(cycle="8.9", latest="8.9.0", eol=False,
                       eol_date=datetime.strptime("2026-04-02", "%Y-%m-%d").date()),
-            CycleInfo(cycle="8.8", latest="8.8.1", eol=False,
+            VersionCycleInfo(cycle="8.8", latest="8.8.1", eol=False,
                       eol_date=datetime.strptime("2026-02-08", "%Y-%m-%d").date()),
-            CycleInfo(cycle="8.7", latest="8.7.2", eol=True,
+            VersionCycleInfo(cycle="8.7", latest="8.7.2", eol=True,
                       eol_date=datetime.strptime("2023-12-06", "%Y-%m-%d").date()),
         ]
 

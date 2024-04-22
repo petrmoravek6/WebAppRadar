@@ -21,22 +21,22 @@ class MockHtmlContentParsingMethod(HtmlContentParsingMethod):
 
 # Mock WebAppRules
 mock_web_app_rules = [
-    WebAppRule(name="Atlassian Jira",
+    WebAppRule(web_app_name="Atlassian Jira",
                identifier="<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\"",
                version_path=None,
-               version="<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\" data-version=\"(\\d+\\.\\d+\\.\\d+)\""),
-    WebAppRule(name="Atlassian Confluence",
+               version_string="<meta name=\"application-name\" content=\"JIRA\" data-name=\"jira\" data-version=\"(\\d+\\.\\d+\\.\\d+)\""),
+    WebAppRule(web_app_name="Atlassian Confluence",
                identifier="<a href=\"https://www.atlassian.com/software/confluence\" class=\"hover-footer-link\" rel=\"nofollow\">Atlassian Confluence</a>",
                version_path=None,
-               version="<span id=\"footer-build-information\">(\\d+\\.\\d+\\.\\d+)</span>"),
-    WebAppRule(name="JFrog Artifactory Pro",
+               version_string="<span id=\"footer-build-information\">(\\d+\\.\\d+\\.\\d+)</span>"),
+    WebAppRule(web_app_name="JFrog Artifactory Pro",
                identifier="<img class=\"logo-picture\" alt=\"Artifactory\"",
                version_path=None,
-               version="<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"),
-    WebAppRule(name="Prometheus",
+               version_string="<div class=\"wrapper-footer-data ng-binding\">\\s*Artifactory Professional<br>\\s*(\\d+\\.\\d+\\.\\d+) rev"),
+    WebAppRule(web_app_name="Prometheus",
                identifier="<title>Prometheus Time Series Collection and Processing Server</title>",
                version_path="/status",
-               version="<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>")
+               version_string="<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>")
 ]
 
 

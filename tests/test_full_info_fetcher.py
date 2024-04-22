@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
 
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 from src.latest_version.full_info_fetcher import FullInfoFetcher
 from src.latest_version.full_web_app_info import FullWebAppInfo
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
@@ -11,13 +11,13 @@ from src.web_app_determiner.web_app_info import WebAppInfo
 
 def custom_fetch_side_effect(web_app_name):
     if web_app_name == "App1":
-        return [CycleInfo("1.0", "1.0.4", False, None)]
+        return [VersionCycleInfo("1.0", "1.0.4", False, None)]
     elif web_app_name == "App2":
-        return [CycleInfo("1.0", "1.0.3", None, None),
-                CycleInfo("2.0", "2.0.1", None, None)]
+        return [VersionCycleInfo("1.0", "1.0.3", None, None),
+                VersionCycleInfo("2.0", "2.0.1", None, None)]
     elif web_app_name == "App3":
-        return [CycleInfo("1.0", "1.0.3", True, None), CycleInfo("2.0", "2.0.1", False, None),
-                CycleInfo("2.1", "2.1.0", False, None)]
+        return [VersionCycleInfo("1.0", "1.0.3", True, None), VersionCycleInfo("2.0", "2.0.1", False, None),
+                VersionCycleInfo("2.1", "2.1.0", False, None)]
     return []
 
 

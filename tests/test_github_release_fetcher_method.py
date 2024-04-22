@@ -3,7 +3,7 @@ from unittest.mock import patch
 import os
 import json
 
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 from src.latest_version.release_fetcher.method.github import GitHubReleaseFetcherMethod
 
 
@@ -24,7 +24,7 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
         mock_get_json.return_value = load_json_data('github-release-response1.json')
 
         expected = [
-            CycleInfo('6.3', '6.3.4'),
+            VersionCycleInfo('6.3', '6.3.4'),
         ]
 
         fetcher = GitHubReleaseFetcherMethod()
@@ -38,11 +38,11 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
         mock_get_json.return_value = load_json_data('github-release-response2.json')
 
         expected = [
-            CycleInfo('20.0', '20.0.9'),
-            CycleInfo('21.1', '21.1.9'),
-            CycleInfo('22.0', '22.0.3'),
-            CycleInfo('23.0', '23.0.4'),
-            CycleInfo('22.1', '22.1.4'),
+            VersionCycleInfo('20.0', '20.0.9'),
+            VersionCycleInfo('21.1', '21.1.9'),
+            VersionCycleInfo('22.0', '22.0.3'),
+            VersionCycleInfo('23.0', '23.0.4'),
+            VersionCycleInfo('22.1', '22.1.4'),
         ]
 
         fetcher = GitHubReleaseFetcherMethod()

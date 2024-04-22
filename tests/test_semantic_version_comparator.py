@@ -2,7 +2,7 @@ import unittest
 from datetime import datetime
 
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
-from src.latest_version.verson_comparator import CycleInfo
+from src.latest_version.verson_comparator import VersionCycleInfo
 
 
 class TestSemanticVersionComparator(unittest.TestCase):
@@ -11,16 +11,16 @@ class TestSemanticVersionComparator(unittest.TestCase):
 
     def test_latest_version(self):
         ver_cycles1 = [
-            CycleInfo(cycle='1.0', latest='1.0.5', eol=False, eol_date=None),
-            CycleInfo(cycle='2.0', latest='2.0.3', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='1.0', latest='1.0.5', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2.0', latest='2.0.3', eol=False, eol_date=None),
         ]
         ver_cycles2 = [
-            CycleInfo(cycle='2024.3', latest='2024.3.2', eol=False, eol_date=None),
-            CycleInfo(cycle='2023.9', latest='2023.9', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2024.3', latest='2024.3.2', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2023.9', latest='2023.9', eol=False, eol_date=None),
         ]
         ver_cycles3 = [
-            CycleInfo(cycle='2024.3', latest='2024.3', eol=False, eol_date=None),
-            CycleInfo(cycle='2023.9', latest='2023.9.11', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2024.3', latest='2024.3', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2023.9', latest='2023.9.11', eol=False, eol_date=None),
         ]
 
         result1 = self.comparator.get_version_comparison('2.0.1', ver_cycles1)
@@ -55,16 +55,16 @@ class TestSemanticVersionComparator(unittest.TestCase):
 
     def test_matching_cycle(self):
         ver_cycles1 = [
-            CycleInfo(cycle='1.0', latest='1.0.5', eol=True, eol_date=None),
-            CycleInfo(cycle='2.0', latest='2.0.3', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='1.0', latest='1.0.5', eol=True, eol_date=None),
+            VersionCycleInfo(cycle='2.0', latest='2.0.3', eol=False, eol_date=None),
         ]
         ver_cycles2 = [
-            CycleInfo(cycle='2024.3', latest='2024.3.2', eol=True, eol_date=datetime.now().date()),
-            CycleInfo(cycle='2023.9', latest='2023.9', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='2024.3', latest='2024.3.2', eol=True, eol_date=datetime.now().date()),
+            VersionCycleInfo(cycle='2023.9', latest='2023.9', eol=False, eol_date=None),
         ]
         ver_cycles3 = [
-            CycleInfo(cycle='2024.3', latest='2024.3', eol=None, eol_date=None),
-            CycleInfo(cycle='2023.9', latest='2023.9.11', eol=None, eol_date=None),
+            VersionCycleInfo(cycle='2024.3', latest='2024.3', eol=None, eol_date=None),
+            VersionCycleInfo(cycle='2023.9', latest='2023.9.11', eol=None, eol_date=None),
         ]
 
         result1 = self.comparator.get_version_comparison('2.0.1', ver_cycles1)
@@ -121,7 +121,7 @@ class TestSemanticVersionComparator(unittest.TestCase):
 
     def test_invalid_current_version(self):
         ver_cycles = [
-            CycleInfo(cycle='1.0', latest='1.0.5', eol=False, eol_date=None),
+            VersionCycleInfo(cycle='1.0', latest='1.0.5', eol=False, eol_date=None),
         ]
 
         result = self.comparator.get_version_comparison('invalid.version', ver_cycles)

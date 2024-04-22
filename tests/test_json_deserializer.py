@@ -19,7 +19,7 @@ class TestJsonWebAppRulesDeserializer(unittest.TestCase):
 
     def find_rule_by_name(self, name):
         """Utility method to find a WebAppRule by its name."""
-        return next((rule for rule in self.rules if rule.name == name), None)
+        return next((rule for rule in self.rules if rule.web_app_name == name), None)
 
     def test_deserialize_count(self):
         """Test the correct number of WebAppRule objects are created."""

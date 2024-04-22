@@ -1,6 +1,6 @@
 from typing import Iterable, Optional
 from packaging.version import Version, parse
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 import logging
 
 from src.latest_version.version_comparison import VersionComparison
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 class SemanticVersionComparator(IVersionComparator):
     @staticmethod
-    def _get_latest_version(ver_cycles: Iterable[CycleInfo]) -> Optional[str]:
+    def _get_latest_version(ver_cycles: Iterable[VersionCycleInfo]) -> Optional[str]:
         try:
             ver_cycle_w_latest_ver = max(ver_cycles, key=lambda v: Version(v.latest), default=None)
             return ver_cycle_w_latest_ver.latest
@@ -20,7 +20,7 @@ class SemanticVersionComparator(IVersionComparator):
             return None
 
     @staticmethod
-    def _get_matching_cycle(curr_version: str, ver_cycles: Iterable[CycleInfo]) -> Optional[CycleInfo]:
+    def _get_matching_cycle(curr_version: str, ver_cycles: Iterable[VersionCycleInfo]) -> Optional[VersionCycleInfo]:
         try:
             curr_version_parsed = parse(curr_version)
             curr_major_minor = (curr_version_parsed.major, curr_version_parsed.minor)
@@ -38,7 +38,7 @@ class SemanticVersionComparator(IVersionComparator):
                 f'Could not match current version "{curr_version}" with found releases: {str(ver_cycles)}. {e}')
             return None
 
-    def get_version_comparison(self, curr_version: str, ver_cycles: Iterable[CycleInfo]) -> VersionComparison:
+    def get_version_comparison(self, curr_version: str, ver_cycles: Iterable[VersionCycleInfo]) -> VersionComparison:
         latest_version = SemanticVersionComparator._get_latest_version(ver_cycles)
 
         # Only latest version can be discovered if current version is unknown

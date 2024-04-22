@@ -2,7 +2,7 @@ from datetime import date
 from typing import NamedTuple, Optional
 
 
-class CycleInfo(NamedTuple):
+class VersionCycleInfo(NamedTuple):
     cycle: str
     latest: str
     eol: Optional[bool] = None

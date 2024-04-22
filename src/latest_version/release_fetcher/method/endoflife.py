@@ -1,6 +1,6 @@
 from typing import Iterable, List, Dict, Any
 from datetime import datetime
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 import logging
 
 from src.latest_version.release_fetcher.method.json_fetcher import JsonFetcher
@@ -23,9 +23,9 @@ class EndOfLifeReleaseFetcherMethod(JsonFetcher):
     def _get_current_date() -> datetime.date:
         return datetime.now().date()
 
-    def fetch_cycle_info(self, web_app_name_url: str) -> Iterable[CycleInfo]:
+    def fetch_cycle_info(self, web_app_name_url: str) -> Iterable[VersionCycleInfo]:
         """
-        Processes JSON data from the API into an iterable of CycleInfo objects.
+        Processes JSON data from the API into an iterable of VersionCycleInfo objects.
         """
         data = self._get_json_from_api(web_app_name_url)
 
@@ -44,7 +44,7 @@ class EndOfLifeReleaseFetcherMethod(JsonFetcher):
                     eol_date = datetime.strptime(eol_raw, '%Y-%m-%d').date()
                     eol = eol_date < EndOfLifeReleaseFetcherMethod._get_current_date()
 
-                cycle_info = CycleInfo(
+                cycle_info = VersionCycleInfo(
                     cycle=cycle,
                     latest=latest,
                     eol=eol,

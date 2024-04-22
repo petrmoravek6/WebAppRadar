@@ -1,7 +1,7 @@
 import re
 from packaging.version import parse
 from typing import Iterable, List, Dict, Any
-from src.latest_version.cycle_info import CycleInfo
+from src.latest_version.cycle_info import VersionCycleInfo
 import logging
 
 from src.latest_version.release_fetcher.method.json_fetcher import JsonFetcher
@@ -20,9 +20,9 @@ class GitHubReleaseFetcherMethod(JsonFetcher):
         url = f'https://api.github.com/repos/{owner}/{repo}/releases?per_page={per_page}'
         return GitHubReleaseFetcherMethod.get_json_from_api(url)
 
-    def fetch_cycle_info(self, repo_owner: str, repo_name: str, element: str, ver_regex: str) -> Iterable[CycleInfo]:
+    def fetch_cycle_info(self, repo_owner: str, repo_name: str, element: str, ver_regex: str) -> Iterable[VersionCycleInfo]:
         """
-        Processes JSON data from the API into an iterable of CycleInfo objects.
+        Processes JSON data from the API into an iterable of VersionCycleInfo objects.
         """
         data = self._get_json_from_api(repo_owner, repo_name)
         if len(data) == 0:
@@ -59,4 +59,4 @@ class GitHubReleaseFetcherMethod(JsonFetcher):
         if len(cycles) == 0:
             logger.error(f"Getting release info for '{repo_owner}/{repo_name} failed. "
                          f"Check previous warnings for more information.")
-        return [CycleInfo(cycle, str(latest_ver)) for cycle, latest_ver in cycles.items()]
+        return [VersionCycleInfo(cycle, str(latest_ver)) for cycle, latest_ver in cycles.items()]

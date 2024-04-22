@@ -41,7 +41,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
             return None
         for rule in web_app_rules:
             if rule.matches(page_content):
-                name = rule.name
+                name = rule.web_app_name
                 if rule.auth:
                     page_content = rule.auth.accept(self.auth_executor)
                     if page_content is None:

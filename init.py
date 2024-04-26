@@ -7,6 +7,7 @@ from src.latest_version.release_fetcher.method.github import GitHubReleaseFetche
 from src.latest_version.release_fetcher.release_fetcher import ReleaseFetcher
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
+from src.scan_repository.mongo_scan_repository import MongoScanRepository
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyParamikoSSHClient
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
@@ -88,7 +89,12 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
         release_fetcher = ReleaseFetcher(release_methods)
         full_info_fetcher = FullInfoFetcher(release_fetcher, dict(), SemanticVersionComparator())
 
-        return WebAppRadar(scanner, web_app_determiner, full_info_fetcher)
+        mongo_connection_str = os.getenv('MONGO_URI')
+        if not mongo_connection_str:
+            raise Exception("MONGO_URI env (connection string for MongoDB) not defined")
+        mongo_scan_repository = MongoScanRepository(mongo_connection_str)
+
+        return WebAppRadar(scanner, web_app_determiner, full_info_fetcher, mongo_scan_repository)
     except FatalError as fe:
         logger.error(f"Fatal error: {str(fe)}")
         logger.debug(f"Fatal error details: {fe.debug_msg}")

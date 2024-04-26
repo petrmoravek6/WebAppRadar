@@ -1,6 +1,5 @@
 import os
 from functools import partial
-
 from src.client_side_renderer.selenium_chrome_renderer import SeleniumChromeRenderer
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
 from src.latest_version.full_info_fetcher import FullInfoFetcher
@@ -9,6 +8,7 @@ from src.latest_version.release_fetcher.method.github import GitHubReleaseFetche
 from src.latest_version.release_fetcher.release_fetcher import ReleaseFetcher
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
+from src.scan_repository.dummy_scan_repository import DummyScanRepository
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
 from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
 from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
@@ -71,7 +71,7 @@ full_info_fetcher = FullInfoFetcher(release_fetcher, dict(), SemanticVersionComp
 
 # =======================================================================================
 
-web_app_radar = WebAppRadar(scanner, web_app_determiner, full_info_fetcher)
+web_app_radar = WebAppRadar(scanner, web_app_determiner, full_info_fetcher, DummyScanRepository())
 print("STARTING TO SCAN...")
 scan_result = web_app_radar.run((subnet_to_scan,))
 if scan_result and len(scan_result) != 0:

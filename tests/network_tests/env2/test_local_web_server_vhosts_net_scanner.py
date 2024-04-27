@@ -1,7 +1,7 @@
 import unittest
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
-from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalVhostsNetScanner
+from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
 from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServerScanner
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
@@ -28,7 +28,7 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
         open_port_scanner = NMapOpenPortScanner()
         self.web_server_scanner = OpenPortWebServerScanner(open_port_scanner)
 
-        self.scanner = LocalVhostsNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
+        self.scanner = LocalWebServerVhostNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
 
     def test_ip_addresses(self):
         res1 = self.scanner.get_all_vhosts(('192.0.0.10', '192.0.0.11'))
@@ -64,7 +64,7 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
         ssh_user = 'test'
         ssh_client = PasswordParamikoSSHClient(ssh_pwd)
         vhosts_discoverer = SshAgentVhostDiscoverer(ssh_client, self.web_server_cmds, ssh_user)
-        scanner2 = LocalVhostsNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
+        scanner2 = LocalWebServerVhostNetScanner(self.web_server_scanner, vhosts_discoverer, self.hostname_validator)
 
         res = scanner2.get_all_vhosts(('192.0.0.8/29',))
 

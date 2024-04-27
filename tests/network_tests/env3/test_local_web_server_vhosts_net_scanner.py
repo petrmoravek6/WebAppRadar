@@ -1,7 +1,7 @@
 import unittest
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
-from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalVhostsNetScanner
+from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
 from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServerScanner
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
@@ -28,7 +28,7 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
         open_port_scanner = NMapOpenPortScanner()
         web_server_scanner = OpenPortWebServerScanner(open_port_scanner)
 
-        self.scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
+        self.scanner = LocalWebServerVhostNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
 
     def test_whole_subnet(self):
         res = self.scanner.get_all_vhosts(('192.0.0.16/29',))

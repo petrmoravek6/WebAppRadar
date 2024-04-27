@@ -13,7 +13,7 @@ from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
 from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
 from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
-from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalVhostsNetScanner
+from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
 from src.vhosts_commands.apache2_vhosts_cmds import Apache2VhostsCmds
 from src.vhosts_commands.nginx_vhosts_cmds import NginxVhostsCmds
 from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
@@ -47,7 +47,7 @@ det_methods = [HTMLContentParsingFromFileMethod(renderer,
                                                 web_apps_json_path,
                                                 JsonWebAppRulesDeserializer())]
 web_app_determiner = WebAppDeterminer(det_methods)
-scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
+scanner = LocalWebServerVhostNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
 
 endoflife_fetcher_method = EndOfLifeReleaseFetcherMethod()
 github_fetcher_method = GitHubReleaseFetcherMethod()

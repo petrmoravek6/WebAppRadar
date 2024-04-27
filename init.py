@@ -11,7 +11,7 @@ from src.scan_repository.mongo_scan_repository import MongoScanRepository
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyParamikoSSHClient
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
-from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalVhostsNetScanner
+from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
 from src.vhosts_commands.apache2_vhosts_cmds import Apache2VhostsCmds
 from src.web_app_radar import WebAppRadar
 from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServerScanner
@@ -58,7 +58,7 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
         open_port_scanner = NMapOpenPortScanner()
         web_server_scanner = OpenPortWebServerScanner(open_port_scanner)
 
-        scanner = LocalVhostsNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
+        scanner = LocalWebServerVhostNetScanner(web_server_scanner, vhosts_discoverer, hostname_validator)
 
         web_apps_json_path = os.path.join(os.path.dirname(__file__), 'web-apps.json')
         renderer = SeleniumChromeRenderer()

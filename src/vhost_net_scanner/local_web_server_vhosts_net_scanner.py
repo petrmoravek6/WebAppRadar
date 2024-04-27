@@ -5,7 +5,7 @@ from src.vhost_net_scanner.web_server_vhost_net_scanner import WebServerVhostNet
 from src.web_server_scanner.web_server_scanner import IWebServerScanner
 
 
-class LocalVhostsNetScanner(WebServerVhostNetScanner):
+class LocalWebServerVhostNetScanner(WebServerVhostNetScanner):
     def __init__(self,
                  web_server_scanner: IWebServerScanner,
                  vhost_discoverer: IVhostDiscoverer,

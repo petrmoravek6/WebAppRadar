@@ -5,8 +5,8 @@ from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebSe
 from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServerScanner
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
-from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
-from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+from src.subnet_validator.hostname_subnet_validator import HostnameSubnetValidator
+from src.subnet_validator.ip_subnet_validator import IPSubnetValidator
 from src.vhosts_commands.apache2_vhosts_cmds import Apache2VhostsCmds
 from src.vhosts_commands.nginx_vhosts_cmds import NginxVhostsCmds
 
@@ -16,8 +16,8 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
 
     def setUp(self):
         hostname_resolver = SocketHostnameResolver()
-        ip_validator = PytIPSubnetValidator()
-        self.hostname_validator = PytHostnameSubnetValidator(hostname_resolver, ip_validator)
+        ip_validator = IPSubnetValidator()
+        self.hostname_validator = HostnameSubnetValidator(hostname_resolver, ip_validator)
 
         ssh_pwd = 'test'
         ssh_user = 'test'

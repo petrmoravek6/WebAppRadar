@@ -18,8 +18,8 @@ from src.web_server_scanner.open_port_web_server_scanner import OpenPortWebServe
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
 from src.vhosts_commands.nginx_vhosts_cmds import NginxVhostsCmds
 from src.hostname_resolver.socket_hostaname_resolver import SocketHostnameResolver
-from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
-from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+from src.subnet_validator.hostname_subnet_validator import HostnameSubnetValidator
+from src.subnet_validator.ip_subnet_validator import IPSubnetValidator
 import logging
 import os
 from src.web_app_determiner.html_content_parsing_method import HTMLContentParsingFromFileMethod
@@ -49,8 +49,8 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
             ssh_client = PasswordParamikoSSHClient(ssh_password)
 
         hostname_resolver = SocketHostnameResolver()
-        ip_validator = PytIPSubnetValidator()
-        hostname_validator = PytHostnameSubnetValidator(hostname_resolver, ip_validator)
+        ip_validator = IPSubnetValidator()
+        hostname_validator = HostnameSubnetValidator(hostname_resolver, ip_validator)
         web_server_cmds = (NginxVhostsCmds(), Apache2VhostsCmds())
 
         vhosts_discoverer = SshAgentVhostDiscoverer(ssh_client, web_server_cmds, ssh_user)

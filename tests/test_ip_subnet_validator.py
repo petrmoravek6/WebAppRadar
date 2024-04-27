@@ -1,11 +1,11 @@
 import unittest
-from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+from src.subnet_validator.ip_subnet_validator import IPSubnetValidator
 
 
 class TestIPSubnetValidator(unittest.TestCase):
 
     def setUp(self):
-        self.validator = PytIPSubnetValidator()
+        self.validator = IPSubnetValidator()
 
     def test_ip_in_subnet(self):
         # Standard case within subnet

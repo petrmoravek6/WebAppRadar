@@ -1,5 +1,5 @@
 from typing import Iterable, Collection
-from src.subnet_validator.hostname_subnet_validator import IHostnameSubnetValidator
+from src.subnet_validator.ihostname_subnet_validator import IHostnameSubnetValidator
 from src.vhost_discoverer.vhost_discoverer import IVhostDiscoverer
 from src.vhost_net_scanner.web_server_vhost_net_scanner import WebServerVhostNetScanner
 from src.web_server_scanner.web_server_scanner import IWebServerScanner

@@ -10,8 +10,8 @@ from src.latest_version.semantic_version_comparator import SemanticVersionCompar
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
 from src.scan_repository.dummy_scan_repository import DummyScanRepository
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
-from src.subnet_validator.pyt_hostname_subnet_validator import PytHostnameSubnetValidator
-from src.subnet_validator.pyt_ip_subnet_validator import PytIPSubnetValidator
+from src.subnet_validator.hostname_subnet_validator import HostnameSubnetValidator
+from src.subnet_validator.ip_subnet_validator import IPSubnetValidator
 from src.vhost_discoverer.ssh_agent_vhost_discoverer import SshAgentVhostDiscoverer
 from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
 from src.vhosts_commands.apache2_vhosts_cmds import Apache2VhostsCmds
@@ -31,8 +31,8 @@ subnet_to_scan = '192.168.0.24/29'
 # =======================================================================================
 
 hostname_resolver = SocketHostnameResolver()
-ip_validator = PytIPSubnetValidator()
-hostname_validator = PytHostnameSubnetValidator(hostname_resolver, ip_validator)
+ip_validator = IPSubnetValidator()
+hostname_validator = HostnameSubnetValidator(hostname_resolver, ip_validator)
 
 web_server_cmds = (NginxVhostsCmds(), Apache2VhostsCmds())
 ssh_client = PasswordParamikoSSHClient(ssh_pwd)

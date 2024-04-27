@@ -1,16 +1,20 @@
-from abc import ABC, abstractmethod
+from src.subnet_validator.ihostname_subnet_validator import IHostnameSubnetValidator
+from src.subnet_validator.iip_subnet_validator import IIPSubnetValidator
+from src.hostname_resolver.hostname_resolver import IHostnameResolver
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-class IHostnameSubnetValidator(ABC):
-    """
-    Interface used for checking if a resolved hostname falls within specific subnet
-    """
-    @abstractmethod
+class HostnameSubnetValidator(IHostnameSubnetValidator):
+    def __init__(self, hostname_resolver: IHostnameResolver, ip_validator: IIPSubnetValidator):
+        self.hostname_resolver = hostname_resolver
+        self.ip_validator = ip_validator
+
     def is_hostname_in_subnet(self, hostname: str, subnet: str) -> bool:
-        """
-        The hostname is resolved by reverse DNS lookup and the IP is than checked to fall within given subnet.
-        :param hostname: hostname to be resolved and checked
-        :param subnet: subnet either in '192.168.60.0/20' or '192.168.60.0' (ip alone) format
-        :return: True if hostname is in given subnet
-        """
-        pass
+        try:
+            ip = self.hostname_resolver.get_ip(hostname)
+            return self.ip_validator.is_ip_in_subnet(ip, subnet)
+        except Exception as e:
+            logger.warning(f"Error during checking if hostname {hostname} was in subnet {subnet}. {e}")
+            return False

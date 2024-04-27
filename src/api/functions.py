@@ -8,12 +8,20 @@ logger = logging.getLogger(__name__)
 
 def validate_subnets(subnets):
     subnet_list = subnets.split(',')
-    try:
-        for subnet in subnet_list:
-            ipaddress.ip_network(subnet, strict=False)
-        return True
-    except ValueError:
-        return False
+    for ip_or_subnet in subnet_list:
+        try:
+            # Try to parse as an IP address
+            ipaddress.ip_address(ip_or_subnet)
+            continue
+        except ValueError:
+            pass  # Not a valid IP address
+        try:
+            # Try to parse as a subnet
+            ipaddress.ip_network(ip_or_subnet, strict=False)
+            continue
+        except ValueError:
+            return False
+    return True
 
 
 def run_scan(subnets: str, scan_id: str, scan_lock: Lock, web_app_radar: WebAppRadar):

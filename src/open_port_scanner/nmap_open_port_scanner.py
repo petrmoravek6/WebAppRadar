@@ -2,7 +2,6 @@ from nmap import PortScannerError
 from src.open_port_scanner.open_port_scanner import IOpenPortScanner
 from typing import Iterable, Dict
 import nmap
-import ipaddress
 from src.exceptions import FatalError
 
 

@@ -49,11 +49,11 @@ class TestFullInfoFetcher(unittest.TestCase):
             version_comparators=self.version_comparators,
             default_version_comparator=SemanticVersionComparator()
         )
-        result1 = full_info_fetcher.fetch(basic_info1)
-        result2 = full_info_fetcher.fetch(basic_info2)
-        result3 = full_info_fetcher.fetch(basic_info3)
-        result4 = full_info_fetcher.fetch(basic_info4)
-        result5 = full_info_fetcher.fetch(basic_info5)
+        result1 = full_info_fetcher.get_full_info(basic_info1)
+        result2 = full_info_fetcher.get_full_info(basic_info2)
+        result3 = full_info_fetcher.get_full_info(basic_info3)
+        result4 = full_info_fetcher.get_full_info(basic_info4)
+        result5 = full_info_fetcher.get_full_info(basic_info5)
 
         self.assertEqual(result1,
                          FullWebAppInfo("App1", version=None, latest_version="1.0.4", latest_cycle_version=None,
@@ -83,11 +83,11 @@ class TestFullInfoFetcher(unittest.TestCase):
             version_comparators=self.version_comparators,
             default_version_comparator=SemanticVersionComparator()
         )
-        result1 = full_info_fetcher.fetch(basic_info1)
-        result2 = full_info_fetcher.fetch(basic_info2)
-        result3 = full_info_fetcher.fetch(basic_info3)
-        result4 = full_info_fetcher.fetch(basic_info4)
-        result5 = full_info_fetcher.fetch(basic_info5)
+        result1 = full_info_fetcher.get_full_info(basic_info1)
+        result2 = full_info_fetcher.get_full_info(basic_info2)
+        result3 = full_info_fetcher.get_full_info(basic_info3)
+        result4 = full_info_fetcher.get_full_info(basic_info4)
+        result5 = full_info_fetcher.get_full_info(basic_info5)
         
         self.assertEqual(result1,
                          FullWebAppInfo("App1", version='1.0.2', latest_version="1.0.4", latest_cycle_version="1.0.4",
@@ -119,8 +119,8 @@ class TestFullInfoFetcher(unittest.TestCase):
         basic_info1 = WebAppInfo(name="App3", version='0.9.0')
         basic_info2 = WebAppInfo(name="App5", version='0.9.0')
 
-        result1 = full_info_fetcher.fetch(basic_info1)
-        result2 = full_info_fetcher.fetch(basic_info2)
+        result1 = full_info_fetcher.get_full_info(basic_info1)
+        result2 = full_info_fetcher.get_full_info(basic_info2)
 
         self.assertEqual(result1,
                          FullWebAppInfo("App3", version='0.9.0', latest_version="2.1.0", latest_cycle_version="2.1.0",

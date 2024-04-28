@@ -33,7 +33,7 @@ class WebAppRadar:
                 if basic_info is None:
                     res.append(HostnameInfo(hostname=vhost, full_web_app_info=None))
                 else:
-                    full_info = self.full_info_fetcher.fetch(basic_info)
+                    full_info = self.full_info_fetcher.get_full_info(basic_info)
                     res.append(HostnameInfo(hostname=vhost, full_web_app_info=full_info))
         except FatalError as fe:
             logger.error(f"Fatal error: {str(fe)}")

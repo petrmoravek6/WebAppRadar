@@ -19,7 +19,7 @@ class FullInfoFetcher:
         self.version_comparators = version_comparators
         self.default_version_comparator = default_version_comparator
 
-    def fetch(self, basic_info: WebAppInfo) -> FullWebAppInfo:
+    def get_full_info(self, basic_info: WebAppInfo) -> FullWebAppInfo:
         """Tries to found out as much information about given web app as possible. It uses object from the constructor"""
         cycles = self.release_fetcher.fetch_web_app_cycle_info(basic_info.name)
         # no release info

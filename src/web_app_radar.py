@@ -20,7 +20,7 @@ class WebAppRadar:
         self.vhost_net_scanner = vhost_net_scanner
         self.web_app_determiner = web_app_determiner
         self.full_info_fetcher = full_info_fetcher
-        self.scan_repo = scan_repository
+        self.scan_repository = scan_repository
 
     def run(self, subnets: Collection[str], scan_id: str = str(uuid.uuid4())) -> Collection[HostnameInfo]:
         logger.info(f"Scan (ID: {scan_id}) of: '{', '.join(subnets)}' started")
@@ -44,11 +44,11 @@ class WebAppRadar:
             status = 'fail'
         finally:
             logger.info(f"Scan (ID: {scan_id}) of: '{subnets}' finished with status: '{status}'")
-            self.scan_repo.create(scan_id, status, subnets, res)
+            self.scan_repository.create(scan_id, status, subnets, res)
             return res
 
     def get_scan_summaries(self):
-        return self.scan_repo.get_all()
+        return self.scan_repository.get_all()
 
     def get_scan_details(self, scan_id):
-        return self.scan_repo.get_detail(scan_id)
+        return self.scan_repository.get_detail(scan_id)

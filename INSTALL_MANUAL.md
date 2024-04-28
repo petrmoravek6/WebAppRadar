@@ -8,7 +8,7 @@ Mandatory requirements of the application:
 - internet connection
 - Docker installed
 - all servers you want to scan have to have SSH connection enabled (see SSH section)
-- the user that is to be used during SSH connection does not require sudo privilege (it only needs read permissions to _/etc/nginx_ and _/etc/apache2_ configuration files)
+- the SSH user that is to be used during SSH connection does not require sudo privilege (it only needs READ permissions to _/etc/nginx_ and _/etc/apache2_ configuration files and permission to _systemctl/service status_ command)
 
 ## Configuration
 

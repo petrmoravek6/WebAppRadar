@@ -18,7 +18,7 @@ class SshAgentVhostDiscoverer(IVhostDiscoverer):
             self.ssh_client.connect(host, self.ssh_username)
         except ConnectionError as e:
             logger.error(e)
-            return tuple()
+            return []
         res = set()
         for cmd in self.web_server_cmds:
             try:
@@ -37,5 +37,5 @@ class SshAgentVhostDiscoverer(IVhostDiscoverer):
                                  f", stderr: {cmd1.stderr}")
             except Exception as e:
                 logger.error(f"Error during SSH {host} inspection. {e}")
-                return tuple()
+                return res
         return res

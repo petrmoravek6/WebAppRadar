@@ -5,7 +5,7 @@ import re
 class Apache2VhostsCmds(IVhostsCmds):
     def is_web_server_running(self) -> str:
         return ("systemctl -q is-active apache2 || (service apache2 status && service apache2 status "
-                "| grep -q 'running') || ps ax | grep httpd | grep -v grep")
+                "| grep -q -e running -e active) || ps ax | grep httpd | grep -v grep")
 
     def get_content_from_server(self) -> str:
         return "cat /etc/apache2/sites-enabled/* /usr/local/apache2/sites-enabled/*"

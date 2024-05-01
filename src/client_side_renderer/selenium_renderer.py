@@ -24,8 +24,7 @@ class SeleniumRenderer(IClientSideRenderer, ABC):
         except selenium.common.exceptions.WebDriverException:
             raise ConnectionError(f"Unable to resolve: '{host}'")
         time.sleep(self.explicit_waiting)
-        page_content = self.driver.page_source
-        return page_content
+        return self.driver.page_source
 
     def __del__(self):
         if self.driver:

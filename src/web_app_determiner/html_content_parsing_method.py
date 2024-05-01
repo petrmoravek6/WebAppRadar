@@ -61,9 +61,6 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
         logger.info(f"{host} was not matched with any known web application")
         return None
 
-    def _authenticate(self) -> None:
-        raise NotImplementedError()
-
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
     def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor,

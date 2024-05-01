@@ -28,7 +28,7 @@ class SshAgentVhostDiscoverer(IVhostDiscoverer):
                                  f"check zero exit code")
                     server_vhosts_content = self.ssh_client.exec_command(cmd.get_content_from_server()).stdout
                     vhosts = cmd.get_all_vhosts_from_content(server_vhosts_content)
-                    vhosts_w_localhost = {host if (host == "localhost" or host == "127.0.0.1") else host for host in
+                    vhosts_w_localhost = {host if (vhost == "localhost" or vhost == "127.0.0.1") else vhost for vhost in
                                           vhosts}
                     res = res.union(vhosts_w_localhost)
                 else:

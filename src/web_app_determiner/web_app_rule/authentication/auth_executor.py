@@ -16,12 +16,14 @@ class AuthExecutor(IAuthVisitor):
         self.renderer = renderer
 
     @staticmethod
-    def get_xpath_params(params: Iterable[HTMLElementParam]) -> str:
+    def _get_xpath_params(params: Iterable[HTMLElementParam]) -> str:
         return ''.join(f"[@{param.key}='{param.value}']" for param in params)
 
     def _create_absolute_auth_path(self, relative_auth_path: str):
-        # both current URL of the driver and relative path might contain '/' -> remove one
-        if self.renderer.driver.current_url.endswith('/') and relative_auth_path.startswith('/'):
+        # both current URL of the driver and relative path
+        # might contain '/' -> remove one
+        if (self.renderer.driver.current_url.endswith('/')
+                and relative_auth_path.startswith('/')):
             return self.renderer.driver.current_url[:-1] + relative_auth_path
         return self.renderer.driver.current_url + relative_auth_path
 
@@ -30,15 +32,21 @@ class AuthExecutor(IAuthVisitor):
             if auth.auth_path:
                 abs_auth_path = self._create_absolute_auth_path(auth.auth_path)
                 self.renderer.get_page_content(abs_auth_path)
-            username_input_xpath = f"//input{AuthExecutor.get_xpath_params(auth.user_box_params)}"
-            username_input = self.renderer.driver.find_element(By.XPATH, username_input_xpath)
+            username_input_xpath = \
+                f"//input{AuthExecutor._get_xpath_params(auth.user_box_params)}"
+            username_input = (
+                self.renderer.driver.find_element(By.XPATH,
+                                                  username_input_xpath))
             if not username_input:
                 return None
             username_input.clear()
             username_input.send_keys(auth.username)
 
-            password_input_xpath = f"//input{AuthExecutor.get_xpath_params(auth.pwd_box_params)}"
-            password_input = self.renderer.driver.find_element(By.XPATH, password_input_xpath)
+            password_input_xpath = \
+                f"//input{AuthExecutor._get_xpath_params(auth.pwd_box_params)}"
+            password_input = (
+                self.renderer.driver.find_element(By.XPATH,
+                                                  password_input_xpath))
             if not password_input:
                 return None
             password_input.clear()

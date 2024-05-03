@@ -5,6 +5,7 @@ from src.latest_version.cycle_info import VersionCycleInfo
 from src.latest_version.release_fetcher.method.endoflife import EndOfLifeReleaseFetcherMethod
 import logging
 
+
 class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
     def setUp(self):
         # Suppress logging below CRITICAL level
@@ -27,13 +28,13 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
         expected_results = [
             VersionCycleInfo(cycle="24.0", latest="24.0.2", eol=False, eol_date=None),
             VersionCycleInfo(cycle="23.0", latest="23.0.7", eol=False,
-                      eol_date=datetime.strptime("2024-05-04", "%Y-%m-%d").date()),
+                             eol_date=datetime.strptime("2024-05-04", "%Y-%m-%d").date()),
             VersionCycleInfo(cycle="22.0", latest="22.0.9", eol=True,
-                      eol_date=datetime.strptime("2023-11-23", "%Y-%m-%d").date()),
+                             eol_date=datetime.strptime("2023-11-23", "%Y-%m-%d").date()),
         ]
 
-        fetcher = EndOfLifeReleaseFetcherMethod()
-        actual_results = list(fetcher.fetch_cycle_info("Keycloak"))
+        fetcher = EndOfLifeReleaseFetcherMethod("Keycloak")
+        actual_results = list(fetcher.get_all_releases())
         self.assertCountEqual(actual_results, expected_results)
 
     @patch.object(EndOfLifeReleaseFetcherMethod, '_get_json_from_api')
@@ -52,21 +53,21 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
 
         expected_results = [
             VersionCycleInfo(cycle="8.9", latest="8.9.0", eol=False,
-                      eol_date=datetime.strptime("2026-04-02", "%Y-%m-%d").date()),
+                             eol_date=datetime.strptime("2026-04-02", "%Y-%m-%d").date()),
             VersionCycleInfo(cycle="8.8", latest="8.8.1", eol=False,
-                      eol_date=datetime.strptime("2026-02-08", "%Y-%m-%d").date()),
+                             eol_date=datetime.strptime("2026-02-08", "%Y-%m-%d").date()),
             VersionCycleInfo(cycle="8.7", latest="8.7.2", eol=True,
-                      eol_date=datetime.strptime("2023-12-06", "%Y-%m-%d").date()),
+                             eol_date=datetime.strptime("2023-12-06", "%Y-%m-%d").date()),
         ]
 
-        fetcher = EndOfLifeReleaseFetcherMethod()
-        actual_results = list(fetcher.fetch_cycle_info("Atlassian Jira"))
+        fetcher = EndOfLifeReleaseFetcherMethod("Atlassian Jira")
+        actual_results = list(fetcher.get_all_releases())
 
         self.assertCountEqual(actual_results, expected_results)
 
     def test_unsupported_web_app(self):
-        fetcher = EndOfLifeReleaseFetcherMethod()
-        self.assertCountEqual(fetcher.fetch_cycle_info("UNSUPPORTED_412C841A32F6"), [])
+        fetcher = EndOfLifeReleaseFetcherMethod("UNSUPPORTED_412C841A32F6")
+        self.assertCountEqual(fetcher.get_all_releases(), [])
 
     @patch.object(EndOfLifeReleaseFetcherMethod, '_get_json_from_api')
     def test_fetch_cycle_info_empty_response(self, mock_get_json):
@@ -75,7 +76,7 @@ class TestEndOfLifeReleaseFetcherMethod(unittest.TestCase):
 
         expected_results = []
 
-        fetcher = EndOfLifeReleaseFetcherMethod()
-        actual_results = list(fetcher.fetch_cycle_info("Atlassian Jira"))
+        fetcher = EndOfLifeReleaseFetcherMethod("Atlassian Jira")
+        actual_results = list(fetcher.get_all_releases())
 
         self.assertEqual(actual_results, expected_results)

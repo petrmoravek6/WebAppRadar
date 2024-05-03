@@ -1,4 +1,3 @@
-from functools import partial
 from typing import Optional
 from src.exceptions import FatalError
 from src.latest_version.full_info_fetcher import FullInfoFetcher
@@ -68,22 +67,20 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
                                                         JsonWebAppRulesDeserializer())]
         web_app_determiner = WebAppDeterminer(det_methods)
 
-        endoflife_fetcher_method = EndOfLifeReleaseFetcherMethod()
-        github_fetcher_method = GitHubReleaseFetcherMethod()
-
         release_methods = {
-            "Atlassian Jira": partial(endoflife_fetcher_method.fetch_cycle_info, "jira-software"),
-            "Atlassian Confluence": partial(endoflife_fetcher_method.fetch_cycle_info, "confluence"),
-            "JFrog Artifactory Pro": partial(endoflife_fetcher_method.fetch_cycle_info, "artifactory"),
-            "Prometheus": partial(endoflife_fetcher_method.fetch_cycle_info, "prometheus"),
-            "Grafana": partial(endoflife_fetcher_method.fetch_cycle_info, "grafana"),
-            "GitLab": partial(endoflife_fetcher_method.fetch_cycle_info, "gitlab"),
-            "Zabbix": partial(endoflife_fetcher_method.fetch_cycle_info, "zabbix"),
-            "Graylog": partial(endoflife_fetcher_method.fetch_cycle_info, "graylog"),
-            "Keycloak": partial(endoflife_fetcher_method.fetch_cycle_info, "keycloak"),
-            "Bareos": partial(github_fetcher_method.fetch_cycle_info, 'bareos', 'bareos', "name",
-                              r'\S*\s*(\d+\.\d+.\d+)'),
-            "Snipe-IT": partial(github_fetcher_method.fetch_cycle_info, 'snipe', 'snipe-it', "name", r'v(\d+\.\d+.\d+)')
+            "Atlassian Jira": EndOfLifeReleaseFetcherMethod("jira-software"),
+            "Atlassian Confluence": EndOfLifeReleaseFetcherMethod("confluence"),
+            "JFrog Artifactory Pro": EndOfLifeReleaseFetcherMethod("artifactory"),
+            "Prometheus": EndOfLifeReleaseFetcherMethod("prometheus"),
+            "Grafana": EndOfLifeReleaseFetcherMethod("grafana"),
+            "GitLab": EndOfLifeReleaseFetcherMethod("gitlab"),
+            "Zabbix": EndOfLifeReleaseFetcherMethod("zabbix"),
+            "Graylog": EndOfLifeReleaseFetcherMethod("graylog"),
+            "Keycloak": EndOfLifeReleaseFetcherMethod("keycloak"),
+            "Bareos": GitHubReleaseFetcherMethod('bareos', 'bareos', "name",
+                                                 r'\S*\s*(\d+\.\d+.\d+)'),
+            "Snipe-IT": GitHubReleaseFetcherMethod('snipe', 'snipe-it', "name",
+                                                   r'v(\d+\.\d+.\d+)')
         }
 
         release_fetcher = ReleaseFetcher(release_methods)

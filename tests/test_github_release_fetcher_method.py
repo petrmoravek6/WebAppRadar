@@ -27,8 +27,8 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
             VersionCycleInfo('6.3', '6.3.4'),
         ]
 
-        fetcher = GitHubReleaseFetcherMethod()
-        result = fetcher.fetch_cycle_info('test', 'test', 'name', r'v(\d+\.\d+.\d+)')
+        fetcher = GitHubReleaseFetcherMethod('test', 'test', 'name', r'v(\d+\.\d+.\d+)')
+        result = fetcher.get_all_releases()
 
         self.assertCountEqual(expected, result)
 
@@ -45,8 +45,8 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
             VersionCycleInfo('22.1', '22.1.4'),
         ]
 
-        fetcher = GitHubReleaseFetcherMethod()
-        result = fetcher.fetch_cycle_info('owner2', 'repo2', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        fetcher = GitHubReleaseFetcherMethod('owner2', 'repo2', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        result = fetcher.get_all_releases()
 
         self.assertCountEqual(expected, result)
 
@@ -55,8 +55,8 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
         # Mock the _get_json_from_api to return data from your third JSON file
         mock_get_json.return_value = load_json_data('github-release-response3.json')
 
-        fetcher = GitHubReleaseFetcherMethod()
-        result = fetcher.fetch_cycle_info('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        fetcher = GitHubReleaseFetcherMethod('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        result = fetcher.get_all_releases()
 
         self.assertCountEqual([], result)
 
@@ -70,8 +70,8 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
             }
         ]
 
-        fetcher = GitHubReleaseFetcherMethod()
-        result = fetcher.fetch_cycle_info('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        fetcher = GitHubReleaseFetcherMethod('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        result = fetcher.get_all_releases()
 
         self.assertCountEqual([], result)
 
@@ -85,8 +85,8 @@ class TestGitHubReleaseFetcherMethod(unittest.TestCase):
             }
         ]
 
-        fetcher = GitHubReleaseFetcherMethod()
-        result = fetcher.fetch_cycle_info('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        fetcher = GitHubReleaseFetcherMethod('owner3', 'repo3', 'name', r'\S*\s*(\d+\.\d+.\d+)')
+        result = fetcher.get_all_releases()
 
         self.assertCountEqual([], result)
 

@@ -11,9 +11,11 @@ logger = logging.getLogger(__name__)
 
 class SemanticVersionComparator(IVersionComparator):
     @staticmethod
-    def _get_latest_version(ver_cycles: Iterable[VersionCycleInfo]) -> Optional[str]:
+    def get_ltst_ver(ver_cycles: Iterable[VersionCycleInfo]) -> Optional[str]:
         try:
-            ver_cycle_w_latest_ver = max(ver_cycles, key=lambda v: Version(v.latest), default=None)
+            ver_cycle_w_latest_ver = (
+                max(ver_cycles, key=lambda v: Version(v.latest), default=None)
+            )
             return ver_cycle_w_latest_ver.latest
         except Exception as e:
             logger.error(f'Could not retrieve latest version from found releases: {str(ver_cycles)}. {e}')
@@ -39,7 +41,7 @@ class SemanticVersionComparator(IVersionComparator):
             return None
 
     def get_version_comparison(self, curr_version: str, ver_cycles: Iterable[VersionCycleInfo]) -> VersionComparison:
-        latest_version = SemanticVersionComparator._get_latest_version(ver_cycles)
+        latest_version = SemanticVersionComparator.get_ltst_ver(ver_cycles)
 
         # Only latest version can be discovered if current version is unknown
         if curr_version is None:

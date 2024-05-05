@@ -41,7 +41,7 @@ class ConfigParser:
             raise FatalError(f"Invalid or not supported private key cipher: {ssh_config['private_key_cipher']}")
 
     @staticmethod
-    def _validate_password(cls, ssh_config):
+    def _validate_password(ssh_config):
         if 'password' not in ssh_config or not ssh_config['password']:
             raise FatalError(f"Missing or empty value for 'password' in config file")
 

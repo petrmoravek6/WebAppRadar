@@ -41,7 +41,7 @@ class Scan(Resource):
                                        "Only one scan can run at a time.")
     @api.expect(subnet_model)
     @api.response(400, 'Invalid input. Correct format: IPs or subnets separated by a comma')
-    @api.response(405, 'Another scan already in progress')
+    @api.response(409, 'Another scan already in progress')
     @api.response(202, 'Scan started')
     def post(self):
         data = request.json
@@ -49,7 +49,7 @@ class Scan(Resource):
         if not subnets or not validate_subnets(subnets):
             api.abort(400, 'Invalid or empty subnet input')
         if not scan_lock.acquire(blocking=False):
-            api.abort(405, 'Scan already in progress')
+            api.abort(409, 'Scan already in progress')
         scan_id = str(uuid.uuid4())
         thread = threading.Thread(target=run_scan, args=(subnets, scan_id, scan_lock, web_app_radar))
         thread.start()

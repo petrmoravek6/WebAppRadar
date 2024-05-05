@@ -12,8 +12,8 @@ class FullInfoFetcher:
         """
         Creates new instance of FullInfoFetcher
         :param release_fetcher: An instance of ReleaseFetcher used for fetching latest release information about web apps
-        :param version_comparators: Dictionary of comparison methods. Each element defines a way an app version is to be compared with its another versions. Key: app name, value: fully implemented subclass of IVersionComparator
-        :param default_version_comparator: default version comparator to be used if given app in 'fetch' method is not defined in 'version_comparators'
+        :param ver_cmps: Dictionary of comparison methods. Each element defines a way an app version is to be compared with its another versions. Key: app name, value: fully implemented subclass of IVersionComparator
+        :param default_ver_cmp: default version comparator to be used if given app in 'fetch' method is not defined in 'ver_cmps'
         """
         self.release_fetcher = release_fetcher
         self.ver_cmps = ver_cmps

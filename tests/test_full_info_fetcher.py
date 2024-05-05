@@ -28,7 +28,7 @@ class TestFullInfoFetcher(unittest.TestCase):
         self.mock_release_fetcher.fetch_web_app_cycle_info.side_effect = custom_fetch_side_effect
 
         # Mock IVersionComparator for specific apps
-        self.version_comparators = {
+        self.ver_cmps = {
             'App1': SemanticVersionComparator(),
             'App2': SemanticVersionComparator(),
             'App4': SemanticVersionComparator()
@@ -46,8 +46,8 @@ class TestFullInfoFetcher(unittest.TestCase):
 
         full_info_fetcher = FullInfoFetcher(
             release_fetcher=self.mock_release_fetcher,
-            version_comparators=self.version_comparators,
-            default_version_comparator=SemanticVersionComparator()
+            ver_cmps=self.ver_cmps,
+            default_ver_cmp=SemanticVersionComparator()
         )
         result1 = full_info_fetcher.get_full_info(basic_info1)
         result2 = full_info_fetcher.get_full_info(basic_info2)
@@ -80,8 +80,8 @@ class TestFullInfoFetcher(unittest.TestCase):
 
         full_info_fetcher = FullInfoFetcher(
             release_fetcher=self.mock_release_fetcher,
-            version_comparators=self.version_comparators,
-            default_version_comparator=SemanticVersionComparator()
+            ver_cmps=self.ver_cmps,
+            default_ver_cmp=SemanticVersionComparator()
         )
         result1 = full_info_fetcher.get_full_info(basic_info1)
         result2 = full_info_fetcher.get_full_info(basic_info2)
@@ -107,13 +107,13 @@ class TestFullInfoFetcher(unittest.TestCase):
 
     @patch('src.latest_version.semantic_version_comparator.SemanticVersionComparator')
     def test_with_default_comparator(self, MockSemanticVersionComparator):
-        mock_default_version_comparator = MockSemanticVersionComparator()
+        mock_default_ver_cmp = MockSemanticVersionComparator()
         # always return this value as version comparison
-        mock_default_version_comparator.get_version_comparison.return_value = VersionComparison("2.1.0", "2.1.0", True, None)
+        mock_default_ver_cmp.get_version_comparison.return_value = VersionComparison("2.1.0", "2.1.0", True, None)
         full_info_fetcher = FullInfoFetcher(
             release_fetcher=self.mock_release_fetcher,
-            version_comparators=self.version_comparators,
-            default_version_comparator=mock_default_version_comparator
+            ver_cmps=self.ver_cmps,
+            default_ver_cmp=mock_default_ver_cmp
         )
 
         basic_info1 = WebAppInfo(name="App3", version='0.9.0')

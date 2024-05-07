@@ -25,7 +25,7 @@ There are two **authentication options** supported:
 #### Private key
 Set `private_key` as SSH method and fill in correct private key cipher. 
 
-The path to the private key **should not be** changed unless not running the app using docker-compose (standard way), because the private key is rather mounted to the Docker container. That means the file path defined in the `config.ini` should correspond to the container's key path defined in the docker-compose file. In other words, if you don't change it there, you should not change it in the `config.ini`.
+The path to the private key **should not be changed** unless not running the app using docker-compose (standard way), because the private key is rather mounted to the Docker container. That means the file path defined in the `config.ini` should correspond to the container's key path defined in the docker-compose file. In other words, if you don't change it there, you should not change it in the `config.ini`.
 
 The mentioned private key will be used in all connections to all discovered servers.
 ```ini
@@ -94,7 +94,7 @@ You can change the list (`web-apps.json`) the app is using for determining the c
 In order to determine these pieces of information, the app visits all the found hostnames via headless HTTP browser. It reads the whole page content and looks for specific HTML element parts.
 If the element part is found using regular expressions, the app matches the given hostname with the name of the application.
 
-Similar principle is used for searching the version of the web app. Another regexp with parameter is used for searching the current version of the web app from the HTML page content.
+Similar principle is used for searching the version of the web app. Regular expression with parameter is used for searching the current version of the web app from the HTML page content.
 
 Here is an example for `Grafana` web application defined in `web-apps.json`:
 ```json
@@ -108,7 +108,7 @@ During web app determination phase, WebAppRadar visits a hostname using headless
 Then it looks for all `identifier` values and tries to match them with the page content. If `<title>Grafana</title>`
 is found on the page, now we know _Grafana_ is running under the hostname.
 
-WebAppRadar then tries to extract a version from the page by using `version` as parametrized regexp. If the parameter is matched, now we also found the current version of Grafana.
+WebAppRadar then tries to extract a version from the page by using `version` as parametrized regex. If the parameter is matched, now we also found the current version of Grafana.
 
 Sometimes versions are not present on the main page and they are hidden behind login. User can provide `username` and `password`
 that will be used to get behind the auth wall. However, the WebAppRadar needs to know where the username and password input boxes are located on the page in order to successfully submit the values.
@@ -160,7 +160,7 @@ Web application information discovery process if the web app is `Prometheus`:
 1. Hostname _example.com_ main page is completely loaded using headless browser.
 2. `<title>Prometheus</title>` is found on the page.
 3. `example.com/status` is loaded.
-4. `<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>` is found on the page and the version is extracted using the regexp parameter.
+4. `<th scope=\"row\">Version</th>\\s*<td>(\\d+\\.\\d+\\.\\d+)</td>` is found on the page and the version is extracted using the regex parameter.
 
 Another example that combines version path with authentication (also on separate path):
 ```json
@@ -189,16 +189,16 @@ Web application information discovery process if the web app is `Keycloak`:
 3. `example.com/admin/master/console/` is loaded.
 4. Input box with HTML attribute `id=username` is found
 5. Input box with HTML attribute `id=password` is found
-6. `user123` and `password` are filled in those input boxes and submitted
+6. `user123` and `password` are filled in those input boxes and submitted. The page after successful authentication is loaded.
 7. `/status` is appended to current URL and the page is loaded.
-8. `<div class=\"version\">(\\d+\\.\\d+\\.\\d+)</div>` is found on the page and the version is extracted using the regexp parameter.
+8. `<div class=\"version\">(\\d+\\.\\d+\\.\\d+)</div>` is found on the page and the version is extracted using the regex parameter.
 
 
 **If any step fails, only the previously found facts are returned.**
 
 You can adjust the `web-apps.json` or add other web app rules. Restart the WebAppRadar app to propagate the changes.
 
-NOTE: There is currently no support for defining additional web apps releases. WebAppRadar currently only compares the current web app info
+NOTE: There is currently no support for defining additional web app releases. WebAppRadar currently only compares the current web app info
 with latest releases of predefined list of web apps, that cannot be changed in a form of configuration file.
 
 ## Running the app

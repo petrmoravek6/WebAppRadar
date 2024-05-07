@@ -16,11 +16,11 @@ that will be scanned in form of request body:
 }
 ```
 Example: Sending POST request to `<web_app_url>/scan` with the body above will trigger scan of whole `192.168.0.0/24` subnet 
-and `192.168.68.68` IP address. Only the web applications running on these addresses will be included in the result.
+and `192.168.68.68` IP address. Only the web applications deployed and running on these addresses will be included in the result.
 
 The response will include a unique ID assigned to the scan which can be later used for getting the scan result.
 
-IMPORTANT NOTE: **Only one scan be running at a time.**
+IMPORTANT NOTE: **Only one scan be running at a time.** If another scan in the process, a response with 409 status code is returned. 
 
 ## Getting the results
 

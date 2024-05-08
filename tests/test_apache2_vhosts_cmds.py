@@ -2,7 +2,7 @@ import unittest
 from src.vhosts_commands.apache2_vhosts_cmds import Apache2VhostsCmds
 
 
-class TestNginxVhostsCmds(unittest.TestCase):
+class TestApache2VhostsCmds(unittest.TestCase):
     def setUp(self):
         self.cmds = Apache2VhostsCmds()
 

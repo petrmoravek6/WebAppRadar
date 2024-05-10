@@ -10,7 +10,7 @@ from src.web_app_determiner.web_app_rule.authentication.auth import IAuthVisitor
 from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRulesDeserializer
 
 
-class TestHtmlContentParsingMethod(unittest.TestCase):
+class TestHTMLContentParsingFromFileMethod(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.html_contents = {

@@ -10,7 +10,7 @@ from src.web_app_determiner.web_app_rule.json_deserializer import JsonWebAppRule
 
 
 class TestWebAppDeterminer(unittest.TestCase):
-    """Integration tests for TestWebAppDeterminer combined with HTMLContentParsingFromFileMethod"""
+    """Integration/system tests for TestWebAppDeterminer combined with HTMLContentParsingFromFileMethod"""
     def setUp(self):
         web_apps_json_path = os.path.join(os.path.dirname(__file__), 'web-apps.json')
         renderer = SeleniumChromeRenderer()
@@ -18,18 +18,18 @@ class TestWebAppDeterminer(unittest.TestCase):
                                                         AuthExecutor(renderer),
                                                         web_apps_json_path,
                                                         JsonWebAppRulesDeserializer())]
-        self.resolver = WebAppDeterminer(det_methods)
+        self.det = WebAppDeterminer(det_methods)
 
     def test_discover_valid_hosts(self):
-        res1 = self.resolver.detect_web_app_info("http://jira.webappradar-example.io")
-        res2 = self.resolver.detect_web_app_info("grafana.webappradar-example.io")
-        res3 = self.resolver.detect_web_app_info("bareos.webappradar-example.io")
-        res4 = self.resolver.detect_web_app_info("keycloak.webappradar-example.io")
-        res5 = self.resolver.detect_web_app_info("gitlab.webappradar-example.io")
-        res6 = self.resolver.detect_web_app_info("prometheus.webappradar-example.io")
-        res7 = self.resolver.detect_web_app_info("snipe-it.webappradar-example.io")
-        res8 = self.resolver.detect_web_app_info("teamcity.webappradar-example.io")
-        res9 = self.resolver.detect_web_app_info("www.google.com")
+        res1 = self.det.detect_web_app_info("http://jira.webappradar-example.io")
+        res2 = self.det.detect_web_app_info("grafana.webappradar-example.io")
+        res3 = self.det.detect_web_app_info("bareos.webappradar-example.io")
+        res4 = self.det.detect_web_app_info("keycloak.webappradar-example.io")
+        res5 = self.det.detect_web_app_info("gitlab.webappradar-example.io")
+        res6 = self.det.detect_web_app_info("prometheus.webappradar-example.io")
+        res7 = self.det.detect_web_app_info("snipe-it.webappradar-example.io")
+        res8 = self.det.detect_web_app_info("teamcity.webappradar-example.io")
+        res9 = self.det.detect_web_app_info("www.google.com")
 
         expected1 = WebAppInfo("Atlassian Jira", "9.4.18")
         expected2 = WebAppInfo("Grafana", "10.1.1")
@@ -52,8 +52,8 @@ class TestWebAppDeterminer(unittest.TestCase):
         self.assertEqual(res9, expected9)
 
     def test_discover_invalid_hosts(self):
-        res1 = self.resolver.detect_web_app_info("http://646541461.webappradar-example.io")
-        res2 = self.resolver.detect_web_app_info("64sd5f6sd4f65d4sf")
+        res1 = self.det.detect_web_app_info("http://646541461.webappradar-example.io")
+        res2 = self.det.detect_web_app_info("64sd5f6sd4f65d4sf")
 
         expected1 = None
         expected2 = None

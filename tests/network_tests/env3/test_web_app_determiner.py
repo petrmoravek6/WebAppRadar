@@ -30,6 +30,8 @@ class TestWebAppDeterminer(unittest.TestCase):
         res7 = self.det.detect_web_app_info("snipe-it.webappradar-example.io")
         res8 = self.det.detect_web_app_info("teamcity.webappradar-example.io")
         res9 = self.det.detect_web_app_info("www.google.com")
+        res10 = self.det.detect_web_app_info("zabbix.webappradar-example.io")
+        res11 = self.det.detect_web_app_info("minio.webappradar-example.io")
 
         expected1 = WebAppInfo("Atlassian Jira", "9.4.18")
         expected2 = WebAppInfo("Grafana", "10.1.1")
@@ -40,6 +42,8 @@ class TestWebAppDeterminer(unittest.TestCase):
         expected7 = WebAppInfo("Snipe-IT", "6.0.8")
         expected8 = WebAppInfo("TeamCity", "2023.11.3")
         expected9 = None  # Google not on list of known web apps
+        expected10 = WebAppInfo("Zabbix", None)
+        expected11 = None  # Minio supported and copied to the server, but not configured in site-enabled
 
         self.assertEqual(res1, expected1)
         self.assertEqual(res2, expected2)
@@ -50,6 +54,8 @@ class TestWebAppDeterminer(unittest.TestCase):
         self.assertEqual(res7, expected7)
         self.assertEqual(res8, expected8)
         self.assertEqual(res9, expected9)
+        self.assertEqual(res10, expected10)
+        self.assertEqual(res11, expected11)
 
     def test_discover_invalid_hosts(self):
         res1 = self.det.detect_web_app_info("http://420.webappradar-example.io")

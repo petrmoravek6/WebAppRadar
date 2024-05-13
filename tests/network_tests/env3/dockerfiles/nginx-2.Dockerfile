@@ -38,6 +38,8 @@ COPY ../html/testrail-main-page.html /var/www/html/testrail/index.html
 COPY ../html/prometheus-status-page.html /var/www/html/prometheus/status/index.html
 COPY ../html/gitlab-main-page-aa.html /var/www/html/gitlab/after-auth.html
 COPY ../html/snipeit-main-page-aa.html /var/www/html/snipe-it/after-auth.html
+COPY ../html/zabbix-main-page.html /var/www/html/zabbix/index.html
+COPY ../html/minio-main-page.html /var/www/html/minio/index.html
 
 # Expose the SSH port
 EXPOSE 22

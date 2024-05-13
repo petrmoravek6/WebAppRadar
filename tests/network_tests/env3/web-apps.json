@@ -120,5 +120,9 @@
       "password": "password123"
     },
     "version": "<div class=\"pf-c-description-list__text\">(\\d+\\.\\d+\\.\\d+)</div>"
+  },
+  {
+    "name": "MinIO",
+    "identifier": "<meta content=\"MinIO Console\""
   }
 ]

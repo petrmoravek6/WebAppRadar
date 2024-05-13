@@ -36,7 +36,8 @@ class TestOpenPortWebServerScannerSystem(unittest.TestCase):
         expected = {'bareos.webappradar-example.io', 'gitlab.webappradar-example.io',
                     'keycloak.webappradar-example.io', 'teamcity.webappradar-example.io',
                     'snipe-it.webappradar-example.io', 'grafana.webappradar-example.io', 'jira.webappradar-example.io',
-                    'prometheus.webappradar-example.io', 'testrail.webappradar-example.io'}
+                    'prometheus.webappradar-example.io', 'testrail.webappradar-example.io', 'zabbix.webappradar-example.io'}
+        # Minio not in the result cause the web server does not have virtual host configuration for Minio (on purpose)
 
         self.assertCountEqual(res, expected)
 

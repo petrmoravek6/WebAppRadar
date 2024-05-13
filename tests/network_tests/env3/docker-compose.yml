@@ -57,6 +57,8 @@ services:
       - "snipe-it.webappradar-example.io:192.0.0.19"
       - "teamcity.webappradar-example.io:192.0.0.19"
       - "testrail.webappradar-example.io:192.0.0.19"
+      - "zabbix.webappradar-example.io:192.0.0.19"
+      - "minio.webappradar-example.io:192.0.0.19"
 
 networks:
   custom_network:

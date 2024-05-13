@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class GitHubReleaseFetcherMethod(JsonFetcher, IFetchMethod):
+    """This class is used to fetch latest release versions of GitHub projects that use 'Release' feature"""
     github_api_max_per_page = 100
 
     def __init__(self, repo_owner: str, repo_name: str, element: str, ver_regex: str):
@@ -29,7 +30,7 @@ class GitHubReleaseFetcherMethod(JsonFetcher, IFetchMethod):
 
     def get_all_releases(self) -> Iterable[VersionCycleInfo]:
         """
-        Processes JSON data from the API into an iterable of VersionCycleInfo objects.
+        Processes JSON data (release information about GitHub project defined in the constructor) from the GitHub API into an iterable of VersionCycleInfo objects.
         """
         data = self._get_json_from_api(self.repo_owner, self.repo_name)
         if len(data) == 0:

@@ -8,6 +8,7 @@ logger = logging.getLogger(__name__)
 
 
 class SshAgentVhostDiscoverer(IVhostDiscoverer):
+    """This class discovers all the virtual hosts on given address by accessing the Debian server through SSH client and reading the web server configurations. The shell commands used for reading the configuration are defined by suppliing instances of IVhostsCmds in the constructor."""
     def __init__(self, ssh_client: ISSHClient, web_server_cmds: Iterable[IVhostsCmds], ssh_username: str):
         self.ssh_client = ssh_client
         self.web_server_cmds = web_server_cmds

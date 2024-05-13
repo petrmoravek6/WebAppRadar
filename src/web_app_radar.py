@@ -12,6 +12,7 @@ logger = logging.getLogger(__name__)
 
 
 class WebAppRadar:
+    """Class responsible for running complex scans that are capable of detecting web apps and compare them with current releases"""
     def __init__(self,
                  vhost_net_scanner: IVhostNetScanner,
                  web_app_determiner: WebAppDeterminer,
@@ -23,6 +24,12 @@ class WebAppRadar:
         self.scan_repository = scan_repository
 
     def run(self, subnets: Collection[str], scan_id: str = str(uuid.uuid4())) -> Collection[HostnameInfo]:
+        """
+        Scans given subnets or IP addresses (or both) and returns a collection of web apps running in that network. The scan result is saved into database.
+        :param subnets: subnets or IP addresses to be scanned
+        :param scan_id: unique ID of the scan that is to be assigned to the database record
+        :return: a collection of hostnames with running web apps. each element represents one hostname with running web app
+        """
         logger.info(f"Scan (ID: {scan_id}) of: '{', '.join(subnets)}' started")
         status = 'success'
         res = []
@@ -48,7 +55,16 @@ class WebAppRadar:
             return res
 
     def get_scan_summaries(self):
+        """
+        Gets all historical scan summaries (ID, scan result, timestamp of completion)
+        :return:
+        """
         return self.scan_repository.get_all()
 
     def get_scan_details(self, scan_id):
+        """
+        Gets details of finished scan
+        :param scan_id: ID of the scan
+        :return: scan result details
+        """
         return self.scan_repository.get_detail(scan_id)

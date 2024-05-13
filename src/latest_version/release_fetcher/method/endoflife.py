@@ -28,7 +28,7 @@ class EndOfLifeReleaseFetcherMethod(JsonFetcher, IFetchMethod):
 
     def get_all_releases(self) -> Iterable[VersionCycleInfo]:
         """
-        Processes JSON data from the API into an iterable of VersionCycleInfo objects.
+        Processes JSON data (release and EOL information about endoflife.date SW defined in the constructor) from the EndOfLife API into an iterable of VersionCycleInfo objects.
         """
         data = self._get_json_from_api(self.web_app_name)
 

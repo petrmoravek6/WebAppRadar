@@ -1,5 +1,5 @@
 import os
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 from typing import Optional, Iterable, Collection
 from src.exceptions import FatalError
 from src.web_app_determiner.web_app_detection_method import IWebAppDetectionMethod
@@ -13,12 +13,18 @@ from src.web_app_determiner.web_app_rule.web_app_rule import WebAppRule
 logger = logging.getLogger(__name__)
 
 
-class HtmlContentParsingMethod(IWebAppDetectionMethod):
+class HtmlContentParsingMethod(IWebAppDetectionMethod, ABC):
+    """This is a web app detection method that extracts information from loaded HTML content of the web app pages. It looks for specific elements on specific relative paths defined in the _get_web_app_rules abstract method. It uses SeleniumRenderer for client side content loading and IAuthExecutor for page authentication."""
     def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor):
         self.client = client
         self.auth_executor = auth_executor
 
     def _get_full_page_content(self, host: str) -> Optional[str]:
+        """
+        Private method used for getting a full HTML content of the web app on a given host
+        :param host: domain name
+        :return: fully loaded page content of the host
+        """
         if not host.startswith('http://') and not host.startswith('https://'):
             host = f'http://{host}'
         try:
@@ -32,6 +38,9 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
 
     @abstractmethod
     def _get_web_app_rules(self) -> Iterable[WebAppRule]:
+        """
+        Defines a way to get the web app rules (instances of WebAppRule) used during page content discovery
+        """
         pass
 
     def inspect_host(self, host: str) -> Optional[WebAppInfo]:
@@ -63,6 +72,7 @@ class HtmlContentParsingMethod(IWebAppDetectionMethod):
 
 
 class HTMLContentParsingFromFileMethod(HtmlContentParsingMethod):
+    """This class implements the HtmlContentParsingMethod's method _get_web_app_rules that it loads the rules from file. You can choose the file format by suppliing specific deserializer in the constructor."""
     def __init__(self, client: SeleniumRenderer, auth_executor: IAuthVisitor,
                  file_path: str, deserializer: IWebAppRulesDeserializer):
         super().__init__(client, auth_executor)

@@ -9,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class WebServerVhostNetScanner(IVhostNetScanner):
+    """This class scans the given subnet for running web servers and discovers all hostnames that are hosted by those web servers"""
 
     @staticmethod
     def _is_valid_ip_or_subnet(ip_or_subnet: str) -> bool:

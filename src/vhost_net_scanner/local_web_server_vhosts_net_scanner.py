@@ -6,6 +6,7 @@ from src.web_server_scanner.web_server_scanner import IWebServerScanner
 
 
 class LocalWebServerVhostNetScanner(WebServerVhostNetScanner):
+    """This class overrides its parent class (WebServerVhostNetScanner) so it checks whether the found hostnames actually resolve to IP address within given range(s)"""
     def __init__(self,
                  web_server_scanner: IWebServerScanner,
                  vhost_discoverer: IVhostDiscoverer,

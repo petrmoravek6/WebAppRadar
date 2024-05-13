@@ -20,7 +20,7 @@ class FullInfoFetcher:
         self.default_ver_cmp = default_ver_cmp
 
     def get_full_info(self, basic_info: WebAppInfo) -> FullWebAppInfo:
-        """Tries to found out as much information about given web app as possible. It uses object from the constructor"""
+        """Tries to found out as much information about given web app as possible. It uses ReleaseFetcher from the constructor to fetch all latests releases of the web app supplied in the parameter. Then it compares the information using comparators given in constructor."""
         cycles = self.release_fetcher.fetch_web_app_cycle_info(basic_info.name)
         # no release info
         if not cycles:

@@ -2,7 +2,6 @@ import configparser
 import os
 
 from src.exceptions import FatalError
-from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
 
 
 class ConfigParser:
@@ -31,14 +30,12 @@ class ConfigParser:
 
     @staticmethod
     def _validate_private_key(ssh_config):
-        required_keys = ['path_to_private_key_file', 'private_key_cipher']
+        required_keys = ['path_to_private_key_file']
         for key in required_keys:
             if key not in ssh_config or not ssh_config[key]:
                 raise FatalError(f"Missing or empty value for {key}")
         if not os.path.isfile(ssh_config['path_to_private_key_file']):
-            raise FatalError(f"Private key file not found: {ssh_config['path_to_private_key_file']}")
-        if ssh_config['private_key_cipher'] not in PrivateKeyCipher.__members__:
-            raise FatalError(f"Invalid or not supported private key cipher: {ssh_config['private_key_cipher']}")
+            raise FatalError(f"Private key file not found: {ssh_config['path_to_private_key_file']}. Check its location in 'docker-compose.yml'")
 
     @staticmethod
     def _validate_password(ssh_config):

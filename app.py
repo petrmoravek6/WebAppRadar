@@ -8,7 +8,7 @@ from src.api.functions import validate_subnets, run_scan
 import threading
 from src.api import models
 
-file_handler = logging.FileHandler('app.log', mode='a')
+file_handler = logging.FileHandler('/var/log/web-app-radar/web-app-radar.log', mode='a')
 file_handler.setLevel(logging.DEBUG)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.INFO)
@@ -31,7 +31,8 @@ result_detail_model = models.result_detail_model(api, hostname_info_model)
 # initialize web_app_radar instance - any error (already logged inside the function) leads to exit
 web_app_radar = init_web_app_radar()
 if not web_app_radar:
-    exit(1)
+    logger.error("Failed to initialize application")
+    exit(3)
 
 
 @api.route('/scan')

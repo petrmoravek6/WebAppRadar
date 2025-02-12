@@ -7,7 +7,6 @@ from src.latest_version.release_fetcher.release_fetcher import ReleaseFetcher
 from src.latest_version.semantic_version_comparator import SemanticVersionComparator
 from src.open_port_scanner.nmap_open_port_scanner import NMapOpenPortScanner
 from src.scan_repository.mongo_scan_repository import MongoScanRepository
-from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyCipher
 from src.ssh_client.p_key_paramiko_ssh_client import PrivateKeyParamikoSSHClient
 from src.ssh_client.pwd_paramiko_ssh_client import PasswordParamikoSSHClient
 from src.vhost_net_scanner.local_web_server_vhosts_net_scanner import LocalWebServerVhostNetScanner
@@ -41,8 +40,7 @@ def init_web_app_radar() -> Optional[WebAppRadar]:
 
         if ssh_method == 'private_key':
             path_to_private_key_file = ssh_config['path_to_private_key_file']
-            cipher_type = PrivateKeyCipher[ssh_config['private_key_cipher']]
-            ssh_client = PrivateKeyParamikoSSHClient(path_to_private_key_file, cipher_type)
+            ssh_client = PrivateKeyParamikoSSHClient(path_to_private_key_file)
         else:
             ssh_password = ssh_config.get('path_to_password_file')
             ssh_client = PasswordParamikoSSHClient(ssh_password)

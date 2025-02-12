@@ -1,6 +1,9 @@
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:8.0.1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: web_app_radar
+      MONGO_INITDB_ROOT_PASSWORD: __MONGODB_PASSWORD_PLACEHOLDER__
     ports:
       - "27017:27017"
 
@@ -10,9 +13,12 @@ services:
       dockerfile: Dockerfile
     network_mode: host
     environment:
-      - MONGO_URI=mongodb://localhost:27017/
+      - MONGO_URI=mongodb://web_app_radar:__MONGODB_PASSWORD_PLACEHOLDER__@localhost:27017/
     volumes:
-      - ${PWD}/config.ini:/app/config.ini
-      - /path/to/ssh/key:/app/key
+      # Adjust to config file location on your host!
+      - __PATH_TO_CONFIG_FILE_PLACEHOLDER__:/app/config.ini
+      # Adjust to private SSH key location on your host!
+      - __PATH_TO_SSH_PRIVATE_KEY_PLACEHOLDER__:/app/key
+      - /var/log/web-app-radar:/var/log/web-app-radar
     depends_on:
       - mongodb

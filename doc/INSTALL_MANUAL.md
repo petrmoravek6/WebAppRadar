@@ -15,15 +15,15 @@ Mandatory requirements of the application:
 ### SSH
 
 In order the app to be able to remotely browse servers (to read virtual host configuration), the SSH authentication has to be configured correctly.
-The app tries to connect to all found devices in given network by SSH. If the server does not accept SSH connection, 
-no info will be detected from the server. 
+The app tries to connect to all found devices in given network by SSH. If the server does not accept SSH connection,
+no info will be detected from the server.
 
 To configure the correct connection on the application side, you have to fill in correct information in the `config.ini` file.
 
 There are two **authentication options** supported:
 
 #### Private key
-Set `private_key` as SSH method and fill in correct private key cipher. 
+Set `private_key` as SSH method.
 
 The path to the private key **should not be changed** unless not running the app using docker-compose (standard way), because the private key is rather mounted to the Docker container. That means the file path defined in the `config.ini` should correspond to the container's key path defined in the docker-compose file. In other words, if you don't change it there, you should not change it in the `config.ini`.
 
@@ -34,7 +34,6 @@ username = user123
 
 method = private_key
 path_to_private_key_file = /app/key
-private_key_cipher = RSA
 ```
 #### Password
 Set `password` as SSH auth method and fill in correct password which will be used in all connections to all discovered servers.
@@ -53,6 +52,14 @@ If any of the necessary value is not defined correctly, the app will log the err
 
 The application runs in isolated Docker environment. Before running the application, you can set following configuration:
 
+#### Change MongoDB password
+
+For security reasons, generate strong password and replace all occurecnes of `__MONGODB_PASSWORD_PLACEHOLDER__` in `docker-compose.yml` with it.
+
+#### Change path to config.ini
+
+In `docker-compose.yml` change `__PATH_TO_CONFIG_FILE_PLACEHOLDER__` to a valid path with `config.ini` on your host. By default (if you don't move the config.ini file from the root of the app folder), you can set it to `${PWD}/config.ini`
+
 #### Change API port
 
 To change the port that is used for HTTP API connections on the local machine, please add following lines to `docker-compose.yml`:
@@ -63,7 +70,10 @@ so the complete file can look something like this:
 ```yaml
 services:
   mongodb:
-    image: mongo:latest
+    image: mongo:8.0.1
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: web_app_radar
+      MONGO_INITDB_ROOT_PASSWORD: __MONGODB_PASSWORD_PLACEHOLDER__
     ports:
       - "27017:27017"
 
@@ -73,10 +83,11 @@ services:
       dockerfile: Dockerfile
     network_mode: host
     environment:
-      - MONGO_URI=mongodb://localhost:27017/
+      - MONGO_URI=mongodb://web_app_radar:__MONGODB_PASSWORD_PLACEHOLDER__@localhost:27017/
     volumes:
-      - ${PWD}/config.ini:/app/config.ini
-      - /home/john/.ssh/id_rsa:/app/key
+      - __PATH_TO_CONFIG_FILE_PLACEHOLDER__:/app/config.ini
+      - __PATH_TO_SSH_PRIVATE_KEY_PLACEHOLDER__:/app/key
+      - /var/log/web-app-radar:/var/log/web-app-radar
     depends_on:
       - mongodb
     command: ["-p", "8080"]
@@ -85,7 +96,7 @@ services:
 
 #### Change SSH private key path
 If you chose to use private key method ass SSH authentication, you have to adjust to correct file path to the key on the local machine in `docker-compose.yml`.
-Set the correct path instead of `/home/john/.ssh/id_rsa`.
+Set the correct path instead of `__PATH_TO_SSH_PRIVATE_KEY_PLACEHOLDER__`.
 
 ### Extending the list of supported web applications
 
@@ -140,14 +151,14 @@ that will be used to get behind the auth wall. However, the WebAppRadar needs to
 
 Here we can see that apart from `identifier` and `version` values, WebAppRadar needs to know the user HTML input box element has HTML attribute
  `name` with value `username` and the password input box has `name` attribute with `password` value. The `username` and `password` are then
-filled in to those input boxes and submitted using ENTER. **Only after successful authentication a version is to be read** unlike 
+filled in to those input boxes and submitted using ENTER. **Only after successful authentication a version is to be read** unlike
 the case where the authentication part is not specified and the version is read directly from the main page.
 
 **Identifier is always being matched from the main page.**
 
 Regardless of whether the authentication method is used or not, sometimes the version does not appear immediately on the page.
 
-You can define a relative path to the hostname that is to be used for searching the `version`. 
+You can define a relative path to the hostname that is to be used for searching the `version`.
 ```json
 {
     "name": "Prometheus",
@@ -207,5 +218,5 @@ After successful configuration you can run the app using `docker compose up --bu
 
 ## Logging
 
-The app uses logging mechanism that implicitly logs all DEBUG, INFO, WARNING and ERROR logs to `app.log` inside the Docker container and
+The app uses logging mechanism that implicitly logs all DEBUG, INFO, WARNING and ERROR logs to `/var/log/web-app-radar.log` and
 INFO, WARNING and ERROR logs to the console. This can be adjusted in `app.py`.

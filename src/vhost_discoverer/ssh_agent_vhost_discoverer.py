@@ -16,6 +16,7 @@ class SshAgentVhostDiscoverer(IVhostDiscoverer):
 
     def get_virtual_hosts(self, host: str) -> Iterable[str]:
         try:
+            logger.info(f"Trying to connect to '{host}'")
             self.ssh_client.connect(host, self.ssh_username)
         except ConnectionError as e:
             logger.error(e)

@@ -30,7 +30,7 @@ class WebAppRadar:
         :param scan_id: unique ID of the scan that is to be assigned to the database record
         :return: a collection of hostnames with running web apps. each element represents one hostname with running web app
         """
-        logger.info(f"Scan (ID: {scan_id}) of: '{', '.join(subnets)}' started")
+        logger.info(f"Scan (ID: {scan_id}) of: '{subnets}' started")
         status = 'success'
         res = []
         try:
